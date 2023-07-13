@@ -1,4 +1,4 @@
-# T_AND_S_Institute_Managment
+# UJPMS-University_Jobplacement_management_System
 
 
 
