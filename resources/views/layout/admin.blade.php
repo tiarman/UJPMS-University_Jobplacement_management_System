@@ -241,7 +241,7 @@
             </li>
           @endif
 
-          @if(\App\Helper\CustomHelper::canView('Create Component|Manage Component|Delete Component|View Component|List Of Component', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Component|Manage Component|Delete Component|View Component|List Of Component', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="icon-park-solid:components"></iconify-icon>
@@ -256,9 +256,9 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Sub Component|Manage Sub Component|Delete Sub Component|View Sub Component|List Of Sub Component', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Sub Component|Manage Sub Component|Delete Sub Component|View Sub Component|List Of Sub Component', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="radix-icons:component-boolean"></iconify-icon>
@@ -273,9 +273,9 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Subsidiary Component|Manage Subsidiary Component|Delete Subsidiary Component|View Subsidiary Component|List Of Subsidiary Component', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Subsidiary Component|Manage Subsidiary Component|Delete Subsidiary Component|View Subsidiary Component|List Of Subsidiary Component', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="material-symbols:component-exchange"></iconify-icon>
@@ -290,10 +290,10 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
 
-          @if(\App\Helper\CustomHelper::canView('Create Fiscal Year|Manage Fiscal Year|Delete Fiscal Year|View Fiscal Year|List Of Fiscal Year', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Fiscal Year|Manage Fiscal Year|Delete Fiscal Year|View Fiscal Year|List Of Fiscal Year', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i class="fa fa-calendar" aria-hidden="true"></i><span> Fiscal Year <span
                     class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
@@ -306,11 +306,11 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
           {{--          <li class="menu-title">Budget</li>--}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Component Budget|Manage Component Budget|Delete Component Budget|View Component Budget|List Of Component Budget', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Component Budget|Manage Component Budget|Delete Component Budget|View Component Budget|List Of Component Budget', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i aria-hidden="true">
                   <iconify-icon icon="healthicons:money-bag"></iconify-icon>
@@ -325,9 +325,9 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Component Institute Budget|Manage Component Institute Budget|Delete Component Institute Budget|View Component Institute Budget|List Of Component Institute Budget', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Component Institute Budget|Manage Component Institute Budget|Delete Component Institute Budget|View Component Institute Budget|List Of Component Institute Budget', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i aria-hidden="true">
                   <iconify-icon icon="game-icons:modern-city"></iconify-icon>
@@ -343,9 +343,9 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Sub Component Institute Budget|Manage Sub Component Institute Budget|Delete Sub Component Institute Budget|View Sub Component Institute Budget|List Of Sub Component Institute Budget', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Sub Component Institute Budget|Manage Sub Component Institute Budget|Delete Sub Component Institute Budget|View Sub Component Institute Budget|List Of Sub Component Institute Budget', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i aria-hidden="true">
                   <iconify-icon icon="mdi:home-city"></iconify-icon>
@@ -361,7 +361,10 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
+
+
+
           {{--          --}}{{-- procurement management --}}
           {{--          <li class="menu-title">Procurement Management</li>--}}
           {{--          --}}{{-- APP --}}
@@ -423,7 +426,7 @@
           @endif
 
           {{--          <li class="menu-title">Report's</li>--}}
-          @if(\App\Helper\CustomHelper::canView('List of Subsidiary Component code wise', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('List of Subsidiary Component code wise', 'Super Admin'))
             <li>
               <a href="{{ route('admin.report.subsidiary.component.code.wise') }}" class="waves-effect"><i>
                   <iconify-icon icon="fluent:clipboard-code-24-filled"></iconify-icon>
@@ -438,7 +441,10 @@
                 </i> <span>Quarter wise</span>
               </a>
             </li>
-          @endif
+          @endif  --}}
+
+
+          
           {{--          <li class="menu-title">Training</li>--}}
 
           {{--          <li>--}}

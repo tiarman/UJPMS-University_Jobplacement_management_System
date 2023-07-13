@@ -25,9 +25,30 @@
     </style>
 @endsection
 @section('content')
-  <div class="institute_body_align">
+<!-- Start home -->
+<section class="bg-half page-next-level"> 
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Registration</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="#" class="text-uppercase font-weight-bold">Jobs</a></li> 
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Registration</span> 
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+  <div class="institute_body_align" style="margin-bottom: 100px">
 
-    <div class="container institute_head_alignment">
+    <div class="container institute_head_alignment" style="margin-top: 100px">
       <h2 class="text-center" id="title">Graduate Registration Form</h2>
       <hr>
       @if(session()->has('status'))
@@ -379,8 +400,8 @@
 
         </div>
 
-        <div style="text-align: center" class="row mt-3">
-          <div class="text-right d-flex justify-content-center">
+        <div style="text-align: center; margin-top:100px">
+          <div>
             <button class="btn btn-register text-center w-full" type="submit">Register</button>
           </div>
         </div>

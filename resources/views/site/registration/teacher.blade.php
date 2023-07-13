@@ -20,7 +20,28 @@
     </style>
 @endsection
 @section('content')
-    <div class="institute_body_align">
+<!-- Start home -->
+<section class="bg-half page-next-level"> 
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Registration</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="#" class="text-uppercase font-weight-bold">Jobs</a></li> 
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Registration</span> 
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+    <div class="institute_body_align" style="margin-top:100px; margin-bottom:100px">
 
         <div class="container institute_head_alignment">
             <h2 class="text-center" id="title">Teacher Registration Form</h2>
@@ -33,10 +54,11 @@
                 method="post" enctype="multipart/form-data">
                 @csrf
 
-                <div class="row mb-3">
+                
                     <div>
                         <h4 class="p-2 text-light form-sub-section">Teacher Basic Information</h4>
                     </div>
+                    <div class="row mb-3">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">NID<span class="text-danger">*</span></label>
