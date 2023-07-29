@@ -43,47 +43,20 @@ class AuthController extends Controller {
         if (\auth()->user()->status !== User::$statusArrays[1]) {
           Auth::logout();
           \Illuminate\Support\Facades\Session::flush();
-          return RedirectHelper::backWithInput('<strong>Sorry!!!</strong> Your not eligible for automatic activation. <br>Please call following concerned for activation (at working hour). For more details visit &nbsp;<a href="http://www.asset-dte.gov.bd/" target="_blank">ASSET Project</a><br>
+          return RedirectHelper::backWithInput('<strong>Sorry!!!</strong> Your not eligible for automatic activation. <br>Please call following concerned for activation (at working hour). For more details visit &nbsp;<a href="http://www.ujpms.com/" target="_blank">UJPMS</a><br>
     <table class="table table-bordered" style="width: 100%">
     <th class="p-0">Designation</th>
     <th class="p-0">Contact No</th>
 <tbody>
 <tr>
 <td class="p-1">Programmer</td>
-<td class="p-1"><a href="tel:01325073614">01325073614</a></td>
+<td class="p-1"><a href="tel:01860842420">01860842420</a></td>
 </tr>
 <tr>
-<td class="p-1">DPD(RPL)</td>
-<td class="p-1"><a href="tel:01325073610">01325073610</a></td>
+<td class="p-1">Manager</td>
+<td class="p-1"><a href="tel:01866554433">01866554433</a></td>
 </tr>
 <tr>
-<td class="p-1">PO(RPL)</td>
-<td class="p-1"><a href="tel:01325073616">01325073616</a></td>
-</tr>
-<tr>
-<td class="p-1">DPD(IDG), Technical</td>
-<td class="p-1"><a href="tel:01325073612">01325073612</a></td>
-</tr>
-<tr>
-<td class="p-1">DPD(IDG), Medical</td>
-<td class="p-1"><a href="tel:01325073611">01325073611</a></td>
-</tr>
-<tr>
-<td class="p-1">DPD(Short Course)</td>
-<td class="p-1"><a href="tel:01325073613">01325073613</a></td>
-</tr>
-<tr>
-<td class="p-1">PO(Short Course)</td>
-<td class="p-1"><a href="tel:01325073615">01325073615</a></td>
-</tr>
-<tr>
-<td class="p-1">AO(Enterprise)</td>
-<td class="p-1"><a href="tel:01711589488">01711589488</a></td>
-</tr>
-<tr>
-<td class="p-1">Programmer (Enterprise)</td>
-<td class="p-1"><a href="tel:01325073614">01325073614</a></td>
-</tr>
 </tbody>
 </table>');
         }

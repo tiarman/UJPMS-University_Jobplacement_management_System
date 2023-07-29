@@ -12,7 +12,7 @@
       <div class="row">
         <div style="" class="col-12 text-center rounded"><a href="{{ route('home') }}" class="logo logo-admin">
 {{--            <img src="{{ asset('assets/text-logo.png') }}" height="80" alt="logo">--}}
-            <h4 style="color:#54359D;">JPMS Login</h4>
+            <h4 style="color:#54359D;">UJPMS Login</h4>
           </a></div>
       </div>
       <div class="pl-3 pr-3 pb-3">

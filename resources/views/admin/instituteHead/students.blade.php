@@ -65,7 +65,7 @@
                                                     style="font-weight: lighter; font-size: 12px">{{ $val->email }}</span><br>
                                                 <span
                                                     style="font-weight: lighter; font-size: 12px">{{ $val->phone }}</span><br>
-                                            <td class="p-1">{{ ucfirst($val->department->name) }}</td>
+                                            <td class="p-1">{{ ucfirst($val->department->name ?? "") }}</td>
                                             <td class="p-1">{{ ucfirst($val->employment_status) }}</td>
                                             <td class="p-1">{{ $val->employing_company }}</td>
                                             <td class="p-1 text-center"><a href="{{ asset($val->cv) }}" download><i
