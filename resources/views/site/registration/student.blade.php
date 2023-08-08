@@ -60,7 +60,7 @@
         <div>
           <h4 class="p-2 text-light form-sub-section">Graduate Information</h4>
         </div>
-        <div  class="row pb-3 mt-3 ">
+        <div  class="row mt-3 ">
 
           {{-- <div class="col-sm-12 col-md-4">
             <div class="form-group">
@@ -176,6 +176,7 @@
               @enderror
             </div>
           </div>
+        </div>
           {{-- <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Year</label>
@@ -194,7 +195,7 @@
               @enderror
             </div>
           </div> --}}
-
+<div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label for="session">Session<span class="text-danger">*</span></label>
@@ -209,7 +210,7 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <label for="board_roll">SSC Board Roll / ID<span class="text-danger">*</span></label>
+            <label for="board_roll">Roll / ID<span class="text-danger">*</span></label>
             <input type="number" name="board_roll" id="board_roll" placeholder="Enter Your SSC Board Roll" autocomplete="off"
                    class="form-control select-or-disable @error('board_roll') is-invalid @enderror" value="{{ old('board_roll') }}">
             <span class="spin"></span>
@@ -218,7 +219,7 @@
             @enderror
           </div>
         </div>
-        <div class="col-md-4">
+        {{--  <div class="col-md-4">
           <div class="form-group">
             <label for="running_board_roll">Running Board Roll / ID<span class="text-danger">*</span></label>
             <input type="number" name="running_board_roll" id="running_board_roll" placeholder="Enter Your Running Board Roll" autocomplete="off"
@@ -228,7 +229,7 @@
             <strong class="text-danger">{{ $errors->first('running_board_roll') }}</strong>
             @enderror
           </div>
-        </div>
+        </div>  --}}
         <div class="col-md-4">
           <div class="form-group">
             <label for="admission_year">Admission Year <span class="text-danger">*</span></label>
@@ -240,6 +241,9 @@
             @enderror
           </div>
         </div>
+</div>
+<div class="row">
+       
           <div class="col-sm-4">
             <div class="form-group">
               <label class="control-label">Employment Status<span class="text-danger">*</span></label>
@@ -266,7 +270,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-sm-12">
+          <div class="col-sm-4">
             <div class="form-group">
               <label for="cv">CV(Optional)</label>
               <input type="file" name="cv" id="cv" placeholder="" autocomplete="off"
@@ -277,22 +281,24 @@
               @enderror
             </div>
           </div>
-        </div>
+
+</div>
+
         <div class="mt-3">
           <h4 class="p-2 text-light form-sub-section">Login Information</h4>
         </div>
-        <div class="row mb-3 mt-3">
-          <div class="col-md-4">
+        <div class="row mt-4">
+          <div class="col-md-6">
             <div class="form-group">
               <label class="control-label">NID<span class="">(Optional)</span></label>
-              <input id="nid" type="text" name="nid" placeholder="Your NID NO." required value="{{ old('nid') }}"
+              <input id="nid" type="text" name="nid" placeholder="Your NID NO."  value="{{ old('nid') }}"
                      class="form-control select-or-disable @error('nid') is-invalid @enderror">
               @error('nid')
               <strong class="text-danger">{{ $errors->first('nid') }}</strong>
               @enderror
             </div>
           </div>
-          <div class="col-md-4">
+          {{--  <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Birth-Certificate<span class="">(Optional)</span></label>
               <input type="text" id="birth_certificate" name="birth_certificate" placeholder="Your Birth Certificate NO." required value="{{ old('birth_certificate') }}"
@@ -301,8 +307,8 @@
               <strong class="text-danger">{{ $errors->first('birth_certificate') }}</strong>
               @enderror
             </div>
-          </div>
-          <div class="col-md-4">
+          </div>  --}}
+          <div class="col-md-6">
             <div class="form-group">
               <label class="control-label">Full name [English]<span class="text-danger">*</span></label>
               <input type="text" name="name_en" placeholder="Full name in english" required value="{{ old('name_en') }}"
@@ -312,6 +318,19 @@
               @enderror
             </div>
           </div>
+          {{--  <div class="col-md-4">
+            <div class="form-group">
+              <label for="profile_photo_path">Image (Upload)</label>
+              <input type="file" name="profile_photo_path" id="profile_photo_path" placeholder="" autocomplete="off"
+                     class="form-control @error('profile_photo_path') is-invalid @enderror" value="{{ old('profile_photo_path') }}">
+              <span class="spin"></span>
+              @error('profile_photo_path')
+              <strong class="text-danger">{{ $errors->first('profile_photo_path') }}</strong>
+              @enderror
+            </div>
+          </div>  --}}
+        </div>
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">নাম [বাংলায়]<span class="text-danger">*</span></label>
@@ -343,6 +362,8 @@
               @enderror
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label for="email">Email <span class="text-danger">*</span></label>
@@ -379,18 +400,12 @@
               <small id="confirm-password-error" class="text-danger d-none">Enter the correct password</small>
             </div>
           </div>
-          <div class="col-sm-4 mt-3">
-            <div class="form-group">
-              <label for="profile_photo_path">Image (Upload)</label>
-              <input type="file" name="profile_photo_path" id="profile_photo_path" placeholder="" autocomplete="off"
-                     class="form-control @error('profile_photo_path') is-invalid @enderror" value="{{ old('profile_photo_path') }}">
-              <span class="spin"></span>
-              @error('profile_photo_path')
-              <strong class="text-danger">{{ $errors->first('profile_photo_path') }}</strong>
-              @enderror
-            </div>
-          </div>
-          <div class="col-md-4 " >
+        </div>
+
+
+          {{--  <div class="row" style="margin-bottom: 50px">
+          
+          <div class="col-md-4" >
             <div class="image_preview_container text-center mx-auto" >
                 <p id="preview_text">Image Preview</p>
                 <img class="d-none mt-2"  id="image_preview" alt="your image" width="85" height="85" />
@@ -398,13 +413,14 @@
         </div>
 
 
-        </div>
+        </div>  --}}
 
-        <div style="text-align: center; margin-top:100px">
-          <div>
+     <div class="row" style="justify-content: center">
+          <div class="mb-5" style="justify-content: center; margin-top:60px">
             <button class="btn btn-register text-center w-full" type="submit">Register</button>
           </div>
         </div>
+       
       </form>
 
     </div>

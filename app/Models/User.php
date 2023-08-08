@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
     'year',
     'session',
     'board_roll',
-    'running_board_roll',
+    // 'running_board_roll',
     'admission_year',
     'birth_certificate',
     //evalutor

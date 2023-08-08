@@ -358,10 +358,10 @@
                     <div class="float-left counter-icon mr-3">
                         <i class="mdi mdi-account-multiple-plus h1 text-white"></i>
                     </div>
-                    <div class="counter-content overflow-hidden">
+                    <a href="{{route('graduate.list')}}" class="counter-content overflow-hidden">
                         <h1 class="counter-value text-white mb-1" data-count="{{$numberofstudents ?? '0'}}">{{$numberofstudents ?? '0'}}+</h1>
                         <p class="counter-name text-white text-uppercase mb-0">Students</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

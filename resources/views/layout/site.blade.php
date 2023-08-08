@@ -167,6 +167,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{route('graduate.list')}}">Students</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('jobfair.list') }}">Job Fair List</a>
+                    </li>
+                    <li>
                         <a href="contact.html">contact</a>
                     </li>
                 </ul><!--end navigation menu-->

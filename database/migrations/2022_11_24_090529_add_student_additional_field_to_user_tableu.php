@@ -24,7 +24,7 @@ return new class extends Migration
           $table->string('year')->nullable();
           $table->string('session')->nullable();
           $table->string('board_roll')->nullable()->unique();
-          $table->string('running_board_roll')->nullable()->unique();
+        //   $table->string('running_board_roll')->nullable()->unique();
           $table->string('admission_year')->nullable();
           $table->string('birth_certificate')->nullable()->unique();
           $table->string('employing_company')->nullable();

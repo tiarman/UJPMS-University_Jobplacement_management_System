@@ -73,7 +73,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="control-label">Full name [English]<span class="text-danger">*</span></label>
-                          <input type="text" name="name_en" placeholder="Full name in english" required value="{{ old('name_en', auth()->user()->name_en) }}"
+                          <input type="text" name="name_en" placeholder="Full name in english" value="{{ old('name_en', auth()->user()->name_en) }}"
                                  class="form-control @error('name_en') is-invalid @enderror">
                           @error('name_en')
                           <strong class="text-danger">{{ $errors->first('name_en') }}</strong>
@@ -119,7 +119,7 @@
                 <header class="sub-panel-heading" style="background-color: #e9eff1">
                   <h2 class="sub-panel-title">Registration Information</h2>
                 </header>
-                <div  class="row pb-3 mt-3 border-bottom">
+                <div  class="row mt-3">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="trade_technology_id">Trade/Technology/Department</label>
@@ -168,6 +168,11 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+
+
+
+                <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="control-label">Year</label>
@@ -206,6 +211,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="running_board_roll">Running Board Roll<span class="text-danger">*</span></label>
@@ -239,10 +246,12 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="control-label">Birth-Certificate<span class="text-danger">*</span></label>
-                      <input type="text" id="birth_certificate" name="birth_certificate" placeholder="Your Birth Certificate NO." required value="{{ old('birth_certificate',auth()->user()->birth_certificate) }}"
+                      <input type="text" id="birth_certificate" name="birth_certificate" placeholder="Your Birth Certificate NO." value="{{ old('birth_certificate',auth()->user()->birth_certificate) }}"
                              class="form-control select-or-disable @error('birth_certificate') is-invalid @enderror">
                       @error('birth_certificate')
                       <strong class="text-danger">{{ $errors->first('birth_certificate') }}</strong>
@@ -252,7 +261,7 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label">Employment Status<span class="text-danger">*</span></label>
-                      <select name="employment_status" required class="form-control @error('employment_status') is-invalid @enderror">
+                      <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
                         <option value="">Choose an Option</option>
                         @foreach(\App\Models\User::$employmentArrays as $employment_status)
                           <option value="{{ $employment_status }}"
@@ -275,6 +284,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row mb-5">
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="cv">CV(Optional)</label>
@@ -291,7 +302,7 @@
                 <header class="sub-panel-heading" style="background-color: #e9eff1">
                   <h2 class="sub-panel-title">Personal Information</h2>
                 </header>
-                <div class="row pb-3 mt-3 border-bottom">
+                <div class="row mt-3">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="father_name">Father Name<span class="text-danger">*</span></label>
@@ -329,6 +340,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row border-bottom">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="blood_group">Blood Group<span class="text-danger">*</span></label>
@@ -438,7 +451,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Training Title<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="title" placeholder="Training Title" autocomplete="off" required--}}
+{{--                            <input type="text" name="title" placeholder="Training Title" autocomplete="off"--}}
 {{--                                   value="{{ old('title') }}"--}}
 {{--                                   class="form-control @error('title') is-invalid @enderror">--}}
 {{--                            @error('title')--}}
@@ -449,7 +462,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Start Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="start_date" placeholder="Title" autocomplete="off" required--}}
+{{--                            <input type="date" name="start_date" placeholder="Title" autocomplete="off"--}}
 {{--                                   value="{{ old('start_date') }}"--}}
 {{--                                   class="form-control @error('start_date') is-invalid @enderror">--}}
 {{--                            @error('start_date')--}}
@@ -460,7 +473,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">End Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="end_date" placeholder="Title" autocomplete="off" required--}}
+{{--                            <input type="date" name="end_date" placeholder="Title" autocomplete="off"--}}
 {{--                                   value="{{ old('end_date') }}"--}}
 {{--                                   class="form-control @error('end_date') is-invalid @enderror">--}}
 {{--                            @error('end_date')--}}
@@ -471,7 +484,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Training Location<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="training_location" placeholder="Training Location" autocomplete="off" required--}}
+{{--                            <input type="text" name="training_location" placeholder="Training Location" autocomplete="off"--}}
 {{--                                   value="{{ old('training_location') }}"--}}
 {{--                                   class="form-control @error('training_location') is-invalid @enderror">--}}
 {{--                            @error('training_location')--}}
@@ -483,7 +496,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Country<span class="text-danger">*</span></label>--}}
-{{--                            <select name="country_id" class="form-control @error('country_id') is-invalid @enderror" required>--}}
+{{--                            <select name="country_id" class="form-control @error('country_id') is-invalid @enderror">--}}
 {{--                              <option value="">Choose a country</option>--}}
 {{--                            </select>--}}
 {{--                            @error('country_id')--}}
@@ -496,15 +509,15 @@
 {{--                            <label class="control-label">Duration<span class="text-danger">*</span></label>--}}
 {{--                            <div class="row">--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_year') }}"--}}
 {{--                                       class="form-control @error('duration_year') is-invalid @enderror"></div>--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_month') }}"--}}
 {{--                                       class="form-control @error('duration_month') is-invalid @enderror"></div>--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_day') }}"--}}
 {{--                                       class="form-control @error('duration_day') is-invalid @enderror"></div>--}}
 {{--                            </div>--}}
@@ -588,7 +601,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Institution<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="institution" placeholder="Institution" autocomplete="off" required--}}
+{{--                            <input type="text" name="institution" placeholder="Institution" autocomplete="off"--}}
 {{--                                   value="{{ old('institution') }}"--}}
 {{--                                   class="form-control @error('institution') is-invalid @enderror">--}}
 {{--                            @error('institution')--}}
@@ -599,7 +612,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Subject/Department<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="subject" placeholder="Subject/Department" autocomplete="off" required--}}
+{{--                            <input type="text" name="subject" placeholder="Subject/Department" autocomplete="off"--}}
 {{--                                   value="{{ old('subject') }}"--}}
 {{--                                   class="form-control @error('subject') is-invalid @enderror">--}}
 {{--                            @error('subject')--}}
@@ -610,7 +623,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Year<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="year" placeholder="Year" autocomplete="off" required--}}
+{{--                            <input type="date" name="year" placeholder="Year" autocomplete="off"--}}
 {{--                                   value="{{ old('year') }}"--}}
 {{--                                   class="form-control @error('year') is-invalid @enderror">--}}
 {{--                            @error('year')--}}
@@ -633,7 +646,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Result<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="result" placeholder="Result" autocomplete="off" required--}}
+{{--                            <input type="text" name="result" placeholder="Result" autocomplete="off"--}}
 {{--                                   value="{{ old('result') }}"--}}
 {{--                                   class="form-control @error('result') is-invalid @enderror">--}}
 {{--                            @error('result')--}}
@@ -710,7 +723,7 @@
 {{--                        <div class="col-sm-12">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Organization Name<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="employer" placeholder="Organization Name" autocomplete="off" required--}}
+{{--                            <input type="text" name="employer" placeholder="Organization Name" autocomplete="off"--}}
 {{--                                   value="{{ old('employer') }}"--}}
 {{--                                   class="form-control @error('employer') is-invalid @enderror">--}}
 {{--                            @error('employer')--}}
@@ -723,7 +736,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Designation<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="designation" placeholder="Designation" autocomplete="off" required--}}
+{{--                            <input type="text" name="designation" placeholder="Designation" autocomplete="off"--}}
 {{--                                   value="{{ old('designation') }}"--}}
 {{--                                   class="form-control @error('designation') is-invalid @enderror">--}}
 {{--                            @error('designation')--}}
@@ -734,7 +747,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Start Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_start_date" placeholder="Start Date" autocomplete="off" required--}}
+{{--                            <input type="date" name="job_start_date" placeholder="Start Date" autocomplete="off"--}}
 {{--                                   value="{{ old('job_start_date') }}"--}}
 {{--                                   class="form-control @error('job_start_date') is-invalid @enderror">--}}
 {{--                            @error('job_start_date')--}}
@@ -745,7 +758,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">End Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_end_date" placeholder="End Date" autocomplete="off" required--}}
+{{--                            <input type="date" name="job_end_date" placeholder="End Date" autocomplete="off"--}}
 {{--                                   value="{{ old('job_end_date') }}"--}}
 {{--                                   class="form-control @error('job_end_date') is-invalid @enderror">--}}
 {{--                            @error('job_end_date')--}}
@@ -756,7 +769,7 @@
 {{--                        <div class="col-sm-4">--}}
 {{--                          <div class="form-group">--}}
 {{--                            <label class="control-label">Job Location<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_location" placeholder="Job Location" autocomplete="off" required--}}
+{{--                            <input type="date" name="job_location" placeholder="Job Location" autocomplete="off"--}}
 {{--                                   value="{{ old('job_location') }}"--}}
 {{--                                   class="form-control @error('job_location') is-invalid @enderror">--}}
 {{--                            @error('job_location')--}}
@@ -769,15 +782,15 @@
 {{--                            <label class="control-label">Duration<span class="text-danger">*</span></label>--}}
 {{--                            <div class="row">--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_year') }}"--}}
 {{--                                       class="form-control @error('duration_year') is-invalid @enderror"></div>--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_month') }}"--}}
 {{--                                       class="form-control @error('duration_month') is-invalid @enderror"></div>--}}
 {{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off" required--}}
+{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off"--}}
 {{--                                       value="{{ old('duration_day') }}"--}}
 {{--                                       class="form-control @error('duration_day') is-invalid @enderror"></div>--}}
 {{--                            </div>--}}
@@ -815,7 +828,7 @@
               {{--                  <div class="col-sm-6">--}}
               {{--                    <div class="form-group">--}}
               {{--                      <label class="control-label">Name</label>--}}
-              {{--                      <input type="text" name="Name" placeholder="" autocomplete="off" required--}}
+              {{--                      <input type="text" name="Name" placeholder="" autocomplete="off"--}}
               {{--                             value="{{ old('Name') }}"--}}
               {{--                             class="form-control @error('Name') is-invalid @enderror">--}}
               {{--                      @error('Name')--}}
@@ -826,7 +839,7 @@
               {{--                  <div class="col-sm-6">--}}
               {{--                    <div class="form-group">--}}
               {{--                      <label class="control-label">Designation</label>--}}
-              {{--                      <input type="text" name="designation" placeholder="Designation" autocomplete="off" required--}}
+              {{--                      <input type="text" name="designation" placeholder="Designation" autocomplete="off"--}}
               {{--                             value="{{ old('designation') }}"--}}
               {{--                             class="form-control @error('designation') is-invalid @enderror">--}}
               {{--                      @error('designation')--}}
@@ -837,7 +850,7 @@
               {{--                  <div class="col-sm-6">--}}
               {{--                    <div class="form-group">--}}
               {{--                      <label class="control-label">Contact Email</label>--}}
-              {{--                      <input type="text" name="contact_email" placeholder="Contact Email" autocomplete="off" required--}}
+              {{--                      <input type="text" name="contact_email" placeholder="Contact Email" autocomplete="off"--}}
               {{--                             value="{{ old('contact_email') }}"--}}
               {{--                             class="form-control @error('contact_email') is-invalid @enderror">--}}
               {{--                      @error('contact_email')--}}
@@ -848,7 +861,7 @@
               {{--                  <div class="col-sm-6">--}}
               {{--                    <div class="form-group">--}}
               {{--                      <label class="control-label">Mobile no</label>--}}
-              {{--                      <input type="text" name="mobile_no" placeholder="Mobile No" autocomplete="off" required--}}
+              {{--                      <input type="text" name="mobile_no" placeholder="Mobile No" autocomplete="off"--}}
               {{--                             value="{{ old('mobile_no') }}"--}}
               {{--                             class="form-control @error('mobile_no') is-invalid @enderror">--}}
               {{--                      @error('mobile_no')--}}
@@ -865,7 +878,7 @@
 {{--                <div class="col-sm-6">--}}
 {{--                  <div class="form-group">--}}
 {{--                    <label class="control-label">Title</label>--}}
-{{--                    <input type="text" name="title" placeholder="Title" autocomplete="off" required--}}
+{{--                    <input type="text" name="title" placeholder="Title" autocomplete="off"--}}
 {{--                           value="{{ old('title') }}"--}}
 {{--                           class="form-control @error('title') is-invalid @enderror">--}}
 {{--                    @error('title')--}}
@@ -910,7 +923,7 @@
 {{--                <div class="col-sm-6">--}}
 {{--                  <div class="form-group">--}}
 {{--                    <label class="control-label">Date</label>--}}
-{{--                    <input type="date" name="date" placeholder="Date" autocomplete="off" required--}}
+{{--                    <input type="date" name="date" placeholder="Date" autocomplete="off"--}}
 {{--                           value="{{ old('date') }}"--}}
 {{--                           class="form-control @error('date') is-invalid @enderror">--}}
 {{--                    @error('date')--}}

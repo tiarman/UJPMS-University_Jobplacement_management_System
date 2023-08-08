@@ -19,6 +19,27 @@
 @endsection
 
 @section('content')
+<!-- Start home -->
+<section class="bg-half page-next-level"> 
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Job Fair Job List</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="#" class="text-uppercase font-weight-bold">Jobs</a></li> 
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Job Fair Job List</span> 
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
 
   <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-up">
@@ -27,16 +48,16 @@
          <!-- JOB LIST START -->
     <section class="section pt-0">
       <div class="container">
-          <div class="row justify-content-center">
+          {{--  <div class="row justify-content-center">
               <div class="col-12">
                   <div class="section-title text-center mb-4 pb-2">
                       <h4 class="title title-line pb-5">Available job for you</h4>
                       <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
                   </div>
               </div>
-          </div>
+          </div>  --}}
 
-          <div class="row">
+          <div class="row mt-5">
               <div class="col-lg-3">
                   <div class="left-sidebar">
                       <div class="accordion" id="accordionExample">

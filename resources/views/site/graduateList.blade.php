@@ -35,15 +35,35 @@
           width: 100px;
           min-height: 100px;
           max-height: auto;
-          float: left;
-          margin: 3px;
-          padding: 3px;
+          
       }
   </style>
 @endsection
 
 @section('content')
+<!-- Start home -->
+<section class="bg-half page-next-level" style="height: 100px"> 
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Student List</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="#" class="text-uppercase font-weight-bold">Jobs</a></li> 
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Student List</span> 
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
 
+  {{--  <div class="container">  --}}
   <div class="container">
     <div class="row " style="margin-top:50px">
       <div class="col-12">
