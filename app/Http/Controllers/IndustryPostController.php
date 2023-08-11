@@ -10,12 +10,23 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndustryPostController extends Controller
 {
   public function index()
   {
-    $data['datas'] = IndustryPost::where('industry_id',auth()->user()->id)->orderby('id', 'desc')->get();
+
+    $role =  Auth::User()->roles()->first();
+      // check institute and industry for job post
+      if($role->name == 'Institute Head'){
+        $data['datas'] = IndustryPost::where('institute_id',auth()->user()->id)->orderby('id', 'desc')->get();
+      }
+      else{
+        $data['datas'] = IndustryPost::where('industry_id',auth()->user()->id)->orderby('id', 'desc')->get();
+      }
+
+    
     return view('admin.job.post.list', $data);
   }
 
@@ -36,9 +47,14 @@ class IndustryPostController extends Controller
 
   public function create()
   {
-    $data['industry_posts'] = IndustryPost::where('industry_id', auth()->user()->id)->get();
+    // $data['industry_posts'] = IndustryPost::where('industry_id', auth()->user()->id)->get();
       $data['datas'] = Tag::orderby('id', 'desc')->get();
-//      return $datas;
+
+      $instituteId = auth()->user()->id;
+
+      //   $dataa = IndustryPost::where('institute_id', $instituteId)->where('industry_id', '<>', null)->get();
+      // return $dataa;
+
     return view('admin.job.post.create', $data);
   }
 
@@ -58,7 +74,7 @@ class IndustryPostController extends Controller
   }
 
   public function store(Request $request)
-  {
+  {     
     $message = '<strong>Congratulations!!!</strong> Post successfully ';
     $rules = [
       'job_title' => 'required|string',
@@ -87,7 +103,15 @@ class IndustryPostController extends Controller
     }
     $request->validate($rules);
     try {
-      $job_event->industry_id = auth()->user()->id;
+      $role =  Auth::User()->roles()->first();
+      // check institute and industry for job post
+      if($role->name == 'Institute Head'){
+        $job_event->institute_id = auth()->user()->id;
+      }
+      else{
+        $job_event->industry_id = auth()->user()->id;
+      }
+
       if ($request->has('job_event_id')){
       $job_event->job_event_id = $request->job_event_id;
       }
@@ -107,6 +131,7 @@ class IndustryPostController extends Controller
 //      $job_event->technology = $request->technology;
       $job_event->tag = $request->tag;
       $job_event->status = IndustryPost::$statusArrays[0];
+      // return $job_event;
       if ($job_event->save()) {
         return RedirectHelper::routeSuccess('admin.job.post.list', $message);
 //        return redirect()->back()->with($message);

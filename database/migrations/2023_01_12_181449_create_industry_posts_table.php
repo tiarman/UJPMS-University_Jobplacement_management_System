@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('industry_posts', function (Blueprint $table) {
             $table->id();
-          $table->unsignedBigInteger('industry_id');
+          $table->unsignedBigInteger('institute_id')->nullable();
+          $table->unsignedBigInteger('industry_id')->nullable();
           $table->unsignedBigInteger('job_event_id')->nullable();
           $table->string('job_title');
           $table->string('position');
