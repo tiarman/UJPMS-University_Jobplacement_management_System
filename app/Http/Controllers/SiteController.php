@@ -37,7 +37,7 @@ class SiteController extends Controller
   }
 
 
-// Training list
+  // Training list
   public function indexTrainingList(Request $request)
   {
     $today = (date('Y-m-d'));
@@ -62,12 +62,12 @@ class SiteController extends Controller
     return view('site.training-details', $data);
   }
 
-// training member store
+  // training member store
   public function storeTrainingMember(Request $request, $trainingId)
   {
     $message = '<strong>Congratulations!!!</strong> Component successfully ';
     $rules = [
-//            'user_id' => 'required|unique:'. with(new TrainingMember())->getTable() . 'user_id,training_id.'.$trainingId,
+      //            'user_id' => 'required|unique:'. with(new TrainingMember())->getTable() . 'user_id,training_id.'.$trainingId,
     ];
     $request->validate($rules);
     try {
@@ -84,11 +84,9 @@ class SiteController extends Controller
         return RedirectHelper::routeSuccessWithParams('institute.trainings.details', $message, [$trainingId]);
       }
       return RedirectHelper::backWithInput();
-
     } catch (Exception $e) {
       return RedirectHelper::backWithInputFromException();
     }
-
   }
 
   public function enrollTrainingList()
@@ -120,15 +118,15 @@ class SiteController extends Controller
   public function home()
   {
     $data['core'] = CoreModule::where('status', '=', CoreModule::$statusArrays[0])->get();
-      $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q){
-          $q->where('name', 'Student');
-      })->get()->count();
-      $data['numberofindustries'] = User::with('roles')->whereHas('roles', function ($q){
-          $q->where('name', 'Industry');
-      })->get()->count();
-      $data['numberoffair'] = JobEvent::get()->count();
-      $data['numberofjobs'] = IndustryPost::get()->count();
-      $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
+    $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q) {
+      $q->where('name', 'Student');
+    })->get()->count();
+    $data['numberofindustries'] = User::with('roles')->whereHas('roles', function ($q) {
+      $q->where('name', 'Industry');
+    })->get()->count();
+    $data['numberoffair'] = JobEvent::get()->count();
+    $data['numberofjobs'] = IndustryPost::get()->count();
+    $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
     //  return $datas;
     return view('site.index', $data);
   }
@@ -138,28 +136,28 @@ class SiteController extends Controller
     // ini_set('memory_limit', '64M');
     $data['job_events'] = JobEvent::with('institute')->where('status', '=', JobEvent::$statusArrays[1])->get();
     $user = auth()->id();
-    $data['participant'] = jobFairHasParticipant::where('participant_id',$user)->get();
+    $data['participant'] = jobFairHasParticipant::where('participant_id', $user)->get();
     $data['count'] = count($data['participant']);
     // return $data;
     return view('site.job.jobFairList', $data);
   }
 
-  public function jobEventApply(Request $request){
-    if(!auth()->user()){
+  public function jobEventApply(Request $request)
+  {
+    if (!auth()->user()) {
       return json_encode(400);
     }
-    if( jobFairHasParticipant::where('participant_id',auth()->id())->where('job_event_id',$request->id)->first()){
+    if (jobFairHasParticipant::where('participant_id', auth()->id())->where('job_event_id', $request->id)->first()) {
       // return json_encode("Joined");
-  }
-  else{
-    $jobFairApply = new jobFairHasParticipant();
-    $jobFairApply->job_event_id = $request->id;
-    $jobFairApply->participant_id	 = auth()->id();
-    $jobFairApply->status	 = jobFairHasParticipant::$status[0];
-    if($jobFairApply->save()){
-      return json_encode("Applied");
+    } else {
+      $jobFairApply = new jobFairHasParticipant();
+      $jobFairApply->job_event_id = $request->id;
+      $jobFairApply->participant_id   = auth()->id();
+      $jobFairApply->status   = jobFairHasParticipant::$status[0];
+      if ($jobFairApply->save()) {
+        return json_encode("Applied");
+      }
     }
-  }
   }
 
   public function jobEvent($id = null)
@@ -171,51 +169,59 @@ class SiteController extends Controller
   public function industryPost($id = null)
   {
     $data['industry_posts'] = IndustryPost::with('user')->where('job_event_id', $id)->orderby('id', 'desc')->get();
-//    return $data;
+    //    return $data;
     return view('site.job.jobs', $data);
   }
 
 
   public function jobpost()
   {
-    $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
-//     return $data;
+    if (auth()->user()) {
+      $instituteId = auth()->user()->institute_id;
+
+      $data['institute_post']   = IndustryPost::where('institute_id', $instituteId)->get();
+      $data['industry_post']    = IndustryPost::where('industry_id', '<>', null)->get();
+    } else {
+      $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
+    }
+
     return view('site.job.jobpost', $data);
   }
 
   public function job_post_details($id = null)
   {
-      if ($data['job_post_details'] = IndustryPost::where('status', IndustryPost::$statusArrays[1])->find($id)) {
-        $data['IsApplied'] = 0;
-        if(auth()->user()) {
-          if (PostHasStudent::where('student_id', auth()->user()->id)->where('post_id', $id)->first()) {
-            $data['IsApplied'] = 1;
-          }
+    if ($data['job_post_details'] = IndustryPost::where('status', IndustryPost::$statusArrays[1])->find($id)) {
+      $data['IsApplied'] = 0;
+      if (auth()->user()) {
+        if (PostHasStudent::where('student_id', auth()->user()->id)->where('post_id', $id)->first()) {
+          $data['IsApplied'] = 1;
         }
-        return view('site.job.jobPostDetails', $data);
       }
-      return RedirectHelper::backWithWarning('<strong>Sorry!!! </strong> Post not found.');
+      return view('site.job.jobPostDetails', $data);
+    }
+    return RedirectHelper::backWithWarning('<strong>Sorry!!! </strong> Post not found.');
   }
 
   public function graduateList()
   {
-    $data['graduates'] = User::with('roles')->whereHas('roles', function ($q){
+    $data['graduates'] = User::with('roles')->whereHas('roles', function ($q) {
       $q->where('name', 'Student');
     })->get();
     return view('site.graduateList', $data);
   }
   public function graduateInfo($id = null)
   {
-    if ($data['graduate'] = User::with('roles')->whereHas('roles', function ($q){
+    if ($data['graduate'] = User::with('roles')->whereHas('roles', function ($q) {
       $q->where('name', 'Student');
     })->where('status', User::$statusArrays[1])->find($id)) {
-//      return $data;
+      //      return $data;
       return view('site.graduateInfo', $data);
     }
     return RedirectHelper::backWithWarning('<strong>Sorry!!! </strong> Graduate Info not found.');
   }
 
-  public function postApply(Request $request) {
+  public function postApply(Request $request)
+  {
     if ($request->isMethod("POST")) {
       $postAdd = new PostHasStudent();
       $postAdd->post_id = $request->id;
@@ -225,6 +231,4 @@ class SiteController extends Controller
       }
     }
   }
-
-
 }

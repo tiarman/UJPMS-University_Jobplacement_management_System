@@ -114,7 +114,7 @@ class AuthController extends Controller {
         $user->year = $request->year;
         $user->session = $request->s_session;
         $user->board_roll = $request->board_roll;
-        $user->running_board_roll = $request->running_board_roll;
+        // $user->running_board_roll = $request->running_board_roll;
         $user->admission_year = $request->admission_year;
         $user->nid = $request->nid;
         $user->birth_certificate = $request->birth_certificate;
@@ -141,7 +141,7 @@ class AuthController extends Controller {
         }
         return RedirectHelper::backWithInput();
       } catch (QueryException $e) {
-//        return $e;
+      //  return $e;
         return RedirectHelper::backWithInputFromException();
       }
     }

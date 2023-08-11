@@ -10,6 +10,7 @@ class IndustryPost extends Model
   use HasFactory;
   protected $fillable = [
     'job_event_id',
+    'institute_id',
     'industry_id',
     'job_title',
     'position',
