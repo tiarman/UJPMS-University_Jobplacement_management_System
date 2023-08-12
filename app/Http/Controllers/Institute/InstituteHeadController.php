@@ -79,7 +79,7 @@ class InstituteHeadController extends Controller {
     if (\App\Helper\CustomHelper::canView('', 'Super Admin')) {
       $data['datas'] = User::with('roles')->orderby('id', 'desc')->paginate(20);
     } else {
-      $data['datas'] = User::with('department')->with('roles')->whereHas('roles', function ($q){
+      $data['datas'] = User::where('institute_id', auth()->id())->with('department')->with('roles')->whereHas('roles', function ($q){
         $q->where('name', 'Student');
       })->paginate(20);
     }

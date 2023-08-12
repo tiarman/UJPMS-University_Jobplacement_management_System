@@ -15,15 +15,14 @@ return new class extends Migration
     public function up()
     {
         Schema::table(with(new User)->getTable(), function (Blueprint $table) {
-          $table->string('institute_type')->nullable();
-          $table->string('shift_id')->nullable();
+          // $table->string('institute_type')->nullable();
+          // $table->string('shift_id')->nullable();
           $table->string('section')->nullable();
-          $table->string('department')->nullable();
-          $table->string('trade_technology_id')->nullable();
+          $table->string('department_id')->nullable()->comment('Department from Technology');
           $table->string('semester_id')->nullable();
           $table->string('year')->nullable();
           $table->string('session')->nullable();
-          $table->string('board_roll')->nullable()->unique();
+          $table->string('student_id')->nullable()->unique();
         //   $table->string('running_board_roll')->nullable()->unique();
           $table->string('admission_year')->nullable();
           $table->string('birth_certificate')->nullable()->unique();
@@ -42,7 +41,7 @@ return new class extends Migration
     {
         Schema::table(with(new User)->getTable(), function (Blueprint $table) {
             $table->dropColumn('institute_type');
-            $table->dropColumn('department');
+            $table->dropColumn('department_id');
             $table->dropColumn('semester_id');
             $table->dropColumn('year');
             $table->dropColumn('board_roll');

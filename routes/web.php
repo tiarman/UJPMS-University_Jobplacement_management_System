@@ -782,7 +782,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
 
   Route::prefix('employer')->name('employer.')->group(function () {
     Route::prefix('/application')->name('application.')->group(function () {
-      Route::get('/list/{id}', [EmployerController::class, 'applicationList'])->middleware('role_or_permission:Industry')->name('list');
+      Route::get('/list/{id}', [EmployerController::class, 'applicationList'])->middleware('role_or_permission:Industry|Institute Head')->name('list');
     });
   });
 
