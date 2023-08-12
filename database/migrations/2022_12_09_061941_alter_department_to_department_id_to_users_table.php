@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table(with(new \App\Models\User)->getTable(), function (Blueprint $table) {
-            $table->dropColumn('department');
-            $table->unsignedBigInteger('department_id')->nullable();
+            // $table->dropColumn('department');
+            // $table->unsignedBigInteger('department_id')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table(with(new \App\Models\User)->getTable(), function (Blueprint $table) {
-            $table->dropColumn('department_id');
-            $table->string('department')->nullable();
+            // $table->dropColumn('department_id');
+            // $table->string('department')->nullable();
         });
     }
 };
