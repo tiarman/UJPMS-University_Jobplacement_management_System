@@ -42,7 +42,7 @@
             <div class="col-lg-8 col-md-7">
                 <div class="job-detail border rounded p-4">
                     <div class="job-detail-content">
-                        <img src="{{ asset($job_post_details->image ?? 'assets/placeholder.png') }}" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
+                        <img style="width: 100px; height: 100px;" src="{{ asset($job_post_details->image ?? 'assets/placeholder.png') }}" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
                         <div class="job-detail-com-desc overflow-hidden d-block">
                             <h4 class="mb-2"><a href="#" class="text-dark">{{ $job_post_details->job_title ?? ''}}</a></h4>
                             <p class="text-muted mb-0"><i class="mdi mdi-link-variant mr-2"></i>{{ $job_post_details->position ?? ''}}</p>
@@ -51,15 +51,15 @@
                     </div>
 
                     <div class="job-detail-desc mt-4">
-                        <p class="text-muted mb-3">Neque porro quisquam est qui dolorem ipsum dolor sit amet consectetur adipisci velit a quia non eius modi tempora incidunt ut labore dolore magnam aliquam quaerat voluptatem Nemo enim ipsam voluptatem quia voluptas sit aspernatur odit aut fugit sed quia consequuntur magni dolores eose.</p>
+                        <p class="text-muted mb-3">{{$job_post_details->job_context ?? ''}}</p>
 
-                        <p class="text-muted mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praelsentium voluptatum at deleniti atque corrupti quos dolores quas molestias excepturi occaecati cupiditate non provident, similique sunt culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga Temporibus autem quibusdam aut Ut at as enim ad minima veniam quis nostrum that exercitationem ullam corporis suscipit laboriosam officiis debitis aut rerum necessitatibus.</p>
+                        {{--  <p class="text-muted mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praelsentium voluptatum at deleniti atque corrupti quos dolores quas molestias excepturi occaecati cupiditate non provident, similique sunt culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga Temporibus autem quibusdam aut Ut at as enim ad minima veniam quis nostrum that exercitationem ullam corporis suscipit laboriosam officiis debitis aut rerum necessitatibus.</p>  --}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h5 class="text-dark mt-4">Job Description :</h5>
+                        <h5 class="text-dark mt-4">Educational Requirement :</h5>
                     </div>
                 </div>
 
@@ -67,9 +67,9 @@
                     <div class="col-lg-12">
                         <div class="job-detail border rounded mt-2 p-4">
                             <div class="job-detail-desc">
-                                <p class="text-muted mb-3">Quis autem vel eum iure reprehenderit qui in ea voluptate velite esse quam nihil molestiae consequatur vel illum qui dolorem eum fugiat at quo voluptas nulla pariatur vero eos accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias at excepturi sint that occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est Quis autem vel eum iure reprehenderit qui in ea that voluptate esse quam nihil molestiae consequatur vel qui dolorem eum fugiat quo voluptas nulla by the pariatur laborum At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis praesentium voluptatum deleniti atque corrupti quos dolores quas molestias excepturi sint occaecati cupiditate non provident et dolorum fuga.</p>
+                                <p class="text-muted mb-3">{!!$job_post_details->educational_requirement!!}</p>
 
-                                <p class="text-muted mb-0">Itaque earum rerum hic tenetur sapiente delectus aut reiciendis voluptatibus maiores that alias consequatur aut perferendis doloribus asperiores repellat Sed ut perspiciatis unde omnis iste sit at natus error sit voluptatem accusantium doloremque laudantium niti totame rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                {{--  <p class="text-muted mb-0">Itaque earum rerum hic tenetur sapiente delectus aut reiciendis voluptatibus maiores that alias consequatur aut perferendis doloribus asperiores repellat Sed ut perspiciatis unde omnis iste sit at natus error sit voluptatem accusantium doloremque laudantium niti totame rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>  --}}
                             </div>
                         </div>
                     </div>

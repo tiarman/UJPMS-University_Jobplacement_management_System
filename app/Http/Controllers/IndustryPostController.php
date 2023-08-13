@@ -59,6 +59,7 @@ class IndustryPostController extends Controller
 
   public function store(Request $request)
   {
+    // return $request;
     $message = '<strong>Congratulations!!!</strong> Post successfully ';
     $rules = [
       'job_title' => 'required|string',
@@ -100,6 +101,7 @@ class IndustryPostController extends Controller
       $job_event->additional_requirement = $request->additional_requirement;
       $job_event->salary = $request->salary;
       $job_event->compensation = $request->compensation;
+      $job_event->educational_requirement = $request->educational_requirement;
       $job_event->job_responsibility = $request->job_responsibility;
       $job_event->application_deadline = $request->application_deadline;
       $job_event->employment_status = $request->employment_status;

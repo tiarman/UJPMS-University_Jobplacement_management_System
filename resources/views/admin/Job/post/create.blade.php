@@ -103,8 +103,8 @@
                   </div>
                   <div class="col-sm-12">
                     <div class="form-group">
-                      <label class="control-label">Job Context</label>
-                      <textarea type="text" id="job_context" name="job_context" placeholder="Job Context" autocomplete="off"
+                      <label class="control-label">Description</label>
+                      <textarea type="text" id="job_context" name="job_context" placeholder="Job Description" autocomplete="off"
                                 value="{{ old('job_context') }}"
                                 class="form-control @error('job_context') is-invalid @enderror"></textarea>
                       @error('job_context')
@@ -256,9 +256,9 @@
         $('#additional_requirements').summernote({
           'height': 100,
         });
-        $('#job_context').summernote({
+        {{--  $('#job_context').summernote({
           'height': 100,
-        });
+        });  --}}
         $('#educational_requirement').summernote({
           'height': 100,
         });
