@@ -86,7 +86,7 @@
 </section>
 <!-- end home -->
 
-  <section id="hero" class="align-items-center">
+  {{--  <section id="hero" class="align-items-center">
 
     <div class="row" style="margin-top: 40px;">
       <div class="col-md-12 text-center">
@@ -97,7 +97,7 @@
     <div class="row d-flex justify-content-center">
       <div class="row d-flex justify-content-center">
         <div class="col-sm-4" >
-          {{--          <img src="{{asset('assets/frontend/img/hero-img.png')}}" class="img-fluid animated" alt="">--}}
+                  <img src="{{asset('assets/frontend/img/hero-img.png')}}" class="img-fluid animated" alt="">
           <div class="input-group">
             <input type="text" class="form-control rounded" placeholder="Enter Email" aria-label="Search" aria-describedby="search-addon"/>
           </div>
@@ -110,21 +110,21 @@
       </div>
     </div>
 
-    {{--    <div class="container">--}}
-    {{--      <div class="row">--}}
-    {{--        <div class="col-lg-12 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"--}}
-    {{--             data-aos="fade-up" data-aos-delay="200">--}}
-    {{--          <h1>Job Fair</h1>--}}
-    {{--        </div>--}}
-    {{--      </div>--}}
-    {{--      --}}
-    {{--    </div>--}}
-  </section>
-  <div class="container" data-aos="fade-up">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                 data-aos="fade-up" data-aos-delay="200">
+              <h1>Job Fair</h1>
+            </div>
+          </div>
+          
+        </div>
+  </section>  --}}
+  {{--  <div class="container" data-aos="fade-up">
     <div class="section-title mt-5">
       <h2 style="text-align: center">Job Fair List</h2>
     </div>
-{{-- list container --}}
+
 <div class="row">
   <div class="col-12">
       <div class="tab-content mt-2" id="pills-tabContent">
@@ -134,7 +134,7 @@
 
                 @foreach($job_events as $val)
                   <div class="col-lg-12">
-                      {{-- start --}}
+                      
                       <div
                           class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
                           <div class="lable text-center pt-2 pb-2">
@@ -167,11 +167,7 @@
                                           <p class="text-muted mb-0 mo-mb-2"> <i class='bx bxs-timer'></i>{{ date('F d, Y', strtotime($val->start_date)) }}  to {{ date('F d, Y', strtotime($val->end_date)) }}</p>
                                       </div>
                                   </div>
-                                  {{-- <div class="col-md-2">
-                                      <div>
-                                          <p class="text-muted mb-0">Full Time</p>
-                                      </div>
-                                  </div> --}}
+                                 
                               </div>
                           </div>
                           <div class="p-3 bg-light">
@@ -211,9 +207,9 @@
       </div>
   </div>
 </div>
-    {{--end new list start --}}
+    
 
-  </div>
+  </div>  --}}
 
 
   <!-- all jobs start -->
@@ -255,13 +251,14 @@
                                         <div class="col-md-3">
                                             <div>
                                                 <h5 class="f-18"><a href="#" class="text-dark">{{ $val->title }}</a></h5>
-                                                <p class="text-muted mb-0">{{$val->place}}</p>
+                                                {{--  <p class="text-muted mb-0">{{$val->place}}</p>  --}}
                                                 <p class="text-muted mb-0">{{ date('F d, Y', strtotime($val->start_date)) }}  to {{ date('F d, Y', strtotime($val->end_date)) }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div>
-                                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{ $val->location }}</p>
+                                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{$val->place}}</p>
+                                                {{--  <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{ $val->location }}</p>  --}}
                                             </div>
                                         </div>
                                         <div class="col-md-2">
