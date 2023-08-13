@@ -122,9 +122,9 @@
                         <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="{{route('jobpost')}}">Job List</a></li>
-                            <li><a href="job-grid.html">Job Grid</a></li>
+                            {{--  <li><a href="job-grid.html">Job Grid</a></li>
                             <li><a href="job-details.html">Job Details</a></li>
-                            <li><a href="job-details-2.html">Job Details-2</a></li>
+                            <li><a href="job-details-2.html">Job Details-2</a></li>  --}}
                         </ul>
                     </li>
 
@@ -133,7 +133,7 @@
                         <ul class="submenu">
                             <li><a href="about.html">About us</a></li>
                             <li><a href="services.html">Services</a></li>
-                            <li><a href="team.html">Team</a></li>
+                            {{--  <li><a href="team.html">Team</a></li>
                             <li><a href="faq.html">Faqs</a></li>
                             <li><a href="pricing.html">Pricing plans</a></li>
                             <li class="has-submenu"><a href="javascript:void(0)"> Candidates</a><span class="submenu-arrow"></span>
@@ -163,7 +163,7 @@
                                     <li><a href="recovery_passward.html">Forgot Password</a></li>
                                 </ul>
                             </li>
-                            <li><a href="components.html"> Components</a></li>
+                            <li><a href="components.html"> Components</a></li>  --}}
                         </ul>
                     </li>
                     <li>
