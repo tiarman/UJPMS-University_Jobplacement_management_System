@@ -29,8 +29,10 @@ use Laravel\Fortify\Contracts\PasswordResetResponse;
 use Laravel\Fortify\Contracts\ResetsUserPasswords;
 use Laravel\Fortify\Fortify;
 
-class AuthController extends Controller {
-  public function login(Request $request) {
+class AuthController extends Controller
+{
+  public function login(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $request->validate([
         'email' => 'required|email',
@@ -43,22 +45,7 @@ class AuthController extends Controller {
         if (\auth()->user()->status !== User::$statusArrays[1]) {
           Auth::logout();
           \Illuminate\Support\Facades\Session::flush();
-          return RedirectHelper::backWithInput('<strong>Sorry!!!</strong> Your not eligible for automatic activation. <br>Please call following concerned for activation (at working hour). For more details visit &nbsp;<a href="http://www.ujpms.com/" target="_blank">UJPMS</a><br>
-    <table class="table table-bordered" style="width: 100%">
-    <th class="p-0">Designation</th>
-    <th class="p-0">Contact No</th>
-<tbody>
-<tr>
-<td class="p-1">Programmer</td>
-<td class="p-1"><a href="tel:01860842420">01860842420</a></td>
-</tr>
-<tr>
-<td class="p-1">Manager</td>
-<td class="p-1"><a href="tel:01866554433">01866554433</a></td>
-</tr>
-<tr>
-</tbody>
-</table>');
+          return RedirectHelper::backWithInput('<strong>Sorry!!!</strong> Your not eligible for automatic activation. <br>Please call following concerned for activation (at working hour). For more details contact with UniJobs Authority. Contact: 01234567891');
         }
         return to_route('admin.dashboard');
       }
@@ -69,20 +56,18 @@ class AuthController extends Controller {
     return view('admin.auth.login', $data);
   }
 
-  public function register(Request $request) {
-//     return $request;
-    if ($request->isMethod('POST')) {
-//      return $request;
+  public function register(Request $request)
+  {
 
+    if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
-        'trade_technology' => 'nullable|string',
-        'shift' => 'nullable|string',
+        'department_id' => 'nullable|string',
         'section' => 'nullable|string',
         'semester' => 'nullable|string',
         'year' => 'nullable|string',
         's_session' => 'nullable|string',
-        'board_roll' => 'nullable|string|unique:' . with(new User)->getTable() . ',board_roll,',
+        'student_id' => 'nullable|string|unique:' . with(new User)->getTable() . ',student_id,',
         'running_board_roll' => 'nullable|string|unique:' . with(new User)->getTable() . ',running_board_roll,',
         'admission_year' => 'nullable|string',
         'nid' => 'nullable|string',
@@ -101,64 +86,69 @@ class AuthController extends Controller {
         // 'department' => 'nullable|string',
         'profile_photo_path' => 'nullable|mimes:png,jpg,jpeg',
       ];
+
       $message = $message . ' Register';
-      // return $request;
+
       $request->validate($rules);
-      // return $request;
+
       $user = new User();
       try {
-        $user->trade_technology_id = $request->trade_technology_id;
-        $user->shift_id = $request->shift_id;
-        $user->section = $request->section;
-        $user->semester_id = $request->semester_id;
-        $user->year = $request->year;
-        $user->session = $request->s_session;
-        $user->board_roll = $request->board_roll;
-        $user->running_board_roll = $request->running_board_roll;
-        $user->admission_year = $request->admission_year;
-        $user->nid = $request->nid;
-        $user->birth_certificate = $request->birth_certificate;
-        $user->name_en = $request->name_en;
-        $user->name_bn = $request->name_bn;
-        $user->username = $request->username;
+        $user->department_id        = $request->department_id;
+        $user->institute_id         = $request->institute_id;
+        // $user->shift_id             = $request->shift_id;
+        $user->section              = $request->section;
+        $user->semester_id          = $request->semester_id;
+        $user->year                 = $request->year;
+        $user->session              = $request->s_session;
+        $user->student_id           = $request->student_id;
+        $user->admission_year       = $request->admission_year;
+        $user->nid                  = $request->nid;
+        $user->birth_certificate    = $request->birth_certificate;
+        $user->name_en              = $request->name_en;
+        $user->name_bn              = $request->name_bn;
+        $user->username             = $request->username;
 
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->phone = $request->phone;
-        $user->institute_id = $request->institute_id;
-        $user->profile_photo_path = $request->profile_photo_path;
+        $user->email                = $request->email;
+        $user->password             = bcrypt($request->password);
+        $user->phone                = $request->phone;
+        $user->institute_id         = $request->institute_id;
+        $user->profile_photo_path   = $request->profile_photo_path;
 
 
-        $user->institute_type = $request->institute_type;
+        // $user->institute_type       = $request->institute_type;
         // $user->department = $request->department;
 
 
         $user->status = User::$statusArrays[0];
         if ($user->save()) {
           $user->assignRole('Student');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
+
         return RedirectHelper::backWithInput();
       } catch (QueryException $e) {
-//        return $e;
+         return $e;
         return RedirectHelper::backWithInputFromException();
       }
     }
-    $data['institutes'] = Institute::select('id', 'name')->orderby('id', 'asc')->get();
-    $data['institutes_type'] = InstituteType::select('id', 'name')->orderby('id', 'asc')->get();
-    $data['semester'] = Semester::select('id', 'name')->orderby('id', 'asc')->get();
-    $data['divisions'] = Division::Select('id', 'name')->orderby('name', 'asc')->get();
-    $data['districts'] = District::Select('id', 'name')->orderby('name', 'asc')->get();
-    $data['upazilas'] = Upazila::select('id', 'name')->orderby('name', 'asc')->get();
-    $data['technologies'] = Technology::select('id', 'name')->orderby('name', 'asc')->get();
-    $data['datas'] = Shift::select('id', 'name')->get();
+
+    // $data['institutes'] = Institute::select('id', 'name')->orderby('id', 'asc')->get();
+    $data['institutes']         = User::select('id', 'name_en')->whereHas('roles', function ($q) {
+      $q->where('name', 'Institute Head');
+    })->get();
+    $data['institutes_type']    = InstituteType::select('id', 'name')->orderby('id', 'asc')->get();
+    $data['semester']           = Semester::select('id', 'name')->orderby('id', 'asc')->get();
+    $data['divisions']          = Division::Select('id', 'name')->orderby('name', 'asc')->get();
+    $data['districts']          = District::Select('id', 'name')->orderby('name', 'asc')->get();
+    $data['upazilas']           = Upazila::select('id', 'name')->orderby('name', 'asc')->get();
+    $data['technologies']       = Technology::select('id', 'name')->orderby('name', 'asc')->get();
+    // $data['datas']              = Shift::select('id', 'name')->get();
 
     return view('site.registration.student', $data);
-    // return $data['technologies'];
   }
 
-  public function resetPassword(Request $request, $token) {
+  public function resetPassword(Request $request, $token)
+  {
     $request->validate([
       'password' => 'required|string|min:8|confirmed',
       'password_confirmation' => 'required'
@@ -184,7 +174,8 @@ class AuthController extends Controller {
    * @param Request $request
    * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
    */
-  public function instituteCreateWithUser(Request $request) {//: \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application {
+  public function instituteCreateWithUser(Request $request)
+  { //: \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application {
     $data['divisions'] = Division::select('id', 'name')->orderBy('name')->get();
     $data['districts'] = District::select('id', 'name')->orderBy('name')->get();
     $data['upazilas'] = Upazila::select('id', 'name')->orderby('name')->get();
@@ -216,7 +207,7 @@ class AuthController extends Controller {
       $rules['code'] = 'required|min:5|max:7|unique:' . with(new Institute)->getTable() . ',code';
       $rules['institute_phone'] = 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new Institute)->getTable() . ',phone,';
       $rules['institute_email'] = 'required|email|unique:' . with(new Institute)->getTable() . ',email,';
-      $rules['website'] = 'required|string|regex:'.CustomHelper::URLRegex;
+      $rules['website'] = 'required|string|regex:' . CustomHelper::URLRegex;
       $rules['institute_type_id'] = 'required|string';
       $rules['photo'] = 'nullable|mimes:png';
       $rules['description'] = 'nullable|string';
@@ -297,7 +288,7 @@ class AuthController extends Controller {
         DB::rollBack();
         return RedirectHelper::backWithInput();
       } catch (QueryException $e) {
-//        return $e;
+        //        return $e;
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
@@ -310,7 +301,8 @@ class AuthController extends Controller {
    * @param Request $request
    * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
    */
-  public function training(Request $request) {
+  public function training(Request $request)
+  {
     $data['divisions'] = Division::select('id', 'name')->orderBy('name')->get();
     $data['districts'] = District::select('id', 'name')->orderBy('name')->get();
     $data['upazilas'] = Upazila::select('id', 'name')->orderby('name')->get();
@@ -423,10 +415,11 @@ class AuthController extends Controller {
   }
 
 
-  public function evalutor(Request $request) {
+  public function evalutor(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Evalutor successfully ';
-//          return $request;
+      //          return $request;
       $user = new user();
 
       //        user table
@@ -468,35 +461,32 @@ class AuthController extends Controller {
             }
           }
 
-//                  $user->status = isset($request->status) ? strtolower($request->status) : \App\Models\User::$statusArrays[0];
-//                  $user->assignRole('Institute Head');
+          //                  $user->status = isset($request->status) ? strtolower($request->status) : \App\Models\User::$statusArrays[0];
+          //                  $user->assignRole('Institute Head');
           if ($user->save()) {
             DB::commit();
             return RedirectHelper::back($message);
           }
-
-
         }
-
-
       } catch (QueryException $e) {
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
-
     }
     return view('site.registration.evalutor');
   }
 
-  public function student() {
+  public function student()
+  {
     return view('site.registration.student');
   }
 
-  public function teacher(Request $request) {
+  public function teacher(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Teacher successfully ';
       $rules = [
-//        'username' => 'required|string|unique:' . with(new User)->getTable() . ',username,',
+        //        'username' => 'required|string|unique:' . with(new User)->getTable() . ',username,',
         'email' => 'required|email|unique:' . with(new User)->getTable() . ',email,',
         'password' => 'required|string|min:6|confirmed',
         'phone' => 'required|regex:' . CustomHelper::PhoneNoRegex,
@@ -504,8 +494,8 @@ class AuthController extends Controller {
         'name_en' => 'nullable|string',
         'name_bn' => 'nullable|string',
         'dob ' => 'nullable|date',
-        'nid' =>'required',
-        'designation' =>'nullable|string',
+        'nid' => 'required',
+        'designation' => 'nullable|string',
       ];
       $message = $message . ' Register';
       $request->validate($rules);
@@ -522,7 +512,7 @@ class AuthController extends Controller {
         $user->institute_id = $request->institute_id;
         $user->trade_technology = $request->trade_technology;
         $user->institute_type_id = $request->institute_type_id;
-//        $user->nid = $request->nid;
+        //        $user->nid = $request->nid;
         $user->dob = $request->dob;
         $user->status = User::$statusArrays[0];
         $oldImage = $user->profile_photo_path;
@@ -539,7 +529,7 @@ class AuthController extends Controller {
 
           ($request->teacher_type == 'Teacher') ? $user->assignRole('Teacher') : $user->assignRole('Hod');
 
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -553,13 +543,14 @@ class AuthController extends Controller {
     $data['upazilas'] = Upazila::select('id', 'name')->orderby('name', 'asc')->get();
     $data['institute_types'] = InstituteType::select('id', 'name')->orderBy('name', 'asc')->get();
     $data['institutes'] = Institute::select('id', 'name')->orderby('id', 'asc')->get();
-//    return view('site.registration.register', $data);
+    //    return view('site.registration.register', $data);
     return view('site.registration.teacher', $data);
   }
 
 
-//arman
-  public function mentor(Request $request) {
+  //arman
+  public function mentor(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Mentor successfully ';
       $user = new user();
@@ -594,12 +585,12 @@ class AuthController extends Controller {
           $user->trade_technology = $request->trade_technology;
           $user->institute_id = $request->institute_id;
           $user->email = $request->email;
-//                    $user->image = $request->image;
+          //                    $user->image = $request->image;
           $user->password = bcrypt($request->password);
 
           $oldImage = $user->image;
 
-//                    return $user;
+          //                    return $user;
           if ($request->hasFile('image')) {
             $logo = CustomHelper::storeImage($request->file('image'), '/mentor/');
             if ($logo != false) {
@@ -616,27 +607,23 @@ class AuthController extends Controller {
             DB::commit();
             return RedirectHelper::back($message);
           }
-
-
         }
-
-
       } catch (QueryException $e) {
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
-
     }
-    $data['technologies'] = Technology::where('status',Technology::$statusArrays[1])->get();
-    $data['institutes'] = Institute::where('status',Institute::$statusArrays[1])->get();
-    return view('site.registration.mentor',$data);
+    $data['technologies'] = Technology::where('status', Technology::$statusArrays[1])->get();
+    $data['institutes'] = Institute::where('status', Institute::$statusArrays[1])->get();
+    return view('site.registration.mentor', $data);
   }
 
-//arman
-  public function dte(Request $request) {
+  //arman
+  public function dte(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> dte successfully ';
-//          return $request;
+      //          return $request;
       $user = new user();
 
       //        user table
@@ -667,12 +654,12 @@ class AuthController extends Controller {
           $user->nid = $request->nid;
           $user->designation = $request->designation;
           $user->email = $request->email;
-//                    $user->image = $request->image;
+          //                    $user->image = $request->image;
           $user->password = bcrypt($request->password);
 
           $oldImage = $user->image;
 
-//                    return $user;
+          //                    return $user;
           if ($request->hasFile('image')) {
             $logo = CustomHelper::storeImage($request->file('image'), '/mentor/');
             if ($logo != false) {
@@ -681,7 +668,7 @@ class AuthController extends Controller {
           }
 
           $user->status = isset($request->status) ? strtolower($request->status) : \App\Models\User::$statusArrays[0];
-//                  $user->assignRole('Institute Head');
+          //                  $user->assignRole('Institute Head');
           if ($user->save()) {
             if ($oldImage !== null && isset($logo)) {
               CustomHelper::deleteFile($oldImage);
@@ -689,22 +676,18 @@ class AuthController extends Controller {
             DB::commit();
             return RedirectHelper::back($message);
           }
-
-
         }
-
-
       } catch (QueryException $e) {
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
-
     }
     return view('site.registration.dte');
   }
 
-//arman
-  public function pmu(Request $request) {
+  //arman
+  public function pmu(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> PMU successfully ';
       $user = new user();
@@ -737,12 +720,12 @@ class AuthController extends Controller {
           $user->nid = $request->nid;
           $user->designation = $request->designation;
           $user->email = $request->email;
-//                    $user->image = $request->image;
+          //                    $user->image = $request->image;
           $user->password = bcrypt($request->password);
 
           $oldImage = $user->image;
 
-//                    return $user;
+          //                    return $user;
           if ($request->hasFile('image')) {
             $logo = CustomHelper::storeImage($request->file('image'), '/pmu/');
             if ($logo != false) {
@@ -751,7 +734,7 @@ class AuthController extends Controller {
           }
 
           $user->status = isset($request->status) ? strtolower($request->status) : \App\Models\User::$statusArrays[0];
-//                  $user->assignRole('Institute Head');
+          //                  $user->assignRole('Institute Head');
           if ($user->save()) {
             if ($oldImage !== null && isset($logo)) {
               CustomHelper::deleteFile($oldImage);
@@ -759,25 +742,21 @@ class AuthController extends Controller {
             DB::commit();
             return RedirectHelper::back($message);
           }
-
-
         }
-
-
       } catch (QueryException $e) {
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
-
     }
     return view('site.registration.pmu');
   }
 
-//arman
-  public function nsda(Request $request) {
+  //arman
+  public function nsda(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> NSDA successfully ';
-//          return $request;
+      //          return $request;
       $user = new user();
 
       //        user table
@@ -808,12 +787,12 @@ class AuthController extends Controller {
           $user->nid = $request->nid;
           $user->designation = $request->designation;
           $user->email = $request->email;
-//                    $user->image = $request->image;
+          //                    $user->image = $request->image;
           $user->password = bcrypt($request->password);
 
           $oldImage = $user->image;
 
-//                    return $user;
+          //                    return $user;
           if ($request->hasFile('image')) {
             $logo = CustomHelper::storeImage($request->file('image'), '/pmu/');
             if ($logo != false) {
@@ -822,7 +801,7 @@ class AuthController extends Controller {
           }
 
           $user->status = isset($request->status) ? strtolower($request->status) : \App\Models\User::$statusArrays[0];
-//                  $user->assignRole('Institute Head');
+          //                  $user->assignRole('Institute Head');
           if ($user->save()) {
             if ($oldImage !== null && isset($logo)) {
               CustomHelper::deleteFile($oldImage);
@@ -830,22 +809,18 @@ class AuthController extends Controller {
             DB::commit();
             return RedirectHelper::back($message);
           }
-
-
         }
-
-
       } catch (QueryException $e) {
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
-
     }
     return view('site.registration.nsda');
   }
 
-//arif
-  public function moi(Request $request) {
+  //arif
+  public function moi(Request $request)
+  {
     if ($request->isMethod('POST')) {
 
       $message = '<strong>Congratulations!!!</strong> MOI successfully ';
@@ -907,10 +882,11 @@ class AuthController extends Controller {
     return view('site.registration.moi', $data);
   }
 
-//arif
-  public function bmet(Request $request) {
+  //arif
+  public function bmet(Request $request)
+  {
     if ($request->isMethod('POST')) {
-// return $request;
+      // return $request;
       $message = '<strong>Congratulations!!!</strong> BMET successfully ';
 
       $rules = [
@@ -971,8 +947,9 @@ class AuthController extends Controller {
     return view('site.registration.bmet', $data);
   }
 
-//arif
-  public function tmed(Request $request) {
+  //arif
+  public function tmed(Request $request)
+  {
     if ($request->isMethod('POST')) {
       // return $request;
       $message = '<strong>Congratulations!!!</strong> TMED successfully ';
@@ -1035,8 +1012,9 @@ class AuthController extends Controller {
     return view('site.registration.tmed', $data);
   }
 
-//  arif
-  public function trainee(Request $request) {
+  //  arif
+  public function trainee(Request $request)
+  {
     if ($request->isMethod('POST')) {
       // return $request;
       $message = '<strong>Congratulations!!!</strong> Trainee successfully ';
@@ -1099,8 +1077,9 @@ class AuthController extends Controller {
     return view('site.registration.trainee', $data);
   }
 
-//mahir
-  public function bteb(Request $request) {
+  //mahir
+  public function bteb(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
@@ -1131,7 +1110,7 @@ class AuthController extends Controller {
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->alt_phone = $request->alt_phone;
-//                $user->image = $request->image;
+        //                $user->image = $request->image;
         $oldImage = $request->image;
         // $user->department = $request->department;
         if ($request->hasFile('image')) {
@@ -1147,8 +1126,8 @@ class AuthController extends Controller {
           if ($oldImage !== null && isset($logo)) {
             CustomHelper::deleteFile($oldImage);
           }
-//                    $user->assignRole('bteb');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //                    $user->assignRole('bteb');
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -1168,8 +1147,9 @@ class AuthController extends Controller {
     return view('site.registration.bteb', $data);
   }
 
-//mahir
-  public function isc(Request $request) {
+  //mahir
+  public function isc(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
@@ -1200,7 +1180,7 @@ class AuthController extends Controller {
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->alt_phone = $request->alt_phone;
-//                $user->image = $request->image;
+        //                $user->image = $request->image;
         $oldImage = $request->image;
         // $user->department = $request->department;
         if ($request->hasFile('image')) {
@@ -1216,8 +1196,8 @@ class AuthController extends Controller {
           if ($oldImage !== null && isset($logo)) {
             CustomHelper::deleteFile($oldImage);
           }
-//                    $user->assignRole('isc');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //                    $user->assignRole('isc');
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -1238,7 +1218,8 @@ class AuthController extends Controller {
   }
 
   //mahir
-  public function association(Request $request) {
+  public function association(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
@@ -1269,7 +1250,7 @@ class AuthController extends Controller {
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->alt_phone = $request->alt_phone;
-//                $user->image = $request->image;
+        //                $user->image = $request->image;
         $oldImage = $request->image;
         // $user->department = $request->department;
         if ($request->hasFile('image')) {
@@ -1285,8 +1266,8 @@ class AuthController extends Controller {
           if ($oldImage !== null && isset($logo)) {
             CustomHelper::deleteFile($oldImage);
           }
-//                    $user->assignRole('association');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //                    $user->assignRole('association');
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -1306,8 +1287,9 @@ class AuthController extends Controller {
     return view('site.registration.associations', $data);
   }
 
-//mahir
-  public function industry(Request $request) {
+  //mahir
+  public function industry(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
@@ -1318,7 +1300,7 @@ class AuthController extends Controller {
         'email' => 'required|email|unique:' . with(new User)->getTable() . ',email,',
         'password' => 'required|string|min:6|confirmed',
         'website' => 'string',
-          'phone' => 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new User)->getTable() . ',phone,',
+        'phone' => 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new User)->getTable() . ',phone,',
 
         // 'department' => 'nullable|string',
 
@@ -1326,7 +1308,7 @@ class AuthController extends Controller {
       ];
       $message = $message . ' Register';
       $request->validate($rules);
-//       return $request;
+      //       return $request;
       $user = new User();
       try {
         $user->website = $request->website;
@@ -1338,7 +1320,7 @@ class AuthController extends Controller {
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->alt_phone = $request->alt_phone;
-//                $user->image = $request->image;
+        //                $user->image = $request->image;
         $oldImage = $request->image;
         // $user->department = $request->department;
         if ($request->hasFile('image')) {
@@ -1353,7 +1335,7 @@ class AuthController extends Controller {
             CustomHelper::deleteFile($oldImage);
           }
           $user->assignRole('Industry');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -1372,8 +1354,9 @@ class AuthController extends Controller {
     return view('site.registration.industry', $data);
   }
 
-//mahir
-  public function dgnm(Request $request) {
+  //mahir
+  public function dgnm(Request $request)
+  {
     if ($request->isMethod('POST')) {
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
@@ -1404,7 +1387,7 @@ class AuthController extends Controller {
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->alt_phone = $request->alt_phone;
-//                $user->image = $request->image;
+        //                $user->image = $request->image;
         $oldImage = $request->image;
         // $user->department = $request->department;
         if ($request->hasFile('image')) {
@@ -1420,8 +1403,8 @@ class AuthController extends Controller {
           if ($oldImage !== null && isset($logo)) {
             CustomHelper::deleteFile($oldImage);
           }
-//                    $user->assignRole('dgnm');
-//        return RedirectHelper::routeSuccess('register.step2', $message);
+          //                    $user->assignRole('dgnm');
+          //        return RedirectHelper::routeSuccess('register.step2', $message);
           return RedirectHelper::routeSuccess('login', $message);
         }
         return RedirectHelper::backWithInput();
@@ -1440,22 +1423,22 @@ class AuthController extends Controller {
 
     return view('site.registration.dgnm', $data);
   }
-  public function event_participant(Request $request) {
+  public function event_participant(Request $request)
+  {
     // return $request;
     $data['districts'] = District::Select('id', 'name')->orderby('name', 'asc')->get();
     $data['upazilas'] = Upazila::select('id', 'name')->orderby('name', 'asc')->get();
     $data['technologies'] = Technology::select('id', 'name')->orderby('name', 'asc')->get();
     return view('site.registration.event_participant_reg', $data);
-
   }
 
-  public function contact(Request $request) {
+  public function contact(Request $request)
+  {
     // return $request;
 
     $data['institutes'] = Institute::select('id', 'name')->orderby('id', 'asc')->get();
     $data['pmus'] = User::select('id', 'name_en')->orderby('id', 'asc')->get();
     $data['technologies'] = Technology::select('id', 'name')->orderby('name', 'asc')->get();
     return view('site.contact', $data);
-
   }
 }

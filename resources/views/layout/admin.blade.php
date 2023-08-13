@@ -820,7 +820,7 @@
               </a></li>
           @endif
 
-          {{-- @if(\App\Helper\CustomHelper::canView('', 'Institute Head'))
+          @if(\App\Helper\CustomHelper::canView('', 'Institute Head'))
             <li class="menu-title">Events</li>
             <li class="has_sub">
               <a class="waves-effect"><i>
@@ -832,7 +832,7 @@
                     <li><a href="{{ route('admin.event.job.list') }}"> List of events</a></li>
               </ul>
             </li>
-          @endif --}}
+          @endif
           {{-- @if(\App\Helper\CustomHelper::canView('Create Voucher|Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i aria-hidden="true">
@@ -971,7 +971,7 @@
     </div>
     <footer class="footer">
       <x-expiration/>
-      <span class="text-muted hidden-xs-down pull-right">Developed & Maintained by  <a href="http://touchandsolve.com" target="_blank">Touch & Solve</a></span>
+      <span class="text-muted hidden-xs-down pull-right">Developed & Maintained by  <a href="http://touchandsolve.com" target="_blank">Uni Jobs</a></span>
     </footer>
   </div>
 </div>
