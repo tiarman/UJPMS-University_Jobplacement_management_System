@@ -92,6 +92,7 @@ class IndustryPostController extends Controller
       'educational_requirement' => 'nullable|string',
       'job_context' => 'nullable|string',
       'location' => 'nullable|string',
+      'company_name' => 'nullable|string',
 //        'technology'=> 'nullable|string',
         'tag'=> 'nullable|string',
     ];
@@ -129,6 +130,7 @@ class IndustryPostController extends Controller
       $job_event->job_responsibility = $request->job_responsibility;
       $job_event->application_deadline = $request->application_deadline;
       $job_event->employment_status = $request->employment_status;
+      $job_event->company_name = $request->company_name;
       $job_event->ntvqf_level = $request->ntvqf_level;
 //      $job_event->technology = $request->technology;
       $job_event->tag = $request->tag;

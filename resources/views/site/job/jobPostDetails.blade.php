@@ -236,12 +236,12 @@
                             <p class="text-muted mb-2">: Webthemescom@gmail.com</p>
                         </div>
 
-                        <div class="job-details-desc-item">
+                        {{--  <div class="job-details-desc-item">
                             <div class="float-left mr-2">
                                 <i class="mdi mdi-web text-muted"></i>
                             </div>
                             <p class="text-muted mb-2">: https://www.WebThemes.com</p>
-                        </div>
+                        </div>  --}}
 
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">

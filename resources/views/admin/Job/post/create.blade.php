@@ -87,7 +87,20 @@
                       @enderror
                     </div>
                   </div>
+
                   <div class="col-sm-4">
+                    <div class="form-group">
+                      <label class="control-label" for="job_title">Company Name</label>
+                      <input type="text" name="company_name" placeholder="Company name" autocomplete="off"
+                             value="{{ old('company_name') }}"
+                             class="form-control @error('company_name') is-invalid @enderror">
+                      @error('company_name')
+                      <strong class="text-danger">{{ $errors->first('company_name') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+
+                  {{--  <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label">NTVQF/BQF Level</label>
                       <select name="ntvqf_level" class="form-control @error('ntvqf_level') is-invalid @enderror">
@@ -100,7 +113,7 @@
                       <strong class="text-danger">{{ $errors->first('ntvqf_level') }}</strong>
                       @enderror
                     </div>
-                  </div>
+                  </div>  --}}
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Description</label>

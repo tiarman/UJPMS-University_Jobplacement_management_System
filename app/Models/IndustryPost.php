@@ -27,6 +27,7 @@ class IndustryPost extends Model
     'employment_status',
     'ntvqf_level',
       'technology',
+      'company_name',
       'tag',
     'status',
 

@@ -62,8 +62,10 @@
                 @foreach($datas as $key => $val)
                   <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                     <td class="p-1">{{ ($key+1) }}</td>
-                    <td class="p-1 text-capitalize"><a class="text-primary" href="{{route('job_post_details',$val->post_id)}}">{{ $val->post?->user?->name_en }}</a></td>
+                    {{--  <td class="p-1 text-capitalize"><a class="text-primary" href="{{route('job_post_details',$val->post_id)}}">{{ $val->post?->user?->name_en }}</a></td>  --}}
+                    <td class="p-1 text-capitalize"><a class="text-primary" href="{{route('job_post_details',$val->post_id)}}">{{ $val->post?->company_name }}</a></td>
                     {{-- <td class="p-1 text-capitalize">{{ $val->post?->user?->name_en }}</td> --}}
+                    {{--  <td class="p-1 text-capitalize">{{ $val->post?->company_name }}</td>  --}}
                     <td class="p-1 text-capitalize">{{ $val->post?->job_title }}</td>
                     <td class="p-1">{{ $val->post?->position }}</td>
                     <td class="p-1">{{ $val->post?->application_deadline }}</td>

@@ -31,6 +31,7 @@ return new class extends Migration
           $table->string('experience_requirement')->nullable();
           $table->string('application_deadline')->nullable();
           $table->string('tag')->nullable();
+          $table->string('company_name')->nullable();
           $table->string('status')->default(\App\Models\IndustryPost::$statusArrays[0]);
           $table->string('ntvqf_level')->default(\App\Models\IndustryPost::$ntvqf_level[0]);
           $table->string('employment_status')->default(\App\Models\IndustryPost::$employment_status[0]);
