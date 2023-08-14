@@ -79,7 +79,8 @@ class AuthController extends Controller
         'email' => 'required|email|unique:' . with(new User)->getTable() . ',email,',
         'password' => 'required|string|min:6|confirmed',
         'phone' => 'required|regex:' . CustomHelper::PhoneNoRegex,
-        'institute_id' => 'nullable|numeric|exists:' . with(new Institute)->getTable() . ',id',
+        // 'institute_id' => 'nullable|numeric|exists:' . with(new Institute)->getTable() . ',id',
+        // 'institute_id' => 'nullable|numeric|exists:' . with(new Institute)->getTable() . ',id',
 
 
         'institute_type_id' => 'nullable|string',

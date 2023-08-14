@@ -22,7 +22,7 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">Create institute</h2>
+              <h2 class="panel-title">Create institutess</h2>
             </header>
             <div class="panel-body">
               @if(\App\Helper\CustomHelper::canView('List Of Institute', 'Super Admin'))
@@ -62,7 +62,7 @@
                   <div class="row" id="reed">
                     <div class="col-sm-4">
                       <div class="form-group">
-                        <label class="control-label">Full name [Eng]<span class="text-danger">*</span></label>
+                        <label class="control-label">Institute Name<span class="text-danger">*</span></label>
                         <input type="text" id="name_en" name="name_en" placeholder="Full name in english" required value="{{ old('name_en') }}"
                                class="form-control @error('name_en') is-invalid @enderror">
                         @error('name_en')
@@ -72,6 +72,16 @@
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
+                        <label class="control-label">Phone No <span class="text-danger">*</span></label>
+                        <input type="number" id="phone" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
+                               class="form-control @error('phone') is-invalid @enderror" required>
+                        @error('phone')
+                        <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+                        @enderror
+                      </div>
+                    </div>
+                    {{--  <div class="col-sm-4">
+                      <div class="form-group">
                         <label class="control-label">Full name [Ban]<span class="text-danger">*</span></label>
                         <input type="text" id="name_bn" name="name_bn" placeholder="Full name in Bangla" value="{{ old('name_bn') }}"
                                class="form-control @error('name_bn') is-invalid @enderror">
@@ -79,7 +89,7 @@
                         <strong class="text-danger">{{ $errors->first('name_bn') }}</strong>
                         @enderror
                       </div>
-                    </div>
+                    </div>  --}}
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label class="control-label">Username<span class="text-danger">*</span></label>
@@ -102,16 +112,7 @@
                         @enderror
                       </div>
                     </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label class="control-label">Phone No <span class="text-danger">*</span></label>
-                        <input type="number" id="phone" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
-                               class="form-control @error('phone') is-invalid @enderror" required>
-                        @error('phone')
-                        <strong class="text-danger">{{ $errors->first('phone') }}</strong>
-                        @enderror
-                      </div>
-                    </div>
+                   
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label class="control-label">Password<span class="text-danger">*</span></label>
@@ -159,7 +160,7 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="code" class="control-label">Code<span class="text-danger">*</span></label>
-                      <input type="number" min="0" name="code" placeholder="Institute Name" autocomplete="off" required
+                      <input type="number" min="0" name="code" placeholder="Code" autocomplete="off" required
                              value="{{ old('code') }}"
                              class="form-control @error('code') is-invalid @enderror">
                       @error('code')
@@ -181,6 +182,17 @@
 
                   <div class="col-sm-4">
                     <div class="form-group">
+                      <label class="control-label">Photo</label>
+                      <input type="file" name="photo"
+                             class="form-control @error('photo') is-invalid @enderror">
+                      @error('photo')
+                      <strong class="text-danger">{{ $errors->first('photo') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+
+                  {{--  <div class="col-sm-4">
+                    <div class="form-group">
                       <label for="institute_name_bn" class="control-label">Full name [Ban]<span class="text-blue">(Optional)</span></label>
                       <input type="text" id="institute_name_bn" name="institute_name_bn" placeholder="Full name in Bangla" value="{{ old('institute_name_bn') }}"
                              class="form-control @error('institute_name_bn') is-invalid @enderror">
@@ -189,7 +201,7 @@
                       @enderror
                     </div>
 
-                  </div>
+                  </div>  --}}
 
                   <div class="col-sm-4">
                     <div class="form-group">
@@ -210,6 +222,23 @@
                              class="form-control @error('institute_email') is-invalid @enderror">
                       @error('institute_email')
                       <strong class="text-danger">{{ $errors->first('institute_email') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label class="control-label">Institute Type<span class="text-danger">*</span></label>
+                      <select name="type" required class="form-control @error('type') is-invalid @enderror">
+                        <option value="">Choose a institute type</option>
+                        @foreach($types as $type)
+                          <option value="{{ $type->name }}"
+                                  @if(old('type') == $type->name) selected @endif>{{ ucfirst($type->name) }}</option>
+                        @endforeach
+                      </select>
+                      @error('type')
+                      <strong class="text-danger">{{ $errors->first('type') }}</strong>
                       @enderror
                     </div>
                   </div>
@@ -259,16 +288,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="form-group">
-                      <label class="control-label">Photo</label>
-                      <input type="file" name="photo"
-                             class="form-control @error('photo') is-invalid @enderror">
-                      @error('photo')
-                      <strong class="text-danger">{{ $errors->first('photo') }}</strong>
-                      @enderror
-                    </div>
-                  </div>
+                 
                 </div>
                 <div class="row">
                   <div class="col-md-4">
@@ -296,21 +316,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="form-group">
-                      <label class="control-label">Institute Type<span class="text-danger">*</span></label>
-                      <select name="type" required class="form-control @error('type') is-invalid @enderror">
-                        <option value="">Choose a institute type</option>
-                        @foreach($types as $type)
-                          <option value="{{ $type->name }}"
-                                  @if(old('type') == $type->name) selected @endif>{{ ucfirst($type->name) }}</option>
-                        @endforeach
-                      </select>
-                      @error('type')
-                      <strong class="text-danger">{{ $errors->first('type') }}</strong>
-                      @enderror
-                    </div>
-                  </div>
+                  
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="description" class="control-label">Description (Optional)</label>
