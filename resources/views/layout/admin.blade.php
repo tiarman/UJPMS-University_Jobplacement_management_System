@@ -192,20 +192,7 @@
           {{--end event manage module --}}
 
 
-          @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin'))
-            <li class="has_sub">
-              <a class="waves-effect"><i class="mdi mdi-houzz"></i><span> Core Module <span
-                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-              <ul class="list-unstyled">
-                {{--                        @if(\App\Helper\CustomHelper::canView('Create District', 'Super Admin'))--}}
-                {{--                            <li><a href="{{ route('admin.coremodule.create') }}">Create new</a></li>--}}
-                {{--                        @endif--}}
-                @if(\App\Helper\CustomHelper::canView('Manage District|Delete District|View District|List Of District', 'Super Admin'))
-                  <li><a href="{{ route('admin.coremodule.list') }}">List of Core Module</a></li>
-                @endif
-              </ul>
-            </li>
-          @endif
+        
 
 
 
@@ -417,13 +404,13 @@
           {{--            </li>--}}
           {{--          @endif--}}
 
-          @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
             <li>
               <a href="{{ route('admin.all.voucher.list') }}" class="waves-effect"><i
                   class="mdi mdi-view-dashboard"></i> <span> All Vouchers</span>
               </a>
             </li>
-          @endif
+          @endif  --}}
 
           {{--          <li class="menu-title">Report's</li>--}}
           {{--  @if(\App\Helper\CustomHelper::canView('List of Subsidiary Component code wise', 'Super Admin'))
@@ -584,7 +571,7 @@
             </li>
           @endif
 
-          @if(\App\Helper\CustomHelper::canView('Create Project Idea|Manage Project Idea|Delete Project Idea|View Project Idea|List Of Project Idea', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Project Idea|Manage Project Idea|Delete Project Idea|View Project Idea|List Of Project Idea', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
@@ -612,7 +599,7 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
 
           @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
             <li><a href="{{ route('admin.permission.manage') }}" class="waves-effect">
@@ -644,12 +631,12 @@
                 <span>Event Participant list</span>
               </a></li>
           @endif
-          @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
+          {{--  @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
             <li><a href="{{ route('contacts.list') }}" class="waves-effect">
                 <i class="mdi mdi-image-album"></i>
                 <span>Contacts</span>
               </a></li>
-          @endif
+          @endif  --}}
           @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
             <li><a href="{{ route('admin.trainingType.create') }}" class="waves-effect">
                 <i class="mdi mdi-image-album"></i>
@@ -664,7 +651,12 @@
           {{--              </a></li>--}}
           {{--          @endif--}}
 
-          @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
+
+
+
+
+
+          {{--  @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
             <li><a href="{{ route('admin.education.create') }}" class="waves-effect">
                 <i>
                   <iconify-icon icon="zondicons:education"></iconify-icon>
@@ -689,7 +681,7 @@
                 </i>
                 <span>Job Experience</span>
               </a></li>
-          @endif
+          @endif  --}}
           @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Institute Head'))
             <li><a href="{{ route('admin.backgroundImage') }}" class="waves-effect">
                 <i class="mdi mdi-image-album"></i>

@@ -208,10 +208,7 @@
                         <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Career</a></li>
                         <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Blog</a></li>
                         <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Pricing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Marketing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> CEOs </a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Agencies</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Our Apps</a></li>
+                        
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
@@ -244,7 +241,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="">
-                        <p class="mb-0">© 2019 - 2020 Jobya. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="https://1.envato.market/themesdesign" target="_blank">Themesdesign</a>.</p>
+                        <p class="mb-0">© 2023 UniJobs Design with <i class="mdi mdi-heart text-danger"></i> by <a href="" target="_blank">UniJobs</a>.</p>
                     </div>
                 </div>
             </div>

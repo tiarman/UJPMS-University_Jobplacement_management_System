@@ -525,19 +525,20 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @foreach($jobpost as $val)
                                 <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
                                     <div class="lable text-center pt-2 pb-2">
                                         <ul class="list-unstyled best text-white mb-0 text-uppercase">
                                             <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
                                         </ul>
                                     </div>
+                                    
                                     <div class="p-4">
-                                        @foreach($jobpost as $val)
+                                        
                                         <div class="row align-items-center">
                                             <div class="col-md-2">
                                                 <div class="mo-mb-2">
-                                                    <img src="{{asset($val->user->image ?? 'assets/placeholder.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                    <img style="height: 84px; width: 84px" src="{{asset($val->user->image ?? 'assets/placeholder.png')}}" alt="" class="img-fluid mx-auto d-block">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -562,7 +563,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        
                                     </div>
                                     <div class="p-3 bg-light">
                                         <div class="row">
@@ -583,7 +584,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
+                                @endforeach
 
                                 {{--  <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
                                     <div class="lable text-center pt-2 pb-2">

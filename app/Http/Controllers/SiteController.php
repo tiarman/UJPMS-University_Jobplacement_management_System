@@ -126,7 +126,7 @@ class SiteController extends Controller
     })->get()->count();
     $data['numberoffair'] = JobEvent::get()->count();
     $data['numberofjobs'] = IndustryPost::get()->count();
-    $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
+    $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->orderby('id', 'desc')->get();
     //  return $datas;
     return view('site.index', $data);
   }

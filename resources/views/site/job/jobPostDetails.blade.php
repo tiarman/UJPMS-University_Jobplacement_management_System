@@ -42,7 +42,7 @@
             <div class="col-lg-8 col-md-7">
                 <div class="job-detail border rounded p-4">
                     <div class="job-detail-content">
-                        <img style="width: 100px; height: 100px;" src="{{ asset($job_post_details->image ?? 'assets/placeholder.png') }}" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
+                        <img style="width: 100px; height: 100px;" src="{{asset($job_post_details->user->image ?? 'assets/placeholder.png')}}" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
                         <div class="job-detail-com-desc overflow-hidden d-block">
                             <h4 class="mb-2"><a href="#" class="text-dark">{{ $job_post_details->job_title ?? ''}}</a></h4>
                             <p class="text-muted mb-0"><i class="mdi mdi-link-variant mr-2"></i>{{ $job_post_details->position ?? ''}}</p>
@@ -77,7 +77,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h5 class="text-dark mt-4">Qualification :</h5>
+                        <h5 class="text-dark mt-4">Job Requirment :</h5>
                     </div>
                 </div>
 
@@ -85,61 +85,18 @@
                     <div class="col-lg-12">
                         <div class="job-detail border rounded mt-2 p-4">
                             <div class="job-detail-desc">
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Morbi mattis ullamcorper velit. Phasellus gravida semper nisi nullam vel sem.</p>
-                                </div>
+
+
 
                                 <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</p>
+                                    {!!$job_post_details->job_responsibility!!}
                                 </div>
 
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
-                                </div>
+                             
 
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis.</p>
-                                </div>
+                                
 
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu.</p>
-                                </div>
-
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis.</p>
-                                </div>
-
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Pellentesque auctor neque nec urna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi.</p>
-                                </div>
-
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-0">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -147,7 +104,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h5 class="text-dark mt-4">Primary Responsibilities :</h5>
+                        <h5 class="text-dark mt-4">Compensation & Other Benefits :</h5>
                     </div>
                 </div>
 
@@ -155,40 +112,15 @@
                     <div class="col-lg-12">
                         <div class="job-detail border rounded mt-2 p-4">
                             <div class="job-detail-desc">
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">HTML, CSS & Scss</p>
-                                </div>
+
 
                                 <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Javascript</p>
+                                    {{$job_post_details->compensation}}
                                 </div>
 
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">PHP</p>
-                                </div>
+                                
 
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-2">Photoshop</p>
-                                </div>
-
-                                <div class="job-details-desc-item">
-                                    <div class="float-left mr-3">
-                                        <i class="mdi mdi-send text-primary"></i>
-                                    </div>
-                                    <p class="text-muted mb-0">Illustrator</p>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -222,12 +154,12 @@
 
 
                     <div class="job-detail-location pt-4">
-                        <div class="job-details-desc-item">
+                        {{--  <div class="job-details-desc-item">
                             <div class="float-left mr-2">
                                 <i class="mdi mdi-bank text-muted"></i>
                             </div>
                             <p class="text-muted mb-2">: Web Themes.pvt.Ltd</p>
-                        </div>
+                        </div>  --}}
 
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">
@@ -247,7 +179,7 @@
                             <div class="float-left mr-2">
                                 <i class="mdi mdi-cellphone-iphone text-muted"></i>
                             </div>
-                            <p class="text-muted mb-2">: 1987 6543 21</p>
+                            <p class="text-muted mb-2">: 01860842420</p>
                         </div>
 
                         <div class="job-details-desc-item">
