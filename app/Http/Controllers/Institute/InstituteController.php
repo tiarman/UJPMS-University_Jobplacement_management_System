@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\DB;
 class InstituteController extends Controller {
 
   public function index() {
-    $data['datas'] = Institute::with('idg:id,institute_id,status', 'rpl:id,institute_id,status', 'sc:id,institute_id,status', 'district:id,name', 'division:id,name', 'type:id,name')->orderby('id', 'desc')->paginate(100);
+    $data['datas'] = Institute::orderby('id', 'desc')->paginate(100);
 //    return $data;
     return view('admin.institute.list', $data);
   }

@@ -72,9 +72,9 @@
                         @if($val->rpl)
                           <a href="{{ route('eligibility.rpl.without.score.pdf', $val->rpl->id) }}" class="btn btn-sm  @if($val->rpl->status == 'save') btn-success @else btn-primary @endif"> RPL </a>
                         @endif
-                        @if($val->sc)
+                        {{--  @if($val->sc)
                           <a href="{{ route('eligibility.course.pdf', $val->sc->id) }}" class="btn btn-sm  @if($val->sc->status == 'save') btn-success @else btn-primary @endif"> SC </a>
-                        @endif
+                        @endif  --}}
                       </td>
 
                       @if(\App\Helper\CustomHelper::canView('Manage Institute', 'Super Admin'))
