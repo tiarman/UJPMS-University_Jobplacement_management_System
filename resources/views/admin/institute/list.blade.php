@@ -66,12 +66,12 @@
                       <td class="p-1 text-capitalize text-red-600">{{ $val->type?->name }}</td>
 
                       <td class="p-1">
-                        @if($val->idg)
+                        {{--  @if($val->idg)
                           <a href="{{ route('form.pdf', $val->idg->id) }}" class="btn btn-sm @if($val->idg->status == 'save') btn-success @else btn-primary @endif"> IDG </a>
-                        @endif
-                        @if($val->rpl)
+                        @endif  --}}
+                        {{--  @if($val->rpl)
                           <a href="{{ route('eligibility.rpl.without.score.pdf', $val->rpl->id) }}" class="btn btn-sm  @if($val->rpl->status == 'save') btn-success @else btn-primary @endif"> RPL </a>
-                        @endif
+                        @endif  --}}
                         {{--  @if($val->sc)
                           <a href="{{ route('eligibility.course.pdf', $val->sc->id) }}" class="btn btn-sm  @if($val->sc->status == 'save') btn-success @else btn-primary @endif"> SC </a>
                         @endif  --}}
