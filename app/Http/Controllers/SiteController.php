@@ -117,7 +117,7 @@ class SiteController extends Controller
 
   public function home()
   {
-    $data['core'] = CoreModule::where('status', '=', CoreModule::$statusArrays[0])->get();
+    // $data['core'] = CoreModule::where('status', '=', CoreModule::$statusArrays[0])->get();
     $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q) {
       $q->where('name', 'Student');
     })->get()->count();

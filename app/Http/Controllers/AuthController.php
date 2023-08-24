@@ -1295,6 +1295,7 @@ class AuthController extends Controller
       $message = '<strong>Congratulations!!!</strong> Successfully ';
       $rules = [
         'nid' => 'nullable|string',
+        // 'name_en' => 'required|string|regex:/^[A-Za-z.]+$/',
         'name_en' => 'required|string',
         'name_bn' => 'nullable|string',
         'username' => 'required|string|unique:' . with(new User)->getTable() . ',username,',

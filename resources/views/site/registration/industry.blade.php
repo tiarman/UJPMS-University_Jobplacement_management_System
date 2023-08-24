@@ -110,7 +110,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label for="phone">Mobile Number <span class="text-danger">*</span></label>
-              <input type="number" required name="phone" id="phone" placeholder="Enter Your Mobile Number" autocomplete="off"
+              <input type="number" required name="phone" id="phone" placeholder="01xxxxxxxxx" autocomplete="off"
                      class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
               <span class="spin"></span>
               @error('phone')

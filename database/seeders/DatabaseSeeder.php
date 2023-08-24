@@ -25,15 +25,11 @@ class DatabaseSeeder extends Seeder
       $this->call(RoleSeeder::class);
       $this->call(UserSeeder::class);
 
-      $this->call(ComponentSeeder::class);
-      $this->call(SubComponentSeeder::class);
-      $this->call(SubsidiaryComponentSeeder::class);
-      $this->call(VoucherTypeSeeder::class);
+    
       $this->call(InstituteTypeSeeder::class);
       $this->call(InstituteSeeder::class);
 
-      $this->call(FiscalYearSeeder::class);
-      $this->call(CoreModulesSeeder::class);
+      
 
       $this->call(NotificationSeeder::class);
       $this->call(TrainingTypeSeeder::class);
