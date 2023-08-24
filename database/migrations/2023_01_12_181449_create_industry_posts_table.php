@@ -33,7 +33,7 @@ return new class extends Migration
           $table->string('tag')->nullable();
           $table->string('company_name')->nullable();
           $table->string('status')->default(\App\Models\IndustryPost::$statusArrays[0]);
-          $table->string('ntvqf_level')->default(\App\Models\IndustryPost::$ntvqf_level[0]);
+          $table->string('ntvqf_level')->nullable();
           $table->string('employment_status')->default(\App\Models\IndustryPost::$employment_status[0]);
           $table->timestamps();
         });

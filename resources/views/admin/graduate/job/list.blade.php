@@ -51,10 +51,13 @@
                   <th width="50">#</th>
                   <th>Company</th>
                   <th>Job Title</th>
+                  
+                  
                   <th width="200">Position</th>
                   <th>Application Deadline</th>
                   <th>Location</th>
-                  <th>Intitute Acceptance</th>
+                  {{--  <th>Intitute Acceptance</th>  --}}
+                  <th>Status</th>
 {{--                  <th class="hidden-phone" width="40">Option</th>--}}
                 </tr>
                 </thead>
