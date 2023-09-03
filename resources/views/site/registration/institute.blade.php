@@ -39,6 +39,17 @@
       @if(session()->has('status'))
         {!! session()->get('status') !!}
       @endif
+
+      @foreach($errors->all() as $message)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{!! $message !!}</strong>
+            </div>
+        </div>
+    </div>
+@endforeach
       <x-registration-header />
 
       <form action="{{ route('institute.registration') }}" method="post" enctype="multipart/form-data">
@@ -58,7 +69,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-sm-4">
+          {{--  <div class="col-sm-4">
             <div class="form-group">
               <label class="control-label">নাম [বাংলায়]</label>
               <input type="text" name="name_bn" placeholder="বাংলায় পুরো নাম"  value="{{ old('name_bn') }}"
@@ -67,7 +78,7 @@
               <strong class="text-danger">{{ $errors->first('name_bn') }}</strong>
               @enderror
             </div>
-          </div>
+          </div>  --}}
           <div class="col-sm-4">
             <div class="form-group">
               <label class="control-label">Username<span class="text-danger">*</span></label>
@@ -78,9 +89,6 @@
               @enderror
             </div>
           </div>
-        </div>
-
-        <div class="row mb-3">
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Email <span class="text-danger">*</span></label>
@@ -91,6 +99,10 @@
               @enderror
             </div>
           </div>
+        </div>
+
+        <div class="row mb-3">
+         
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Mobile No <span class="text-danger">*</span></label>
@@ -111,10 +123,21 @@
               @enderror
             </div>
           </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label for="user_image" class="control-label">Photo</label>
+                <input type="file" name="user_image"
+                       class="form-control @error('user_image') is-invalid @enderror">
+                @error('user_image')
+                <strong class="text-danger">{{ $errors->first('user_image') }}</strong>
+                @enderror
+            </div>
+        </div>
         </div>
 
         <div class="row mb-3">
-          <div class="col-md-4">
+          {{--  <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">NID </label>
               <input type="text" name="nid" value="{{ old('nid') }}" placeholder="Enter your NID no"
@@ -123,13 +146,19 @@
               <strong class="text-danger">{{ $errors->first('nid') }}</strong>
               @enderror
             </div>
-          </div>
+          </div>  --}}
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Password<span class="text-danger">*</span></label>
-              <input type="password" name="password" placeholder="Password" required
+              {{--  <input type="password" name="password" placeholder="Password" required
                      value="{{ old('password') }}"
-                     class="form-control @error('password') is-invalid @enderror">
+                     class="form-control @error('password') is-invalid @enderror">  --}}
+                     <div class="d-flex">
+                      <input type="password" name="password" id="password" placeholder="Enter Your Password" autocomplete="off"
+                             class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
+                             <span toggle="#password-field" class="mt-2"><i style="margin-left: -23px" class="fa fa-fw fa-eye field_icon toggle-password"></i></span>
+        
+                    </div>
                      <small id="realtime-password-error" class="text-danger d-none">Password must be at least one uppercase letter, one lowercase letter, one number and one special character </small>
               @error('password')
               <strong class="text-danger">{{ $errors->first('password') }}</strong>
@@ -149,16 +178,7 @@
               <small id="confirm-password-error" class="text-danger d-none">Enter the correct password</small>
             </div>
           </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="user_image" class="control-label">Photo</label>
-                    <input type="file" name="user_image"
-                           class="form-control @error('user_image') is-invalid @enderror">
-                    @error('user_image')
-                    <strong class="text-danger">{{ $errors->first('user_image') }}</strong>
-                    @enderror
-                </div>
-            </div>
+        
 
         </div>
         {{-- <hr class="mt-3 mb-2"> --}}
@@ -179,7 +199,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-md-4">
+          {{--  <div class="col-md-4">
             <div class="form-group">
               <label for="institute_name_bn" class="control-label">নাম [বাংলায়]</label>
               <input type="text" id="institute_name_bn" name="institute_name_bn" placeholder="ইনস্টিটিউটের নাম বাংলায়" value="{{ old('institute_name_bn') }}"
@@ -188,7 +208,7 @@
               <strong class="text-danger">{{ $errors->first('institute_name_bn') }}</strong>
               @enderror
             </div>
-          </div>
+          </div>  --}}
           <div class="col-md-4">
             <div class="form-group">
               <label for="code" class="control-label">Code<span class="text-danger">*</span></label>
@@ -198,6 +218,16 @@
                      <small id="realtime-code-error" class="text-danger d-none">The Code must be  5 to 7 characters </small>
               @error('code')
               <strong class="text-danger">{{ $errors->first('code') }}</strong>
+              @enderror
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label">Image (Optional)</label>
+              <input type="file" name="photo"
+                     class="form-control @error('photo') is-invalid @enderror">
+              @error('photo')
+              <strong class="text-danger">{{ $errors->first('photo') }}</strong>
               @enderror
             </div>
           </div>
@@ -228,7 +258,7 @@
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <label class="control-label">Website <span class="text-primary">Ex. (www.ims.touchandsolve.com)</span></label>
+              <label class="control-label">Website <span class="text-primary">Ex. (www.unijobs.com)</span></label>
               <input type="text" name="website" placeholder="Institute website" autocomplete="off"
                      value="{{ old('website') }}"
                      class="form-control @error('website') is-invalid @enderror">
@@ -308,16 +338,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label class="control-label">Image (Optional)</label>
-              <input type="file" name="photo"
-                     class="form-control @error('photo') is-invalid @enderror">
-              @error('photo')
-              <strong class="text-danger">{{ $errors->first('photo') }}</strong>
-              @enderror
-            </div>
-          </div>
+         
         </div>
 
         <div class="row mb-3">
@@ -393,5 +414,25 @@ $(document).ready(function(){
   })
 })
 </script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+<script>
+    $("body").on('click', '.toggle-password', function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $("#password");
+        if (input.attr("type") === "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      
+      });
+</script>
+    
+
 
 @endsection

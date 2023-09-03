@@ -156,9 +156,15 @@
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Password<span class="text-danger">*</span></label>
-              <input type="password" required name="password" placeholder="Password" required
+              {{--  <input type="password" required name="password" placeholder="Password" required
                      value="{{ old('password') }}"
-                     class="form-control @error('password') is-invalid @enderror">
+                     class="form-control @error('password') is-invalid @enderror">  --}}
+                     <div class="d-flex">
+                      <input type="password" name="password" id="password" placeholder="Enter Your Password" autocomplete="off"
+                             class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
+                             <span toggle="#password-field" class="mt-2"><i style="margin-left: -23px" class="fa fa-fw fa-eye field_icon toggle-password"></i></span>
+        
+                    </div>
               <small id="realtime-password-error" class="text-danger d-none">Password must be at least one uppercase letter, one lowercase letter, one number and one special
                 character </small>
               @error('password')
@@ -251,4 +257,22 @@
 
 
   </script>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+<script>
+    $("body").on('click', '.toggle-password', function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $("#password");
+        if (input.attr("type") === "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      
+      });
+</script>
 @endsection

@@ -119,6 +119,38 @@
           {{--          @endif--}}
 
           {{--          <li><a href="" class="waves-effect"><i class="mdi mdi-image-album"></i> <span>Manu</span></a></li>--}}
+
+
+          @if(\App\Helper\CustomHelper::canView('Create Institute|Manage Institute|Delete Institute|View Institute|List Of Institute', 'Super Admin'))
+            <li class="has_sub">
+              <a class="waves-effect"><i>
+                  <iconify-icon icon="cil:library-building"></iconify-icon>
+                </i><span> Institute <span
+                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+              <ul class="list-unstyled">
+                @if(\App\Helper\CustomHelper::canView('Create Institute', 'Super Admin'))
+                  <li><a href="{{ route('admin.institute.create') }}">Create new</a></li>
+                @endif
+                @if(\App\Helper\CustomHelper::canView('Manage Institute|Delete Institute|View Institute|List Of Institute', 'Super Admin'))
+                  <li><a href="{{ route('admin.institute.list') }}">List of Institutes</a></li>
+                @endif
+              </ul>
+            </li>
+          @endif
+
+          @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
+            <li class="has_sub">
+              <a class="waves-effect"><i>
+                  <iconify-icon icon="cil:library-building"></iconify-icon>
+                </i><span> Institute Type<span
+                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+              <ul class="list-unstyled">
+                @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
+                  <li><a href="{{ route('admin.institute.type.create') }}">Manage</a></li>
+                @endif
+              </ul>
+            </li>
+          @endif
           @if(\App\Helper\CustomHelper::canView('Create Division|Manage Division|Delete Division|View Division|List Of Division', 'Super Admin'))
             <li class="has_sub">
 
@@ -441,36 +473,7 @@
           {{--            </a>--}}
           {{--          </li>--}}
 
-          @if(\App\Helper\CustomHelper::canView('Create Institute|Manage Institute|Delete Institute|View Institute|List Of Institute', 'Super Admin'))
-            <li class="has_sub">
-              <a class="waves-effect"><i>
-                  <iconify-icon icon="cil:library-building"></iconify-icon>
-                </i><span> Institute <span
-                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-              <ul class="list-unstyled">
-                @if(\App\Helper\CustomHelper::canView('Create Institute', 'Super Admin'))
-                  <li><a href="{{ route('admin.institute.create') }}">Create new</a></li>
-                @endif
-                @if(\App\Helper\CustomHelper::canView('Manage Institute|Delete Institute|View Institute|List Of Institute', 'Super Admin'))
-                  <li><a href="{{ route('admin.institute.list') }}">List of Institutes</a></li>
-                @endif
-              </ul>
-            </li>
-          @endif
-
-          @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
-            <li class="has_sub">
-              <a class="waves-effect"><i>
-                  <iconify-icon icon="cil:library-building"></iconify-icon>
-                </i><span> Institute Type<span
-                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-              <ul class="list-unstyled">
-                @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
-                  <li><a href="{{ route('admin.institute.type.create') }}">Manage</a></li>
-                @endif
-              </ul>
-            </li>
-          @endif
+          
 
           {{--          @if(\App\Helper\CustomHelper::canView('', 'Institute Head'))--}}
           {{--            <li><a href="{{ route('admin.training.apply.list') }}" class="waves-effect">--}}
@@ -511,7 +514,7 @@
               </ul>
             </li>
           @endif
-          @if((\App\Helper\CustomHelper::canView('', 'Institute Head') && \App\Helper\CustomHelper::isInstituteTrainingProvider()) || (\App\Helper\CustomHelper::canView('', 'Super Admin')))
+          @if((\App\Helper\CustomHelper::canView('', 'Institute Head') && \App\Helper\CustomHelper::isInstituteTrainingProvider()) || (\App\Helper\CustomHelper::canView('', '')))
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="healthicons:i-training-class"></iconify-icon>

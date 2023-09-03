@@ -11,8 +11,8 @@
     <div class="card-body">
       <div class="row">
         <div style="" class="col-12 text-center rounded"><a href="{{ route('home') }}" class="logo logo-admin">
-{{--            <img src="{{ asset('assets/text-logo.png') }}" height="80" alt="logo">--}}
-            <h4 style="color:#54359D;">UJPMS Login</h4>
+            <img src="{{ asset('assets/text-logo.png') }}" width="230px" alt="logo">
+            {{--  <h4 style="color:#54359D;">UJPMS Login</h4>  --}}
           </a></div>
       </div>
       <div class="pl-3 pr-3 pb-3">
@@ -45,7 +45,9 @@
             <div class="d-flex">
               <input type="password" name="password" id="password" placeholder="Enter Your Password" autocomplete="off"
                      class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
-              <span class="mt-1 "><i class="fa fa-regular fa-key icon login-icon"></i></span>
+                     <span toggle="#password-field" class="mt-1 "><i style="margin-left: -23px" class="fa fa-fw fa-eye field_icon toggle-password"></i></span>
+
+              {{--  <span class="mt-1 "><i class="fa fa-regular fa-key icon login-icon"></i></span>  --}}
             </div>
 
             <span class="spin"></span>
@@ -67,4 +69,24 @@
 
     </div>
   </div>
+@endsection
+
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+<script>
+    $("body").on('click', '.toggle-password', function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $("#password");
+        if (input.attr("type") === "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      
+      });
+</script>
+    
 @endsection

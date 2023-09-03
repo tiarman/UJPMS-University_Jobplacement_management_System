@@ -195,7 +195,7 @@ class AuthController extends Controller
       $user = new user();
       //        user table
       $rules['name_en'] = 'required|string|max:50';
-      $rules['name_bn'] = 'required|string|max:60';
+      $rules['name_bn'] = 'nullable|string|max:60';
       $rules['username'] = 'required|string|unique:' . with(new User)->getTable() . ',username,';
       $rules['email'] = 'required|email|unique:' . with(new User)->getTable() . ',email,';
       $rules['phone'] = 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new User)->getTable() . ',phone,';
@@ -289,7 +289,7 @@ class AuthController extends Controller
         DB::rollBack();
         return RedirectHelper::backWithInput();
       } catch (QueryException $e) {
-        //        return $e;
+               return $e;
         DB::rollBack();
         return RedirectHelper::backWithInputFromException();
       }
