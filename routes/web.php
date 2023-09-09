@@ -77,16 +77,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/testroute', function () {
   $name = "Funny Coder";
 
-//The email sending is done using the to method on the Mail facade
+  //The email sending is done using the to method on the Mail facade
   Mail::to('birato4456@iucake.com')->cc('birato4456@iucake.com')->send(new AdminNotifyForUserEmail($name));
 });
 
 
 Route::get('/test', function () {
-//  return \App\Models\User::with('permissions', 'roles')->find(auth()->id());
+  //  return \App\Models\User::with('permissions', 'roles')->find(auth()->id());
   ini_set('max_execution_time', 300);
   \Illuminate\Support\Facades\Mail::to('info@rast.com')->cc('admin@rast.com')->send(new \App\Mail\EligibilityApplicationFormIdgMail(\route('form.pdf', 1)));
   return view('email.test');
@@ -230,7 +231,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   Route::get('/api', [AdminController::class, 'api'])->name('api');
 
   Route::prefix('ajax')->name('ajax.')->group(function () {
-//    Route::match(['get', 'post'], '/post/apply', [SiteController::class, 'postApply'])->name('post.apply');
+    //    Route::match(['get', 'post'], '/post/apply', [SiteController::class, 'postApply'])->name('post.apply');
     Route::get('/institute/from/type-and-division', [SearchController::class, 'searchInstituteFromTypeAndDivision'])->name('institute.from.type.and.division');
     Route::get('/user/from/institute', [SearchController::class, 'searchUserFromInstitute'])->name('user.from.institute');
     Route::prefix('search')->name('search.')->group(function () {
@@ -244,7 +245,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
       Route::get('/idea/student/name', [SearchController::class, 'searchUserName'])->name('idea.student.name');
     });
     Route::get('/get-item-prefix', [InstituteBuildingController::class, 'ajaxGetItemPrefix'])->name('get.item.prefix');
-//    Route::get('/get-student-prefix', [ProjectIdeaController::class, 'ajaxprojectIdeaStudent'])->name('get.student.prefix');
+    //    Route::get('/get-student-prefix', [ProjectIdeaController::class, 'ajaxprojectIdeaStudent'])->name('get.student.prefix');
     Route::post('/make/{id}/-as-read', [NotificationController::class, 'ajaxUpdateAsRead'])->name('make.modal.as.read');
     Route::post('/permission-by-role', [PermissionController::class, 'getPermissionByRole'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('get.permission.by.role');
     Route::post('/update/user/status', [UserController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage User|Manage Institute User')->name('update.user.status');
@@ -288,7 +289,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     })->name('report');
   });
 
-#Division
+  #Division
   Route::prefix('division')->name('division.')->group(function () {
     Route::get('/create', [DivisionController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Division')->name('create');
     Route::post('/store', [DivisionController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Division|Manage Division')->name('store');
@@ -298,7 +299,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/list', [DivisionController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Division')->name('list');
   });
 
-#Component
+  #Component
   Route::prefix('component')->name('component.')->group(function () {
     Route::get('/create', [ComponentController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Component')->name('create');
     Route::post('/store', [ComponentController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Component|Manage Component')->name('store');
@@ -357,10 +358,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/{id}/view', [FiscalBudgetController::class, 'view'])->middleware('role_or_permission:Super Admin|View Fiscal Budget')->name('view');
     Route::delete('/destroy', [FiscalBudgetController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Fiscal Budget')->name('destroy');
     Route::get('/list', [FiscalBudgetController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Fiscal Budget')->name('list');
-
   });
 
-# Budget
+  # Budget
   Route::prefix('budget')->name('budget.')->group(function () {
     #ComponentBudget
     Route::prefix('component')->name('component.')->group(function () {
@@ -423,9 +423,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
 
   Route::get('/my-trainings', [TrainingController::class, 'myTrainings'])->name('my.trainings');
   Route::get('/withdraw/{id}/my-training', [TrainingController::class, 'myTrainingWithdraw'])->name('my.training.withdraw');
-//    Route::get('/training/{trainingId}/file/{id}/delete', [TrainingController::class, 'trainingFileDelete'])->name('training.delete');
+  //    Route::get('/training/{trainingId}/file/{id}/delete', [TrainingController::class, 'trainingFileDelete'])->name('training.delete');
 
-#Training
+  #Training
   Route::prefix('training')->name('training.')->group(function () {
     Route::get('/create', [TrainingController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Training')->name('create');
     Route::post('/store', [TrainingController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Training|Manage Training')->name('store');
@@ -463,16 +463,14 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
       Route::get('/list', [TrainingMemberController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Training Member')->name('list');
       Route::post('/import', [TrainingMemberController::class, 'importMember'])->middleware('role_or_permission:Super Admin|List Of Training Member')->name('import');
     });
-
-
   });
 
 
-#Job Event
+  #Job Event
   Route::prefix('event')->name('event.')->group(function () {
     Route::prefix('/job')->name('job.')->group(function () {
-//      Route::get('/manage', function () { return view('admin.event.job.manage'); })->name('manage');
-//      Route::get('/applied-fair-list', function () { return view('admin.Job.applied_fair_list'); })->name('applied_fair_list');
+      //      Route::get('/manage', function () { return view('admin.event.job.manage'); })->name('manage');
+      //      Route::get('/applied-fair-list', function () { return view('admin.Job.applied_fair_list'); })->name('applied_fair_list');
       Route::get('/applied-fair-list', [IndustryPostController::class, 'fairList'])->middleware('role_or_permission:Industry|List Of Industry Post')->name('applied_fair_list');
       Route::get('/create', [JobEventController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Job Event')->name('create');
       Route::post('/store', [JobEventController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Job Event|Manage Job Event')->name('store');
@@ -482,33 +480,39 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
       Route::get('/{id}/participant/industry/', [IndustryPostController::class, 'fairAttendedIndustriesList'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('participant.industry.list');
     });
     Route::prefix('/stall')->name('stall.')->group(function () {
-      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
+      Route::get('/create', function () {
+        return view('admin.event.stall.create');
+      })->name('create');
+      Route::get('/list', function () {
+        return view('admin.event.stall.list');
+      })->name('list');
     });
     Route::prefix('/industry')->name('industry.')->group(function () {
-      Route::get('/create', function () { return view('admin.event.job.create'); })->name('create');
+      Route::get('/create', function () {
+        return view('admin.event.job.create');
+      })->name('create');
       // Route::get('/list', function () { return view('admin.event.job.industry'); })->name('list');
       // Route::get('/list', [IndustryPostController::class,'fairAttendedIndustriesList'] )->name('list');
     });
   });
 
-//  #Job Event
-//  Route::prefix('fair')->name('fair.')->group(function () {
-//    Route::prefix('/organizer')->name('organizer.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.job.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.job.list'); })->name('list');
-//    });
-//    Route::prefix('/industry')->name('industry.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-//    });
-//    Route::prefix('/student')->name('st.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-//    });
-//  });
+  //  #Job Event
+  //  Route::prefix('fair')->name('fair.')->group(function () {
+  //    Route::prefix('/organizer')->name('organizer.')->group(function () {
+  //      Route::get('/create', function () { return view('admin.event.job.create'); })->name('create');
+  //      Route::get('/list', function () { return view('admin.event.job.list'); })->name('list');
+  //    });
+  //    Route::prefix('/industry')->name('industry.')->group(function () {
+  //      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
+  //      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
+  //    });
+  //    Route::prefix('/student')->name('st.')->group(function () {
+  //      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
+  //      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
+  //    });
+  //  });
 
-#District
+  #District
   Route::prefix('district')->name('district.')->group(function () {
     Route::get('/create', [DistrictController::class, 'create'])->middleware('role_or_permission:Super Admin|Create District')->name('create');
     Route::post('/store', [DistrictController::class, 'store'])->middleware('role_or_permission:Super Admin|Create District|Manage District')->name('store');
@@ -519,7 +523,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   });
 
 
-#Division
+  #Division
   Route::prefix('upazila')->name('upazila.')->group(function () {
     Route::get('/create', [UpazilaController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Upazila')->name('create');
     Route::post('/store', [UpazilaController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Upazila|Manage Upazila')->name('store');
@@ -530,7 +534,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   });
 
 
-#Users
+  #Users
   Route::prefix('user')->name('user.')->group(function () {
     Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Create User')->name('create');
     Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Create User|Manage User')->name('store');
@@ -567,7 +571,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   #Permission
   Route::match(['get', 'post'], '/permission/manage', [PermissionController::class, 'managePermission'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('permission.manage');
 
-//  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
+  //  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
 
   Route::prefix('trainee')->name('trainee.')->group(function () {
     Route::get('/view', [TraineeController::class, 'view'])->middleware('role_or_permission:Super Admin|update_trainee')->name('view');
@@ -600,14 +604,14 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/list', [JobExperiencController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Job Experience')->name('list');
   });
 
-     #setting
-     Route::prefix('setting')->name('setting.')->group(function () {
-      Route::get('/create', [SettingController::class, 'create'])->name('create');
-      Route::get('/manage/{id}', [SettingController::class, 'manage'])->name('manage');
-      Route::post('/store', [SettingController::class, 'store'])->name('store');
-      Route::get('/list', [SettingController::class, 'index'])->name('list');
-      Route::delete('/destroy', [SettingController::class, 'destroy'])->name('destroy');
-    });
+  #setting
+  Route::prefix('setting')->name('setting.')->group(function () {
+    Route::get('/create', [SettingController::class, 'create'])->name('create');
+    Route::get('/manage/{id}', [SettingController::class, 'manage'])->name('manage');
+    Route::post('/store', [SettingController::class, 'store'])->name('store');
+    Route::get('/list', [SettingController::class, 'index'])->name('list');
+    Route::delete('/destroy', [SettingController::class, 'destroy'])->name('destroy');
+  });
 
   #Institute Head
   Route::prefix('institute/member/')->name('institute.head.')->group(function () {
@@ -683,7 +687,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/subsidiary-component-quater-wise', [ReportController::class, 'subsidiaryComponentQuarterWiseReport'])->middleware('role_or_permission:Super Admin|Subsidiary Component quarter wise')->name('subsidiary.component.quarter.wise');
   });
 
-#Training Type
+  #Training Type
   Route::prefix('trainingType')->name('trainingType.')->group(function () {
     Route::get('/create', [TrainingTypeController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Training Type')->name('create');
     Route::post('/store', [TrainingTypeController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Training Type|Manage Training Type')->name('store');
@@ -694,7 +698,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     // Route::get('/list', [TrainingTypeController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Training Type')->name('list');
   });
 
-#Project Idea
+  #Project Idea
   Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
     Route::get('/create', [ProjectIdeaController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Project Idea')->name('create');
     Route::post('/store', [ProjectIdeaController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Project Idea|Manage Project Idea')->name('store');
@@ -708,16 +712,16 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/head/list', [ProjectIdeaController::class, 'indexHead'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list.head');
   });
 
-#Project Idea
-//  Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
-//    Route::get('/create', [ProjectIdeaController::class, 'create'])->name('create');
-//    Route::post('/store', [ProjectIdeaController::class, 'store'])->name('store');
-//    Route::get('/manage/{id}', [ProjectIdeaController::class, 'manage'])->name('manage');
-//    Route::get('/{id}/view', [ProjectIdeaController::class, 'view'])->name('view');
-//    Route::delete('/destroy', [ProjectIdeaController::class, 'destroy'])->name('destroy');
-//    Route::get('/{project_idea_id}/file/destroy/{id}', [ProjectIdeaController::class, 'fileDestroy'])->name('file.delete');
-//    Route::get('/list', [ProjectIdeaController::class, 'index'])->name('list');
-//  });
+  #Project Idea
+  //  Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
+  //    Route::get('/create', [ProjectIdeaController::class, 'create'])->name('create');
+  //    Route::post('/store', [ProjectIdeaController::class, 'store'])->name('store');
+  //    Route::get('/manage/{id}', [ProjectIdeaController::class, 'manage'])->name('manage');
+  //    Route::get('/{id}/view', [ProjectIdeaController::class, 'view'])->name('view');
+  //    Route::delete('/destroy', [ProjectIdeaController::class, 'destroy'])->name('destroy');
+  //    Route::get('/{project_idea_id}/file/destroy/{id}', [ProjectIdeaController::class, 'fileDestroy'])->name('file.delete');
+  //    Route::get('/list', [ProjectIdeaController::class, 'index'])->name('list');
+  //  });
 
 
   #Core Modules
@@ -767,7 +771,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   #Job Event
   Route::prefix('job')->name('job.')->group(function () {
     Route::prefix('/post')->name('post.')->group(function () {
-//      Route::get('/create', function () {return view('admin.job.post.create');})->name('create');
+      //      Route::get('/create', function () {return view('admin.job.post.create');})->name('create');
       Route::get('/create', [IndustryPostController::class, 'create'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create');
       Route::get('/create/{id}', [IndustryPostController::class, 'createEventPost'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create.event');
       Route::post('/store', [IndustryPostController::class, 'store'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post|Manage Industry Post')->name('store');
@@ -775,7 +779,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
       Route::delete('/destroy', [IndustryPostController::class, 'destroy'])->middleware('role_or_permission:Industry|Institute Head|Delete Industry Post')->name('destroy');
       Route::get('/list', [IndustryPostController::class, 'index'])->middleware('role_or_permission:Industry|Institute Head|List Of Industry Post')->name('list');
 
-//      Route::get('/list', function () {return view('admin.event.stall.list');})->name('list');
+      //      Route::get('/list', function () {return view('admin.event.stall.list');})->name('list');
     });
     Route::prefix('/application')->name('application')->group(function () {
       Route::get('/list', function () {
@@ -798,25 +802,25 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
 
   Route::prefix('organizer')->name('organizer.')->group(function () {
     Route::prefix('/post')->name('post.')->group(function () {
-//      Route::get('/create', function () { return view('admin.job.post.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.organizer.post');})->name('list');
+      //      Route::get('/create', function () { return view('admin.job.post.create'); })->name('create');
+      //      Route::get('/list', function () { return view('admin.organizer.post');})->name('list');
       Route::get('/list/{id}', [JobEventController::class, 'posts'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
-//      Route::get('/list', [JobEventController::class, 'posts'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
+      //      Route::get('/list', [JobEventController::class, 'posts'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
     });
     Route::prefix('/guest')->name('guest.')->group(function () {
       Route::get('/list', function () {
         return view('admin.organizer.guest');
       })->name('list');
-
     });
     Route::prefix('/applicant')->name('applicant.')->group(function () {
-      Route::get('/list', function () { return view('admin.organizer.applicant'); })->name('list');
+      Route::get('/list', function () {
+        return view('admin.organizer.applicant');
+      })->name('list');
     });
   });
 
   Route::get('/resume', [\App\Http\Controllers\ResumeController::class, 'registrationInfo'])->middleware('role_or_permission:Super Admin|Student')->name('resume');
   Route::post('/resume/update', [\App\Http\Controllers\ResumeController::class, 'registrationInfoUpdate'])->middleware('role_or_permission:Super Admin|Student')->name('resume.update');
-
 });
 
 
@@ -958,7 +962,3 @@ Route::match(['get', 'post'], '/send_purchase_mail', [PurchaseMailController::cl
 //   return view('admin.client_payment_information.create');
 //})->name('add_payment_info');
 //#Team
-
-
-
-

@@ -14,6 +14,7 @@ class JobEvent extends Model
     'place',
     'start_date',
     'end_date',
+    'sponsors',
     'guest_no',
     'event_details',
     'guest_details',

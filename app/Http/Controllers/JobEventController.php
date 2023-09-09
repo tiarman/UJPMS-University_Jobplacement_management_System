@@ -40,7 +40,8 @@ class JobEventController extends Controller
   }
 
   public function store(Request $request)
-  {
+  { 
+    // return $request;
     $message = '<strong>Congratulations!!!</strong> Job Event successfully ';
     $rules = [
       'title' => 'required|string',
@@ -49,7 +50,7 @@ class JobEventController extends Controller
       'place' => 'nullable|string',
       'guest_no' => 'nullable|string',
       'event_details' => 'nullable|string',
-      'guest_details' => 'nullable|string',
+      // 'guest_details' => 'nullable|string',
     ];
     if ($request->filled('end_date')) {
       $rules['start_date'] = 'required|string|before:end_date';
@@ -71,17 +72,25 @@ class JobEventController extends Controller
       $job_event->start_date = $request->start_date;
       $job_event->end_date = ($request->end_date !=null) ? $request->end_date : 'Running';
       $job_event->guest_no = $request->guest_no;
-      $job_event->event_details = $request->event_details;
-      $job_event->guest_details = $request->guest_details;
+      $job_event->event_details = $request->event_details;      
       $job_event->status = JobEvent::$statusArrays[0];
       $oldImage = $job_event->image;
-//      return $request;
+
       if($request->hasFile('image')){
         $logo = CustomHelper::storeImage($request->file('image'),'/JobEvent/');
         if( $logo != false){
           $job_event->image = $logo;
         }
       }
+      $sponsors_array = [];
+      if($request->sponsors){
+        foreach($request->sponsors as $key => $sponsor){
+          $sponsors_array[$key] = $sponsor;
+        }
+      }
+
+      $job_event->sponsors = json_encode($sponsors_array);
+
       if ($job_event->save()) {
         if($oldImage != null && $logo != null){
           CustomHelper::deleteFile($oldImage);

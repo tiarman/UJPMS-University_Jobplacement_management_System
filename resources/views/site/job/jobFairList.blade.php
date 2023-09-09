@@ -290,7 +290,7 @@
                                                 </div>
                                                 @if((!\App\Helper\CustomHelper::canView('', 'Institute Head')))
                                                 @if (!empty($participant))
-                                                <div">
+                                                <div>
                                                   <button id="{{$val->id}}" class="join btn">{{\App\Helper\CustomHelper::checkEventParticipant($participant,$val->id,auth()->id())}}</button>
                                               </div>
                                                 @else
@@ -350,6 +350,7 @@
 
 @endsection
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $(document).on('click','.join',function(){
     let fairId = $(this).attr('id');
@@ -363,12 +364,12 @@
       data: {'id': fairId},
       success: function(data){
         if(data == 400){
-          swal("Sorry!", "Please Login First!", "error");
+          Swal.fire("Sorry!", "Please Login First!", "error");
         }
         else{
           $( `#${fairId}`).text(data);
-          swal("Congrats!", "Your request send for approval!", "success");
-          console.log('get fair id');
+          Swal.fire("Congrats!", "Your request send for approval!", "success");
+        //   console.log('get fair id');
         }
         
       }

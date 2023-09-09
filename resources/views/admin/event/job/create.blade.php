@@ -90,7 +90,7 @@
               <form action="{{ route('admin.event.job.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Title</label>
                       <input type="text" name="title" placeholder="Title" autocomplete="off"
@@ -101,7 +101,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Place</label>
                       <input type="text" name="place" placeholder="Place" autocomplete="off"
@@ -134,7 +134,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  {{-- <div class="col-sm-6">
                     <div id="organizaion_attributes">
                       <div class="row child">
                         <div class="col-md-10">
@@ -157,8 +157,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  <div class="col-sm-4">
                     <div id="sponsors_attributes">
                       <div class="row child">
                         <div class="col-md-10">
@@ -182,7 +182,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  {{-- <div class="col-sm-6">
                     <div id="partner_attributes">
                       <div class="row child">
                         <div class="col-md-10">
@@ -200,14 +200,13 @@
                             <a class="btn btn-danger text-light hidden clear-file" id="clear-file" style="padding: 4px 2px; margin-right: 2px">
                               <i class="fa fa-trash-o"></i>
                             </a>
-                            {{--                            <a class="btn btn-secondary text-light add-pertners"><i class="fa fa-plus"></i></a>--}}
                             <a class="btn btn-secondary text-light add-pertners"><i class="fa fa-plus"></i></a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  {{-- <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">List Of Employers</label>
                       <select name="employers[]" class="select2 form-control @error('employers') is-invalid @enderror" multiple>
@@ -219,9 +218,9 @@
                       <strong class="text-danger">{{ $errors->first('employers') }}</strong>
                       @enderror
                     </div>
-                  </div>
+                  </div> --}}
 
-                  <div class="col-sm-6">
+                  {{-- <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Job Types</label>
                       <select name="job_type[]" class="select2 form-control @error('job_type') is-invalid @enderror" multiple>
@@ -233,8 +232,8 @@
                       <strong class="text-danger">{{ $errors->first('job_type') }}</strong>
                       @enderror
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  {{-- <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Post Types</label>
                       <select name="post_type[]" class="select2 form-control @error('post_type') is-invalid @enderror" multiple>
@@ -246,8 +245,8 @@
                       <strong class="text-danger">{{ $errors->first('post_type') }}</strong>
                       @enderror
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  {{-- <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Perticipants Criteria</label>
                       <select name="perticipant_criteria[]" class="select2 form-control @error('perticipant_criteria') is-invalid @enderror" multiple>
@@ -259,8 +258,8 @@
                       <strong class="text-danger">{{ $errors->first('perticipant_criteria') }}</strong>
                       @enderror
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  {{-- <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">No of Guest</label>
                       <input type="text" name="guest_no" placeholder="No of Guest" autocomplete="off"
@@ -270,24 +269,12 @@
                       <strong class="text-danger">{{ $errors->first('guest_no') }}</strong>
                       @enderror
                     </div>
-                  </div>
+                  </div> --}}
 
-                  {{--                  <div class="col-sm-6">--}}
-                  {{--                    <div class="form-group">--}}
-                  {{--                      <label class="control-label">Co-Organizer/Partner</label>--}}
-                  {{--                      <select name="pertners[]" class="select2 form-control @error('pertners[]') is-invalid @enderror" multiple>--}}
-                  {{--                        <option value="">Partner 1</option>--}}
-                  {{--                        <option value="">Partner 2</option>--}}
-                  {{--                        <option value="">Partner 3</option>--}}
-                  {{--                      </select>--}}
-                  {{--                      @error('ertners[]')--}}
-                  {{--                      <strong class="text-danger">{{ $errors->first('pertners[]') }}</strong>--}}
-                  {{--                      @enderror--}}
-                  {{--                    </div>--}}
-                  {{--                  </div>--}}
+                 
                   <div class="col-sm-12">
                     <div class="form-group">
-                      <label class="control-label">Event Details</label>
+                      <label class="control-label">Job Fair Details</label>
                       <textarea type="text" id="event_details" name="event_details" placeholder="Event Details" autocomplete="off"
                                 value="{{ old('event_details') }}"
                                 class="form-control @error('event_details') is-invalid @enderror"></textarea>
@@ -296,7 +283,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-12">
+                  {{-- <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Guest Details</label>
                       <textarea type="text" id="guest_details" name="guest_details" placeholder="Guest Details" autocomplete="off"
@@ -306,8 +293,8 @@
                       <strong class="text-danger">{{ $errors->first('guest_details') }}</strong>
                       @enderror
                     </div>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> --}}
+                  <div class="col-sm-12">
                     <div class="form-group" style="">
                       <label class="control-label">image (Upload)</label>
                       <input type="file" name="image"
