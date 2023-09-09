@@ -203,7 +203,7 @@ class AuthController extends Controller
       $rules['password'] = 'required|confirmed|string|min:' . User::$minimumPasswordLength;
       // $rules['semester'] = 'required|string';
       //      institute
-      $rules['institute_name'] = 'required|string|max:200|unique:' . with(new Institute)->getTable() . ',name';
+      $rules['institute_name'] = 'nullable|string|max:200|unique:' . with(new Institute)->getTable() . ',name';
       $rules['institute_name_bn'] = 'string|max:200|unique:' . with(new Institute)->getTable() . ',name_bn';
       $rules['code'] = 'required|min:5|max:7|unique:' . with(new Institute)->getTable() . ',code';
       $rules['institute_phone'] = 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new Institute)->getTable() . ',phone,';

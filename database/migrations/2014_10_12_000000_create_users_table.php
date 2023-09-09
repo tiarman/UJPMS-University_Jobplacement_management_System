@@ -39,7 +39,11 @@ return new class extends Migration
             $table->unsignedBigInteger('district_id')->nullable();
             $table->unsignedBigInteger('upazila_id')->nullable();
             $table->unsignedBigInteger('institute_id')->nullable();
+            $table->unsignedBigInteger('shift_id')->nullable();
+            $table->unsignedBigInteger('trade_technology_id')->nullable();
             $table->string('address')->nullable();
+            $table->string('board_roll')->nullable();
+            $table->string('running_board_roll')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -55,11 +55,15 @@
             <div class="container">
                 <div class="float-left">
                     <div class="phone">
-                        <i class="mdi mdi-phone-classic"></i> +1 800 123 45 67
+                        @if ($contact_no_1)
+                        <i class="mdi mdi-phone-classic"></i> +{{$contact_no_1->value ?? 0}}
+                        @endif
                     </div>
                     <div class="email">
                         <a href="#">
-                            <i class="mdi mdi-email"></i> Support@mail.com
+                            @if ($email)
+                            <i class="mdi mdi-email"></i> {{$email->value ?? 0}}
+                            @endif
                         </a>
                     </div>
                 </div>
@@ -192,12 +196,20 @@
             <div class="row">
                 <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                     <a href="javascript:void(0)"><img src="images/logo-light.png" height="20" alt=""></a>
-                    <p class="mt-4">At vero eos et accusamus et iusto odio dignissim os ducimus qui blanditiis praesentium</p>
+                    @if ($office_address)
+                    <p class="mt-4">{{$office_address->value ?? 0}}</p>
+                    @endif
                     <ul class="social-icon social list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
+                        @if ($facebook)
+                        <li class="list-inline-item"><a href="{{$facebook->value}}" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                        @endif
+                        @if ($twitter)
+                        <li class="list-inline-item"><a href="{{$twitter->value}}" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                        @endif
+                        @if ($linkedin)
+                        <li class="list-inline-item"><a href="{{$linkedin->value}}" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                        @endif
+                        {{--  <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>  --}}
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">

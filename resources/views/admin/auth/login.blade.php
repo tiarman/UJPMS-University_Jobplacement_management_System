@@ -11,7 +11,9 @@
     <div class="card-body">
       <div class="row">
         <div style="" class="col-12 text-center rounded"><a href="{{ route('home') }}" class="logo logo-admin">
-            <img src="{{ asset('assets/text-logo.png') }}" width="230px" alt="logo">
+          @if ($logo)
+            <img src="{{$logo->value ?? 0}}" width="230px" alt="logo">
+         @endif
             {{--  <h4 style="color:#54359D;">UJPMS Login</h4>  --}}
           </a></div>
       </div>

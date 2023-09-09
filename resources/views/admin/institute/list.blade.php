@@ -42,8 +42,8 @@
                     <th @class("text-center") >Name</th>
                     <th @class("text-center") >Head of Institute / Email</th>
                     <th @class("text-center") >Phone</th>
-                    <th @class("text-center")  width="50">Type</th>
-                    <th @class("text-center")  width="130">Data</th>
+                    {{--  <th @class("text-center")  width="50">Type</th>  --}}
+                    {{--  <th @class("text-center")  width="130">Data</th>  --}}
                     <th @class("text-center")  width="50">Status</th>
                     @if(\App\Helper\CustomHelper::canView('Manage Institute|Delete Institute', 'Super Admin'))
                       <th @class("text-center")  class="hidden-phone" width="70">Option</th>
@@ -63,9 +63,9 @@
                         <a href="mailto:{{ $val->instituteHead?->email }}">{{ $val->instituteHead?->email }}</a>
                       </td>
                       <td class="p-1"><a href="tel:{{ $val->phone }}">{{ $val->phone }}</a></td>
-                      <td class="p-1 text-capitalize text-red-600">{{ $val->type?->name }}</td>
+                      {{--  <td class="p-1 text-capitalize text-red-600">{{ $val->type?->name }}</td>  --}}
 
-                      <td class="p-1">
+                      {{--  <td class="p-1">  --}}
                         {{--  @if($val->idg)
                           <a href="{{ route('form.pdf', $val->idg->id) }}" class="btn btn-sm @if($val->idg->status == 'save') btn-success @else btn-primary @endif"> IDG </a>
                         @endif  --}}
@@ -75,7 +75,7 @@
                         {{--  @if($val->sc)
                           <a href="{{ route('eligibility.course.pdf', $val->sc->id) }}" class="btn btn-sm  @if($val->sc->status == 'save') btn-success @else btn-primary @endif"> SC </a>
                         @endif  --}}
-                      </td>
+                      {{--  </td>  --}}
 
                       @if(\App\Helper\CustomHelper::canView('Manage Institute', 'Super Admin'))
                         <td class="text-capitalize p-1" width="100">

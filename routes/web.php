@@ -58,6 +58,7 @@ use App\Http\Controllers\JobEventController;
 use App\Http\Controllers\GraduateController;
 use App\Http\Controllers\IndustryPostController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\SettingController;
 use App\Mail\AdminNotifyForUserEmail;
 use App\Mail\UserRegistraionData;
 use App\Models\AddPaymentInfo;
@@ -598,6 +599,15 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::delete('/destroy', [JobExperiencController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Job Experience')->name('destroy');
     Route::get('/list', [JobExperiencController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Job Experience')->name('list');
   });
+
+     #setting
+     Route::prefix('setting')->name('setting.')->group(function () {
+      Route::get('/create', [SettingController::class, 'create'])->name('create');
+      Route::get('/manage/{id}', [SettingController::class, 'manage'])->name('manage');
+      Route::post('/store', [SettingController::class, 'store'])->name('store');
+      Route::get('/list', [SettingController::class, 'index'])->name('list');
+      Route::delete('/destroy', [SettingController::class, 'destroy'])->name('destroy');
+    });
 
   #Institute Head
   Route::prefix('institute/member/')->name('institute.head.')->group(function () {

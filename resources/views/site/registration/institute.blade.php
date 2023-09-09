@@ -356,7 +356,7 @@
         </div>
         <div class="row mb-3">
           <div class="col-sm-12 text-center">
-            <button class="btn btn-success w-full text-center" type="submit">Submit</button>
+            <button style="background: #10264a; color: white" class="btn btn-register text-center w-100" type="submit">Register</button>
           </div>
         </div>
       </form>
