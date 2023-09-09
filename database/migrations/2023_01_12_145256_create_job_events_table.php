@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('place')->nullable();
             $table->string('start_date');
             $table->string('end_date');
-//            $table->string('sponsors');
+            $table->json('sponsors')->nullable();
 //            $table->string('partners');
 //            $table->string('employers');
 //            $table->string('job_type');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('event_details')->nullable();
             $table->string('guest_details')->nullable();
             $table->string('image', 2048)->nullable();
-          $table->string('status')->default(\App\Models\JobEvent::$statusArrays[0]);
+            $table->string('status')->default(\App\Models\JobEvent::$statusArrays[0]);
             $table->timestamps();
         });
     }

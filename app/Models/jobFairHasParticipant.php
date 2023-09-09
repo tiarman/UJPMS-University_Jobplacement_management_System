@@ -15,6 +15,7 @@ class jobFairHasParticipant extends Model
     protected $fillable = [
         'event_id',
         'participant_id',
+        'participant_role',
         'status'
     ];
 

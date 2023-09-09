@@ -836,11 +836,11 @@
             <li class="has_sub">
               <a class="waves-effect"><i>
                   <iconify-icon icon="ic:baseline-event"></iconify-icon>
-                </i><span>Event/Job Fair <span
+                </i><span>Job Fair <span
                     class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
               <ul class="list-unstyled">
-                    <li><a href="{{ route('admin.event.job.create') }}"> Create new</a></li>
-                    <li><a href="{{ route('admin.event.job.list') }}"> List of events</a></li>
+                    <li><a href="{{ route('admin.event.job.create') }}"> Create New</a></li>
+                    <li><a href="{{ route('admin.event.job.list') }}"> List of Job Fair</a></li>
               </ul>
             </li>
           @endif

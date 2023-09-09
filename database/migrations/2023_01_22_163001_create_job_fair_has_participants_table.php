@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('job_event_id');
             $table->unsignedBigInteger('participant_id');
+            $table->string('participant_role');
             $table->string('status');
             $table->timestamps();
         });

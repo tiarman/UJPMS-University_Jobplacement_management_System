@@ -153,7 +153,13 @@ class SiteController extends Controller
       $jobFairApply = new jobFairHasParticipant();
       $jobFairApply->job_event_id = $request->id;
       $jobFairApply->participant_id   = auth()->id();
+
+      // getting user role
+      $jobFairApply->participant_role = auth()->user()->roles[0]->name;
+    
+      // $jobFairApply->participant_id   = auth()->id();
       $jobFairApply->status   = jobFairHasParticipant::$status[0];
+      
       if ($jobFairApply->save()) {
         return json_encode("Applied");
       }
