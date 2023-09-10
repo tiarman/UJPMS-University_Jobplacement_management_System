@@ -274,6 +274,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::post('/update/job/post/status', [IndustryPostController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Industry|Institute Head|Manage Industry|Manage Industry')->name('update.job.post.status');
     Route::post('/update/job/applicant/status', [EmployerController::class, 'ajaxUpdatejobApplicantStatus'])->middleware('role_or_permission:Industry|Manage Industry|Manage Industry')->name('update.job.applicant.status');
     Route::post('/update/send-mail/status', [EmployerController::class, 'ajaxSendMail'])->middleware('role_or_permission:Industry|Manage Industry|Manage Industry')->name('send-mail');
+    Route::post('/update/job-fair/industry/status', [IndustryPostController::class, 'UpdateAjaxJobFairIndustryStatus'])->middleware('role_or_permission:Institute Head|Manage Job Fair Industry')->name('updateAjaxJobFairIndustryStatus');
   });
 
   // Event Module

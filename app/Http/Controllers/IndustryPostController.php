@@ -18,42 +18,43 @@ class IndustryPostController extends Controller
   {
 
     $role =  Auth::User()->roles()->first();
-      // check institute and industry for job post
-      if($role->name == 'Institute Head'){
-        $data['datas'] = IndustryPost::where('institute_id',auth()->user()->id)->orderby('id', 'desc')->get();
-      }
-      else{
-        $data['datas'] = IndustryPost::where('industry_id',auth()->user()->id)->orderby('id', 'desc')->get();
-      }
+    // check institute and industry for job post
+    if ($role->name == 'Institute Head') {
+      $data['datas'] = IndustryPost::where('institute_id', auth()->user()->id)->orderby('id', 'desc')->get();
+    } else {
+      $data['datas'] = IndustryPost::where('industry_id', auth()->user()->id)->orderby('id', 'desc')->get();
+    }
 
-    
+
     return view('admin.job.post.list', $data);
   }
 
   public function fairList()
   {
-    $data['datas'] = jobFairHasParticipant::with('jobEvent')->where('participant_id',auth()->id())->get();
+    $data['datas'] = jobFairHasParticipant::with('jobEvent')->where('participant_id', auth()->id())->get();
     // $data['datas'] = JobEvent::find(2)->jobFairHasParticipant;
     // return $data;
     return view('admin.Job.applied_fair_list', $data);
   }
 
-  public function fairAttendedIndustriesList(Request $request){
-    $data['industries'] = JobEvent::with('jobFairHasParticipant.participant')->where('id',$request->id)->get();
-    // return $data['industries'];
-    return view('admin.event.job.industry',$data);
+  public function fairAttendedIndustriesList(Request $request)
+  {
+    $data['industries'] = JobEvent::with('jobFairHasIndustryParticipant.participant')->where('id', $request->id)->get();
+
+    // return $data;
+    return view('admin.event.job.industry', $data);
   }
 
 
   public function create()
   {
     // $data['industry_posts'] = IndustryPost::where('industry_id', auth()->user()->id)->get();
-      $data['datas'] = Tag::orderby('id', 'desc')->get();
+    $data['datas'] = Tag::orderby('id', 'desc')->get();
 
-      $instituteId = auth()->user()->id;
+    $instituteId = auth()->user()->id;
 
-      //   $dataa = IndustryPost::where('institute_id', $instituteId)->where('industry_id', '<>', null)->get();
-      // return $dataa;
+    //   $dataa = IndustryPost::where('institute_id', $instituteId)->where('industry_id', '<>', null)->get();
+    // return $dataa;
 
     return view('admin.job.post.create', $data);
   }
@@ -75,7 +76,7 @@ class IndustryPostController extends Controller
 
   public function store(Request $request)
 
-  {     
+  {
     $message = '<strong>Congratulations!!!</strong> Post successfully ';
     $rules = [
       'job_title' => 'required|string',
@@ -93,8 +94,8 @@ class IndustryPostController extends Controller
       'job_context' => 'nullable|string',
       'location' => 'nullable|string',
       'company_name' => 'nullable|string',
-//        'technology'=> 'nullable|string',
-        'tag'=> 'nullable|string',
+      //        'technology'=> 'nullable|string',
+      'tag' => 'nullable|string',
     ];
     if ($request->has('id')) {
       $job_event = IndustryPost::find($request->id);
@@ -107,15 +108,14 @@ class IndustryPostController extends Controller
     try {
       $role =  Auth::User()->roles()->first();
       // check institute and industry for job post
-      if($role->name == 'Institute Head'){
+      if ($role->name == 'Institute Head') {
         $job_event->institute_id = auth()->user()->id;
-      }
-      else{
+      } else {
         $job_event->industry_id = auth()->user()->id;
       }
 
-      if ($request->has('job_event_id')){
-      $job_event->job_event_id = $request->job_event_id;
+      if ($request->has('job_event_id')) {
+        $job_event->job_event_id = $request->job_event_id;
       }
       $job_event->job_title = $request->job_title;
       $job_event->position = $request->position;
@@ -132,20 +132,19 @@ class IndustryPostController extends Controller
       $job_event->employment_status = $request->employment_status;
       $job_event->company_name = $request->company_name;
       $job_event->ntvqf_level = $request->ntvqf_level;
-//      $job_event->technology = $request->technology;
+      //      $job_event->technology = $request->technology;
       $job_event->tag = $request->tag;
       $job_event->status = IndustryPost::$statusArrays[0];
       // return $job_event;
       if ($job_event->save()) {
         return RedirectHelper::routeSuccess('admin.job.post.list', $message);
-//        return redirect()->back()->with($message);
+        //        return redirect()->back()->with($message);
       }
       return RedirectHelper::backWithInput();
     } catch (QueryException $e) {
       return $e;
       return RedirectHelper::backWithInputFromException();
     }
-
   }
 
   public function destroy(Request $request)
@@ -160,7 +159,8 @@ class IndustryPostController extends Controller
     }
   }
 
-  public function ajaxUpdateStatus(Request $request) {
+  public function ajaxUpdateStatus(Request $request)
+  {
     if ($request->isMethod("POST")) {
       $id = $request->post('id');
       $postStatus = $request->post('status');
@@ -170,5 +170,21 @@ class IndustryPostController extends Controller
         return "success";
       }
     }
+  }
+
+  public function updateAjaxJobFairIndustryStatus(Request $request)
+  {
+
+    if ($request->isMethod("POST")) {
+
+      $id           = $request->post('id');
+      $postStatus   = $request->post('status');
+      $status       = strtolower($postStatus);
+      $participant  = jobFairHasParticipant::find($id);
+
+      if ($participant->update(['status' => $status])) {
+        return "success";
+      }
     }
+  }
 }
