@@ -28,7 +28,10 @@ class JobEvent extends Model
   {
     return $this->hasOne(Institute::class, 'id', 'organizer_id');
   }
-  public function jobFairHasParticipant(){
-    return $this->hasMany(jobFairHasParticipant::class,'job_event_id','id');
+  public function jobFairHasIndustryParticipant(){
+    return $this->hasMany(jobFairHasParticipant::class,'job_event_id','id')->where('participant_role', 'Industry');
+  }
+  public function jobFairHasStudentParticipant(){
+    return $this->hasMany(jobFairHasParticipant::class,'job_event_id','id')->where('participant_role', 'Student');
   }
 }

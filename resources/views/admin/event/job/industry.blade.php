@@ -86,14 +86,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($industries[0]->jobFairHasParticipant as $item => $val)
+                @foreach ($industries[0]->jobFairHasIndustryParticipant as $item => $val)
                 <tr>
                   <td>{{$item+1}}</td>
                   <td>{{$val->participant->name_en}}</td>
                   <td>{{$val->participant->email}}</td>
                   <td>{{$val->participant->phone}}</td>
                   <td class="text-capitalize p-1 " width="200px" >
-                    {{-- <div class="onoffswitch">
+                   {{-- <div class="onoffswitch">
                       <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
                              @checked( \App\Models\User::$statusArrays[1])
                              data-id=""
@@ -102,24 +102,24 @@
                         <span class="onoffswitch-inner"></span>
                         <span class="onoffswitch-switch"></span>
                       </label>
-                    </div> --}}
+                    </div>  --}}
                     <div >
-                      <select name="status" @if (($val->status == 'accepted'))
-                        class="bg-success form-control"
+                      <select data-id="{{$val->id}}" name="status" @if (($val->status == 'accepted'))
+                        class="bg-success text-light form-control"
                       @elseif(($val->status == 'pending'))
-                      class="bg-warning form-control"
+                      class="bg-warning text-light form-control"
                       @else
-                      class="bg-danger form-control"
+                      class="bg-danger text-light form-control"
                       @endif  id="">
                         <option   @if ($val->status == 'accepted')
                           @selected(true) 
-                      @endif value="{{($val->status )}}">{{App\Models\jobFairHasParticipant::$status[1]}}</option>
+                      @endif value="{{($val->status )}}">{{ucfirst(App\Models\jobFairHasParticipant::$status[1])}}</option>
                         <option  @if ($val->status == 'pending')
                           @selected(true) 
-                        @endif value="{{($val->status )}}">{{App\Models\jobFairHasParticipant::$status[0]}}</option>
+                        @endif value="{{($val->status )}}">{{ucfirst(App\Models\jobFairHasParticipant::$status[0])}}</option>
                         <option @if ($val->status == 'reject')
                           @selected(true) 
-                        @endif value="{{($val->status )}}">{{App\Models\jobFairHasParticipant::$status[2]}}</option>
+                        @endif value="{{($val->status )}}">{{ucfirst(App\Models\jobFairHasParticipant::$status[2])}}</option>
                       </select>
                     </div>
                   </td>
@@ -159,7 +159,7 @@
           <h4>Delete Training</h4>
         </div>
         <div class="modal-body">
-          <strong>Are you sure to delete this training?</strong>
+          <strong>Are you sure to delete this Industry?</strong>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -202,24 +202,41 @@
       //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
 
-      {{--$(document).on('change', 'input[name="onoffswitch"]', function () {--}}
-      {{--  var status = 'inactive';--}}
-      {{--  var id = $(this).data('id')--}}
-      {{--  var isChecked = $(this).is(":checked");--}}
-      {{--  if (isChecked) {--}}
-      {{--    status = 'active';--}}
-      {{--  }--}}
-      {{--  $.ajax({--}}
-      {{--    url: "{{ route('admin.ajax.update.user.status') }}",--}}
-      {{--    method: "post",--}}
-      {{--    dataType: "html",--}}
-      {{--    data: {'id': id, 'status': status},--}}
-      {{--    success: function (data) {--}}
-      {{--      if (data === "success") {--}}
-      {{--      }--}}
-      {{--    }--}}
-      {{--  });--}}
-      {{--})--}}
+      $(document).on('change', 'select[name="status"]', function () {
+        let status = $('select[name="status"] :selected').text();
+        let id     = $(this).data('id');
+        // console.log('status', id);
+        
+        $.ajax({
+          url: "{{ route('admin.ajax.updateAjaxJobFairIndustryStatus') }}",
+          method: "post",
+          dataType: "html",
+          data: {'id': id, 'status': status},
+          success: function (data) {
+            if (data === "success") {
+              console.log('status', status);
+              if(status == 'Accepted'){
+                console.log('status2', status);
+                
+                $(this).removeClass('bg-warning');
+                $(this).removeClass('bg-danger');
+                $(this).addClass('bg-success');
+                
+              }
+              else if(status == 'Pending'){
+                $(this).removeClass('bg-success');
+                $(this).removeClass('bg-danger');
+                $(this).addClass('bg-warning');
+              }
+              else{
+                $(this).removeClass('bg-success');
+                $(this).removeClass('bg-warning');
+                $(this).addClass('bg-danger');
+              }
+            }
+          }
+        });
+      })
 
 
       $(document).on('click', '.yes-btn', function () {
