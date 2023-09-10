@@ -35,7 +35,7 @@
                     <a href="{{route('admin.event.job.participant.industry.list',request('id'))}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Industry List</a>
                   </div>
                   <div class="col-md-3">
-                    <a href="{{route('admin.organizer.applicant.list')}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Applicant List</a>
+                    <a href="{{route('admin.event.job.participant.student.list',request('id'))}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Student List</a>
                   </div>
                   <div class="col-md-3">
                     <a href="{{route('admin.organizer.guest.list')}}"class="btn  btn-lg btn-light mt-1" style="width: 100%">Guests</a>
@@ -45,6 +45,12 @@
                   </div>
                 @endif
                 @if(\App\Helper\CustomHelper::canView('', 'Industry'))
+                  <div class="col-md-3">
+{{--                    <a href="{{route('admin.job.post.create'),$job_event->id}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post Job</a>--}}
+                    <a href="{{route('admin.job.post.create.event',$job_event->id)}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post A Job</a>
+                  </div>
+                @endif
+                @if(\App\Helper\CustomHelper::canView('', 'Student'))
                   <div class="col-md-3">
 {{--                    <a href="{{route('admin.job.post.create'),$job_event->id}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post Job</a>--}}
                     <a href="{{route('admin.job.post.create.event',$job_event->id)}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post A Job</a>

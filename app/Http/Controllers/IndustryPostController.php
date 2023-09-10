@@ -34,7 +34,7 @@ class IndustryPostController extends Controller
     $data['datas'] = jobFairHasParticipant::with('jobEvent')->where('participant_id', auth()->id())->get();
     // $data['datas'] = JobEvent::find(2)->jobFairHasParticipant;
     // return $data;
-    return view('admin.Job.applied_fair_list', $data);
+    return view('admin.Job.industry_applied_fair_list', $data);
   }
 
   public function fairAttendedIndustriesList(Request $request)

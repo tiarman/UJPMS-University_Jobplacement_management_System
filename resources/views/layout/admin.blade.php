@@ -825,9 +825,15 @@
             </li>
           @endif
           @if(\App\Helper\CustomHelper::canView('', 'Industry'))
-            <li><a href="{{ route('admin.event.job.applied_fair_list') }}" class="waves-effect"><i>
+            <li><a href="{{ route('admin.event.job.industry.applied_fair_list') }}" class="waves-effect"><i>
                   <iconify-icon icon="icon-park-outline:two-dimensional-code-two"></iconify-icon>
-                </i> <span>Event Applied</span>
+                </i> <span>Applied Job Fair</span>
+              </a></li>
+          @endif
+          @if(\App\Helper\CustomHelper::canView('', 'Student'))
+            <li><a href="{{ route('admin.event.job.student.applied_fair_list') }}" class="waves-effect"><i>
+                  <iconify-icon icon="icon-park-outline:two-dimensional-code-two"></iconify-icon>
+                </i> <span>Applied Job Fair</span>
               </a></li>
           @endif
 
