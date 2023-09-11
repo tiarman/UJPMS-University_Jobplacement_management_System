@@ -6,6 +6,7 @@ use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\IndustryPost;
 use App\Models\JobEvent;
+use App\Models\jobFairHasParticipant;
 use App\Rules\MaxWordsRule;
 use App\Rules\MinWordsRule;
 use Illuminate\Database\QueryException;
@@ -34,6 +35,8 @@ class JobEventController extends Controller
   public function manage($id = null)
   {
     if ($data['job_event'] = JobEvent::find($id)) {
+      $data['status'] = jobFairHasParticipant::select('status')->where('job_event_id', $id)->where('participant_id', auth()->id())->first();
+      // return $data;
       return view('admin.event.job.manage', $data);
     }
     return RedirectHelper::routeWarning('admin.event.job.create', '<strong>Sorry!!!</strong> Job Event not found');
