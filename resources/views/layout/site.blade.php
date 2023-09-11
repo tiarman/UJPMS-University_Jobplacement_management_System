@@ -69,6 +69,7 @@
                 </div>
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
+                        
                         <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Benny Simpson</a></li>
                         <li class="list-inline-item">
                             <select id="select-lang" class="demo-default">

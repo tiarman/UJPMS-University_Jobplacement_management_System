@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController {
@@ -30,6 +31,7 @@ class Controller extends BaseController {
     $data['office_address'] = null;
     $data['about_practice'] = null;
 
+      
       $data['logo'] = Setting::where('key', Setting::$keyArray[0])->first();
       $data['contact_no_1'] = Setting::where('key', Setting::$keyArray[1])->first();
       $data['contact_no_2'] = Setting::where('key', Setting::$keyArray[2])->first();
@@ -52,6 +54,7 @@ class Controller extends BaseController {
     View::share('linkedin', $data['linkedin']);
     View::share('instagram', $data['instagram']);
     View::share('office_address', $data['office_address']);
+    // View::share('auth', $data['auth']);
     // View::share('office_address', $data['office_address']);
     // View::share('about_practice', $data['about_practice']);
   }

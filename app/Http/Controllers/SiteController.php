@@ -22,6 +22,7 @@ use App\Models\TrainingMember;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class SiteController extends Controller
@@ -140,6 +141,7 @@ class SiteController extends Controller
   public function home()
   {
     // $data['core'] = CoreModule::where('status', '=', CoreModule::$statusArrays[0])->get();
+    
     $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q) {
       $q->where('name', 'Student');
     })->get()->count();
@@ -150,7 +152,7 @@ class SiteController extends Controller
     $data['numberofjobs'] = IndustryPost::get()->count();
     $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->orderby('id', 'desc')->get();
     $data['reviews'] = SiteReview::get();
-    //  return $datas;
+    //  return $auth;
     return view('site.index', $data);
   }
 

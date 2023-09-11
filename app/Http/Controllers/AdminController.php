@@ -14,12 +14,13 @@ use App\Models\User;
 use App\Rules\MatchOldPasswordRule;
 use App\Rules\MinWordsRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller {
   public function logout() {
     \auth()->logout();
     \session()->flush();
-    return redirect()->route('login');
+    return redirect()->route('home');
   }
   public function api() {
     if (!\App\Helper\CustomHelper::canView('', 'Institute Head')){
@@ -39,6 +40,7 @@ class AdminController extends Controller {
     $data['complete'] = Training::withCount('members_count')->withCount('members')->where('end_date', '<=', $today)->with('institute', 'members', 'user')->where('institute_id', '=', auth()->user()->institute_id)->get();
     // $data['name'] = User::with('institute')->where('id', auth()->id())->get();
     //  $data['name'][0]->institute->name;
+    
     return view('admin.index', $data);
   }
 
