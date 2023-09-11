@@ -90,9 +90,13 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-                <a href="index.html" class="logo">
-                    <img src="images/logo-light.png" alt="" class="logo-light" height="18" />
-                    <img src="images/logo-dark.png" alt="" class="logo-dark" height="18" />
+                <a href="{{route('home')}}" class="logo">
+                    @if ($logo)
+                    <img src="{{$logo->value ?? 0}}" alt="" class="logo-light" height="50" />
+                    @endif
+                    @if ($logo)
+                    <img src="{{$logo->value ?? 0}}" alt="" class="logo-dark" height="50" />
+                    @endif
                 </a>
             </div>
             <div class="buy-button">
@@ -135,8 +139,8 @@
                     <li class="has-submenu">
                         <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
                         <ul class="submenu">
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="services.html">Services</a></li>
+                            <li><a href="{{route('about_us')}}">About us</a></li>
+                            {{--  <li><a href="services.html">Services</a></li>  --}}
                             {{--  <li><a href="team.html">Team</a></li>
                             <li><a href="faq.html">Faqs</a></li>
                             <li><a href="pricing.html">Pricing plans</a></li>
@@ -177,7 +181,7 @@
                         <a href="{{ route('jobfair.list') }}">Job Fair List</a>
                     </li>
                     <li>
-                        <a href="contact.html">contact</a>
+                        <a href="{{route('contact_us')}}">contact</a>
                     </li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
@@ -207,7 +211,7 @@
                         <li class="list-inline-item"><a href="{{$twitter->value}}" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
                         @endif
                         @if ($linkedin)
-                        <li class="list-inline-item"><a href="{{$linkedin->value}}" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="{{$linkedin->value}}" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
                         @endif
                         {{--  <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>  --}}
                     </ul>
@@ -215,23 +219,23 @@
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title">Company</p>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> About Us</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Media & Press</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Career</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Blog</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Pricing</a></li>
+                        <li><a href="{{route('about_us')}}" class="text-foot"><i class="mdi mdi-chevron-right"></i> About Us</a></li>
+                        <li><a href="{{route('contact_us')}}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="{{route('jobpost')}}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Job List</a></li>
+                        {{--  <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Blog</a></li>
+                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Pricing</a></li>  --}}
                         
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title">Resources</p>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Support</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="{{route('graduate.list')}}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Students</a></li>
+                        <li><a href="{{ route('jobfair.list') }}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Job Fair</a></li>
                         <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Terms</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Accounting </a></li>
+                        {{--  <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Accounting </a></li>
                         <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Billing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> F.A.Q.</a></li>
+                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> F.A.Q.</a></li>  --}}
                     </ul>
                 </div>
 

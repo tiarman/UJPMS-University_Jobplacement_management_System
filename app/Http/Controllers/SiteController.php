@@ -37,6 +37,27 @@ class SiteController extends Controller
   }
 
 
+  public function about_us()
+  {
+    $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q) {
+      $q->where('name', 'Student');
+    })->get()->count();
+    $data['numberofindustries'] = User::with('roles')->whereHas('roles', function ($q) {
+      $q->where('name', 'Industry');
+    })->get()->count();
+    $data['numberoffair'] = JobEvent::get()->count();
+    $data['numberofjobs'] = IndustryPost::get()->count();
+    $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->orderby('id', 'desc')->get();
+
+    return view('site.about_us', $data);
+  }
+  public function contact_us()
+  {
+   
+    return view('site.contact_us');
+  }
+
+
   // Training list
   public function indexTrainingList(Request $request)
   {

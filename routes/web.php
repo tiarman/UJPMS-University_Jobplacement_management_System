@@ -85,6 +85,9 @@ Route::get('/testroute', function () {
   Mail::to('birato4456@iucake.com')->cc('birato4456@iucake.com')->send(new AdminNotifyForUserEmail($name));
 });
 
+Route::get('/about_us', [SiteController::class, 'about_us'])->name('about_us');
+Route::get('/contact_us', [SiteController::class, 'contact_us'])->name('contact_us');
+
 
 Route::get('/test', function () {
   //  return \App\Models\User::with('permissions', 'roles')->find(auth()->id());
