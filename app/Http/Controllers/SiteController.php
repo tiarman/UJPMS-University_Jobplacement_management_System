@@ -192,6 +192,7 @@ class SiteController extends Controller
   public function jobEvent($id = null)
   {
     $data['job_event'] = JobEvent::with('institute')->find($id);
+    // return $data;
     return view('site.job.jobFairDetails', $data);
   }
 
@@ -209,7 +210,7 @@ class SiteController extends Controller
       $instituteId = auth()->user()->institute_id;
 
       $data['institute_post']   = IndustryPost::where('institute_id', $instituteId)->get();
-      $data['industry_post']    = IndustryPost::where('industry_id', '<>', null)->get();
+      $data['industry_post']    = IndustryPost::where('industry_id', '<>', null)->where('job_event_id', null)->get();
     } else {
       $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->get();
     }

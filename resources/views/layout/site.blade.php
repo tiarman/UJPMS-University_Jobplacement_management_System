@@ -55,15 +55,15 @@
             <div class="container">
                 <div class="float-left">
                     <div class="phone">
-                        @if ($contact_no_1)
+                        @isset ($contact_no_1)
                         <i class="mdi mdi-phone-classic"></i> +{{$contact_no_1->value ?? 0}}
-                        @endif
+                        @endisset
                     </div>
                     <div class="email">
                         <a href="#">
-                            @if ($email)
+                            @isset ($email)
                             <i class="mdi mdi-email"></i> {{$email->value ?? 0}}
-                            @endif
+                            @endisset
                         </a>
                     </div>
                 </div>
@@ -91,12 +91,12 @@
             <!-- Logo container-->
             <div>
                 <a href="{{route('home')}}" class="logo">
-                    @if ($logo)
+                    @isset ($logo)
                     <img src="{{$logo->value ?? 0}}" alt="" class="logo-light" height="50" />
-                    @endif
-                    @if ($logo)
+                    @endisset
+                    @isset ($logo)
                     <img src="{{$logo->value ?? 0}}" alt="" class="logo-dark" height="50" />
-                    @endif
+                    @endisset
                 </a>
             </div>
             <div class="buy-button">
@@ -200,19 +200,19 @@
             <div class="row">
                 <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                     <a href="javascript:void(0)"><img src="images/logo-light.png" height="20" alt=""></a>
-                    @if ($office_address)
+                    @isset ($office_address)
                     <p class="mt-4">{{$office_address->value ?? 0}}</p>
-                    @endif
+                    @endisset
                     <ul class="social-icon social list-inline mb-0">
-                        @if ($facebook)
+                        @isset ($facebook)
                         <li class="list-inline-item"><a href="{{$facebook->value}}" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                        @endif
-                        @if ($twitter)
+                        @endisset
+                        @isset ($twitter)
                         <li class="list-inline-item"><a href="{{$twitter->value}}" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
-                        @endif
-                        @if ($linkedin)
+                        @endisset
+                        @isset ($linkedin)
                         <li class="list-inline-item"><a href="{{$linkedin->value}}" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
-                        @endif
+                        @endisset
                         {{--  <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>  --}}
                     </ul>
                 </div>

@@ -504,6 +504,26 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     });
   });
 
+   # Job fair - institute and industry , Job Fair - Industry Activity
+   Route::prefix('job')->name('job.')->group(function () {
+    Route::prefix('/post')->name('post.')->group(function () {
+      //      Route::get('/create', function () {return view('admin.job.post.create');})->name('create');
+      Route::get('/create', [IndustryPostController::class, 'create'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create');
+      Route::get('/create/{id}', [IndustryPostController::class, 'createJobFairJobPost'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create.jobFairPost');
+      Route::post('/store', [IndustryPostController::class, 'store'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post|Manage Industry Post')->name('store');
+      Route::get('/manage/{id}', [IndustryPostController::class, 'manage'])->middleware('role_or_permission:Industry|Institute Head|Manage Industry Post')->name('manage');
+      Route::delete('/destroy', [IndustryPostController::class, 'destroy'])->middleware('role_or_permission:Industry|Institute Head|Delete Industry Post')->name('destroy');
+      Route::get('/list', [IndustryPostController::class, 'index'])->middleware('role_or_permission:Industry|Institute Head|List Of Industry Post')->name('list');
+      Route::get('/jobfair-job-list/{id}', [IndustryPostController::class, 'jobfairJobList'])->middleware('role_or_permission:Industry|Institute Head|List Of Industry Post')->name('jobfair.job.list');
+
+      //      Route::get('/list', function () {return view('admin.event.stall.list');})->name('list');
+    });
+    Route::prefix('/application')->name('application')->group(function () {
+      Route::get('/list', function () {
+        return view('admin.Job.application.list');
+      })->name('list');
+    });
+  });
 
   #District
   Route::prefix('district')->name('district.')->group(function () {
@@ -771,25 +791,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
         Route::get('/list', [ReviewAdminAll::class, 'index'])->middleware('role_or_permission:Super Admin|Industry|List of SiteReview')->name('list');
     });
   
-  #Job Event
-  Route::prefix('job')->name('job.')->group(function () {
-    Route::prefix('/post')->name('post.')->group(function () {
-      //      Route::get('/create', function () {return view('admin.job.post.create');})->name('create');
-      Route::get('/create', [IndustryPostController::class, 'create'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create');
-      Route::get('/create/{id}', [IndustryPostController::class, 'createEventPost'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create.event');
-      Route::post('/store', [IndustryPostController::class, 'store'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post|Manage Industry Post')->name('store');
-      Route::get('/manage/{id}', [IndustryPostController::class, 'manage'])->middleware('role_or_permission:Industry|Institute Head|Manage Industry Post')->name('manage');
-      Route::delete('/destroy', [IndustryPostController::class, 'destroy'])->middleware('role_or_permission:Industry|Institute Head|Delete Industry Post')->name('destroy');
-      Route::get('/list', [IndustryPostController::class, 'index'])->middleware('role_or_permission:Industry|Institute Head|List Of Industry Post')->name('list');
-
-      //      Route::get('/list', function () {return view('admin.event.stall.list');})->name('list');
-    });
-    Route::prefix('/application')->name('application')->group(function () {
-      Route::get('/list', function () {
-        return view('admin.Job.application.list');
-      })->name('list');
-    });
-  });
 
   Route::prefix('graduate')->name('graduate.')->group(function () {
     Route::prefix('/job')->name('job.')->group(function () {

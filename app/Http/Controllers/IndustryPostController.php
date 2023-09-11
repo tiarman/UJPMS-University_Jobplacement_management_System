@@ -16,17 +16,23 @@ class IndustryPostController extends Controller
 {
   public function index()
   {
-
     $role =  Auth::User()->roles()->first();
     // check institute and industry for job post
     if ($role->name == 'Institute Head') {
       $data['datas'] = IndustryPost::where('institute_id', auth()->user()->id)->orderby('id', 'desc')->get();
     } else {
-      $data['datas'] = IndustryPost::where('industry_id', auth()->user()->id)->orderby('id', 'desc')->get();
+      $data['datas'] = IndustryPost::where('industry_id', auth()->user()->id)->where('job_event_id', null)->orderby('id', 'desc')->get();
     }
 
 
     return view('admin.job.post.list', $data);
+  }
+
+  public function jobfairJobList($jobFairId=null)
+  {
+    $data['datas'] = IndustryPost::where('job_event_id', $jobFairId)->orderby('id', 'desc')->get();
+  //  return $data;
+    return view('admin.job.post.job_fair_job_list', $data);
   }
 
   public function fairList()
@@ -59,10 +65,11 @@ class IndustryPostController extends Controller
     return view('admin.job.post.create', $data);
   }
 
-  public function createEventPost($id = null)
+  public function createJobFairJobPost($id = null)
   {
     $data['event_id'] = $id;
     $data['industry_posts'] = IndustryPost::where('industry_id', auth()->user()->id)->get();
+    $data['datas'] = Tag::orderby('id', 'desc')->get();
     return view('admin.job.post.create', $data);
   }
 
@@ -137,8 +144,10 @@ class IndustryPostController extends Controller
       $job_event->status = IndustryPost::$statusArrays[0];
       // return $job_event;
       if ($job_event->save()) {
+        if (isset($request->job_event_id)) {
+          return RedirectHelper::routeSuccessWithParams('admin.job.post.jobfair.job.list', $message, [$request->job_event_id]);
+        }
         return RedirectHelper::routeSuccess('admin.job.post.list', $message);
-        //        return redirect()->back()->with($message);
       }
       return RedirectHelper::backWithInput();
     } catch (QueryException $e) {

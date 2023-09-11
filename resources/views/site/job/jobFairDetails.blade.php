@@ -75,7 +75,7 @@
                       </div>
                       <div class="col-md-6">
                         <div >
-                          <strong >Organizer : {{ $job_event->institute->name ?? ''}}</strong><br>
+                          <strong >Organizer : {{ $job_event->institute->name_en ?? ''}}</strong><br>
                           <strong>Start at :{{ $job_event->start_date ?? ''}} </strong><br>
                           <strong>End at : {{ $job_event->end_date ?? ''}}</strong><br>
                           <strong>Institute Phone : {{ $job_event->institute->phone ?? ''}}</strong><br>
