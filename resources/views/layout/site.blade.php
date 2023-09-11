@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UJPMS - University Jobplacement Management System</title>
+    <title>UniJobs - University Jobplacement Management System</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Themesdesign" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="shortcut icon" href="{{asset('assets/frontend/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('favicon.png')}}">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}" type="text/css">

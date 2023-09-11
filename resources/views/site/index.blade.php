@@ -120,63 +120,26 @@
                         <div class="title-heading text-center text-white">
                             <h6 class="small-title text-uppercase text-light mb-3">Find jobs, create trackable resumes and enrich your applications.</h6>
                             <h1 class="heading font-weight-bold mb-4">The Easiest Way to Get Your New Job</h1>
+                            <a href="{{route('login')}}" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Login</a>
                         </div>
                     </div>
                 </div>
-                <div class="home-form-position">
+                {{--  <div class="home-form-position">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="home-registration-form p-4 mb-3">
                                 <form class="registration-form">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="registration-form-box">
-                                                <i class="fa fa-briefcase"></i>
-                                                <input type="text" id="exampleInputName1" class="form-control rounded registration-input-box" placeholder="Job keybords...">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="registration-form-box">
-                                                <i class="fa fa-location-arrow"></i>
-                                                <select id="select-country" class="demo-default">
-                                                    <option value="">Location</option>
-                                                    <option value="AF">Afghanistan</option>
-                                                    <option value="AX">&Aring;land Islands</option>
-                                                    <option value="AL">Albania</option>
-                                                    <option value="DZ">Algeria</option>
-                                                    <option value="AS">American Samoa</option>
-                                                    <option value="AD">Andorra</option>
-                                                    <option value="AO">Angola</option>
-                                                    <option value="AI">Anguilla</option>
-                                                    <option value="AQ">Antarctica</option>
-                                                    <option value="AG">Antigua
-                                                    <option value="ZW">Zimbabwe</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="registration-form-box">
-                                                <i class="fa fa-list-alt"></i>
-                                                <select id="select-category" class="demo-default">
-                                                    <option value="">Categories...</option>
-                                                    <option value="4">Accounting</option>
-                                                    <option value="1">IT & Software</option>
-                                                    <option value="3">Marketing</option>
-                                                    <option value="5">Banking</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
+                                    <div class="row" style="justify-content: center;">
                                             <div class="registration-form-box">
                                                 <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary btn-block" value="Submit">
                                             </div>
-                                        </div>
+                                       
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>  --}}
             </div>
         </div>
     </div>
@@ -1266,47 +1229,26 @@
         <div class="row pt-4">
             <div class="col-lg-12">
                 <div id="owl-testi" class="owl-carousel owl-theme">
+
+                    @foreach ($reviews as $val )
                     <div class="item testi-box rounded p-4 mr-3 ml-2 mb-4 bg-light position-relative">
-                        <p class="text-muted mb-5">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consecteturqui adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam</p>
+                        <p class="text-muted mb-5">{{$val->comment ?? ""}}</p>
                         <div class="clearfix">
                             <div class="testi-img float-left mr-3">
-                                <img src="{{asset('assets/frontend/images/testi/img-1.png')}}" height="64" alt="" class="rounded-circle shadow">
+                                <img src="{{asset($val->image)}}" height="64" width="64" alt="" class="rounded-circle shadow">
                             </div>
-                            <h5 class="f-18 pt-1">Kevin Stewart</h5>
-                            <p class="text-muted mb-0">Web Designer at xyz Company</p>
+                            <h5 class="f-18 pt-1">{{$val->name ?? ""}}</h5>
+                            <p class="text-muted mb-0">{{$val->designation ?? ""}}</p>
                             <div class="testi-icon">
                                 <i class="mdi mdi-format-quote-open display-2"></i>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="item testi-box rounded p-4 mr-3 ml-2 bg-light position-relative">
-                        <p class="text-muted mb-5">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-                        <div class="clearfix">
-                            <div class="testi-img float-left mr-3">
-                                <img src="{{asset('assets/frontend/images/testi/img-2.png')}}" height="64" alt="" class="rounded-circle shadow">
-                            </div>
-                            <h5 class="f-18 pt-1">Charles Garrett</h5>
-                            <p class="text-muted mb-0">Marketing manager at abc Company</p>
-                            <div class="testi-icon">
-                                <i class="mdi mdi-format-quote-open display-2"></i>
-                            </div>
-                        </div>
-                    </div>
+                    
 
-                    <div class="item testi-box rounded p-4 mr-3 ml-2 bg-light position-relative">
-                        <p class="text-muted mb-5">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consecteturqui adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam</p>
-                        <div class="clearfix">
-                            <div class="testi-img float-left mr-3">
-                                <img src="{{asset('assets/frontend/images/testi/img-3.png')}}" height="64" alt="" class="rounded-circle shadow">
-                            </div>
-                            <h5 class="f-18 pt-1">Perry Martinez</h5>
-                            <p class="text-muted mb-0">Marketing manager at abc Company</p>
-                            <div class="testi-icon">
-                                <i class="mdi mdi-format-quote-open display-2"></i>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
 
             </div>
@@ -1349,7 +1291,7 @@
 
 
 
-<!-- subscribe start -->
+{{--  <!-- subscribe start -->
 <section class="section">
     <div class="container">
         <div class="row">
@@ -1375,7 +1317,7 @@
         </div>
     </div>
 </section>
-<!-- subscribe end -->
+<!-- subscribe end -->  --}}
 @endsection
 @section('script')
 @endsection

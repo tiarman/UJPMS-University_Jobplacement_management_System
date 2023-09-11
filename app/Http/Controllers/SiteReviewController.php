@@ -62,9 +62,9 @@ class SiteReviewController extends Controller
         $message = '<strong>Congratulations!!!</strong> SiteReview successfully';
         $rules = [
             'user_id' => 'nullable',
-            'name' => 'nullable|string|max:100',
-            'designation' => 'nullable|string|max:50',
-            'comment' => 'nullable|string|max:250',
+            'name' => 'required|string|max:70',
+            'designation' => 'required|string|max:70',
+            'comment' => 'required|string|max:177',
             'images' => 'nullable|string',
             // 'status' = ['required|string', Rule::in(\App\Models\SiteReview::$statusArrays)],
         ];

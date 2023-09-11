@@ -80,7 +80,7 @@
                     <div class="row">
                       <div class="col-sm-12">
                           <div class="form-group">
-                              <label class="control-label">Comment</label>
+                            <label class="control-label">Comments<span class="text-danger">* Max 177 characters</span></label>
                               <textarea name="comment" class="form-control @error('comment') is-invalid @enderror" rows="3">{{ old('comment') }}</textarea>
                               @error('comment')
                               <strong class="text-danger">{{ $errors->first('comment') }}</strong>

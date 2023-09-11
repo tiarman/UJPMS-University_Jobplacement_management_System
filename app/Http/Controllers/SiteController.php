@@ -15,6 +15,7 @@ use App\Models\JobEvent;
 use App\Models\jobFairHasParticipant;
 use App\Models\Notification;
 use App\Models\PostHasStudent;
+use App\Models\SiteReview;
 use App\Models\Training;
 use App\Models\TrainingFile;
 use App\Models\TrainingMember;
@@ -148,6 +149,7 @@ class SiteController extends Controller
     $data['numberoffair'] = JobEvent::get()->count();
     $data['numberofjobs'] = IndustryPost::get()->count();
     $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->orderby('id', 'desc')->get();
+    $data['reviews'] = SiteReview::get();
     //  return $datas;
     return view('site.index', $data);
   }

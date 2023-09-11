@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <title>{{ env('APP_NAME') }} | JPMS</title>
+  <title>{{ env('APP_NAME') }}</title>
 
   <meta content="Native Institute Management Software" name="description"/>
   <meta content="Raihan Afroz; Saidul Islam; Dipta Day; Arif Hosen; Towhidul Islam;"
