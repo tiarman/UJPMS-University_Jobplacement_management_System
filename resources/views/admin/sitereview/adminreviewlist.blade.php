@@ -13,7 +13,7 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">List of Users</h2>
+              <h2 class="panel-title">List of Reviews</h2>
             </header>
             <div class="panel-body">
               @if(session()->has('status'))

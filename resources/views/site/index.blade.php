@@ -120,7 +120,7 @@
                         <div class="title-heading text-center text-white">
                             <h6 class="small-title text-uppercase text-light mb-3">Find jobs, create trackable resumes and enrich your applications.</h6>
                             <h1 class="heading font-weight-bold mb-4">The Easiest Way to Get Your New Job</h1>
-                            <a href="{{route('login')}}" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Login</a>
+                            <a href="{{route('jobpost')}}" class="btn btn-primary">Explore Now</a>
                         </div>
                     </div>
                 </div>
