@@ -25,7 +25,7 @@
           margin-right: auto;
           width: 30%;
       }
-      img {
+      .imginfo {
           max-width: 100%;
           height: auto;
       }
@@ -79,7 +79,7 @@
                     <div class="row mb-4" >
                       <div class="col-md-6">
                         <div class="mo-mb-2 center">
-                          <img src="{{ asset($graduate->image ?? 'assets/placeholder.png') }}" alt=""
+                          <img class="imginfo" src="{{ asset($graduate->image ?? 'assets/placeholder.png') }}" alt=""
                                class="img-fluid mx-auto d-block">
                         </div>
                       </div>
@@ -101,7 +101,7 @@
                       <div class="col-md-12">
                         <div class="row">
                           <div class="col-md-6" style="border: #002752;">
-                            <h5 style="background-color: #46b2e554"> Personal Info</h5>
+                            <h5 style="background-color: #46b2e554; padding: 5px"> Personal Info</h5>
                             <strong>Father Name : {{ $graduate->father_name ?? ''}}</strong><br>
                             <strong>Mother Name : {{ $graduate->mother_name ?? ''}}</strong><br>
                             <strong>Gender : {{ $graduate->gender ?? ''}}</strong><br>
@@ -110,12 +110,13 @@
                             <strong>Religion : {{ $graduate->religion ?? ''}}</strong><br>
                           </div>
                           <div class="col-md-6" style="border: #002752;">
-                            <h5 style="background-color: #46b2e554"> Educational/Professional Info</h5>
+                            <h5 style="background-color: #46b2e554; padding: 5px"> Educational/Professional Info</h5>
 
-                            <strong>Institute : {{ $graduate->institute?->name ?? ''}}</strong><br>
+                            <strong>Institute : {{ $institute_info->name_en ?? ''}}</strong><br>
                             <strong>Passing Year : {{ $graduate?->passing_year ?? '2022'}}</strong><br>
                             <strong>Trade/Technology/Department : {{ $graduate->trade_technology ?? ''}}</strong><br>
-                            <strong>Board Roll : {{ $graduate->board_roll ?? ''}}</strong><br>
+                            <strong>Student ID : {{ $graduate->running_board_roll ?? ''}}</strong><br>
+                            <strong>Experience : {{ $graduate->experience_year ?? ''}} Years</strong><br>
                             <strong>Employment Company : {{ $graduate->employing_company ?? ''}}</strong><br>
                             <strong>Designation: {{ $graduate->designation ?? ''}}</strong><br>
                             <strong>Employment Status : {{ $graduate->employment_status ?? ''}}</strong><br>
@@ -123,6 +124,18 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="row mt-5 mb-4">
+                      <div class="col-md-6">
+                        <h5 style="background-color: #46b2e554; padding: 5px"> Skills</h5>
+                      <div class="col-md-12">
+                        @if ($graduate)
+                        <strong>{{ $graduate->skills_set ?? ''}}</strong><br>                  
+                        @endif
+                        
+                      </div>
+                      </div>
+                      
                     </div>
                     {{--                    <h4 class="">Job Fair title</h4>--}}
 
@@ -134,9 +147,10 @@
                     </div>
                   </div>
                 </div>
-
+                
               </div>
             </section>
+            
           </div>
         </div>
       </div>

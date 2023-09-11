@@ -240,10 +240,12 @@ class SiteController extends Controller
   }
   public function graduateInfo($id = null)
   {
+    
     if ($data['graduate'] = User::with('roles')->whereHas('roles', function ($q) {
-      $q->where('name', 'Student');
-    })->where('status', User::$statusArrays[1])->find($id)) {
-      //      return $data;
+      $q->where('name', 'Student');})->where('status', User::$statusArrays[1])->find($id)) {
+        $inst = $data['graduate']->institute_id;
+        $data['institute_info'] = User::find($inst);
+          //  return $data;
       return view('site.graduateInfo', $data);
     }
     return RedirectHelper::backWithWarning('<strong>Sorry!!! </strong> Graduate Info not found.');

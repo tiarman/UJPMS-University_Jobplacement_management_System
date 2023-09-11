@@ -68,9 +68,10 @@ class AuthController extends Controller
         'year' => 'nullable|string',
         's_session' => 'nullable|string',
         'student_id' => 'nullable|string|unique:' . with(new User)->getTable() . ',student_id,',
-        'running_board_roll' => 'nullable|string|unique:' . with(new User)->getTable() . ',running_board_roll,',
+        'running_board_roll' => 'nullable|regex:/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]*$/|unique:' . with(new User)->getTable() . ',running_board_roll,',
         'admission_year' => 'nullable|string',
         'nid' => 'nullable|string',
+        'employment_status' => 'nullable|string',
         'birth_certificate' => 'nullable|string|unique:' . with(new User)->getTable() . ',birth_certificate,',
 
         'name_en' => 'nullable|string',
@@ -107,6 +108,8 @@ class AuthController extends Controller
         $user->birth_certificate    = $request->birth_certificate;
         $user->name_en              = $request->name_en;
         $user->name_bn              = $request->name_bn;
+        $user->employment_status    = $request->employment_status;
+        $user->running_board_roll    = $request->running_board_roll;
         $user->username             = $request->username;
 
         $user->email                = $request->email;

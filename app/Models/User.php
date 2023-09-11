@@ -70,6 +70,8 @@ class User extends Authenticatable implements MustVerifyEmail
     'office',
     'employment_status',
     'employing_company',
+    'skills_set',
+    'experience_year',
     'cv',
 
   ];

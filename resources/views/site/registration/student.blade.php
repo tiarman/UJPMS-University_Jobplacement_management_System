@@ -191,14 +191,14 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="student_id">Student ID<span class="text-danger">*</span></label>
-                            <input type="text" name="student_id" id="student_id" placeholder="Enter Your SSC Board Roll"
+                            <label for="running_board_roll">Student ID<span class="text-danger">*</span></label>
+                            <input type="text" name="running_board_roll" id="running_board_roll" placeholder="Student id"
                                 autocomplete="off"
-                                class="form-control select-or-disable @error('student_id') is-invalid @enderror"
-                                value="{{ old('student_id') }}">
+                                class="form-control select-or-disable @error('running_board_roll') is-invalid @enderror"
+                                value="{{ old('running_board_roll') }}">
                             <span class="spin"></span>
-                            @error('student_id')
-                                <strong class="text-danger">{{ $errors->first('student_id') }}</strong>
+                            @error('running_board_roll')
+                                <strong class="text-danger">{{ $errors->first('running_board_roll') }}</strong>
                             @enderror
                         </div>
                     </div>

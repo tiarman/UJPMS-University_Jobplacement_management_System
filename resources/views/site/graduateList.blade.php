@@ -26,7 +26,7 @@
           margin-right: auto;
           width: 50%;
       }
-      img {
+      .imgpr {
           max-width: 100%;
           height: auto;
       }
@@ -84,7 +84,8 @@
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Employment Status</th>
-                        <th>Address</th>
+                        <th>Expacted Salary</th>
+                        <th>CV</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -92,14 +93,16 @@
                       @foreach($graduates as $val)
                         <tr>
                           <td class="product-list-img">
-                            <img src="{{ asset($val->image ?? 'assets/placeholder.png') }}" class="img-fluid" alt="tbl" style="">
+                            <img class="imgpr" src="{{ asset($val->image ?? 'assets/placeholder.png') }}" class="img-fluid" alt="tbl" style="">
                           </td>
                           <td>
                             <h6 class="mt-0 m-b-5">{{ $val->name_en }}</h6>
                           </td>
                           <td>{{ Ucfirst($val->gender)  }}</td>
                           <td>{{ Ucfirst($val->employment_status) }}</td>
-                          <td>{{ $val->address }}</td>
+                          <td>{{ Ucfirst($val->expected_salary) }} ৳</td>
+                          <td><a href="{{ asset($val->cv) }}"><i class="fa fa-download"></i>Download</a></td>
+                          {{--  <td>{{ $val->address }}</td>  --}}
                           <td>
                             <a href="{{ route('graduate.Info',$val->id) }}" class="btn btn-info btn-sm">Profile</a>
                           </td>

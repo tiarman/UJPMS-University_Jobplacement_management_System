@@ -70,6 +70,21 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="row">
+
+                      <div class="col-md-12 mb-3 text-center">
+                        <h1 style="font-weight: 600; font-size: 25px; color: #5b175b">{{$institute->name_en ?? ""}}</h1>
+                      </div>
+                      {{--  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="control-label">Full name [English]<span class="text-danger">*</span></label>
+                          <input type="text" name="name_en" placeholder="Full name in english" value="{{ old('institute_id', $institute->name_en) }}"
+                                 class="form-control @error('name_en') is-invalid @enderror">
+                          @error('name_en')
+                          <strong class="text-danger">{{ $errors->first('name_en') }}</strong>
+                          @enderror
+                        </div>
+                      </div>  --}}
+
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="control-label">Full name [English]<span class="text-danger">*</span></label>
@@ -80,6 +95,10 @@
                           @enderror
                         </div>
                       </div>
+
+                     
+
+
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="phone">Phone <span class="text-danger">*</span></label>
@@ -202,12 +221,12 @@
 
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="board_roll">Board Roll<span class="text-danger">*</span></label>
-                      <input type="text" name="board_roll" id="board_roll" placeholder="Enter Your Fath er Name" autocomplete="off"
-                             class="form-control select-or-disable @error('board_roll') is-invalid @enderror" value="{{ old('board_roll',auth()->user()->board_roll) }}">
+                      <label for="expected_salary">Expected Salary<span class="text-danger">*</span></label>
+                      <input type="number" name="expected_salary" id="expected_salary" placeholder="Ex. 30000" autocomplete="off"
+                             class="form-control select-or-disable @error('expected_salary') is-invalid @enderror" value="{{ old('expected_salary',auth()->user()->expected_salary) }}">
                       <span class="spin"></span>
-                      @error('board_roll')
-                      <strong class="text-danger">{{ $errors->first('board_roll') }}</strong>
+                      @error('expected_salary')
+                      <strong class="text-danger">{{ $errors->first('expected_salary') }}</strong>
                       @enderror
                     </div>
                   </div>
@@ -215,7 +234,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="running_board_roll">Running Board Roll<span class="text-danger">*</span></label>
+                      <label for="running_board_roll">Student ID<span class="text-danger">*</span></label>
                       <input type="text" name="running_board_roll" id="running_board_roll" placeholder="Enter Your Fath er Name" autocomplete="off"
                              class="form-control select-or-disable @error('running_board_roll') is-invalid @enderror" value="{{ old('running_board_roll',auth()->user()->running_board_roll)}}">
                       <span class="spin"></span>
@@ -285,7 +304,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="row mb-5">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label">Experience<span class="text-danger">*</span></label>
+                      <input type="number" id="experience_year" name="experience_year" placeholder="Ex: 4" value="{{ old('experience_year',auth()->user()->experience_year) }}"
+                             class="form-control select-or-disable @error('experience_year') is-invalid @enderror">
+                      @error('experience_year')
+                      <strong class="text-danger">{{ $errors->first('experience_year') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="cv">CV(Optional)</label>
@@ -299,6 +328,26 @@
                   </div>
 
                 </div>
+                <div class="row mb-5">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="skills_set">Describe Your skills in short <span class="text-danger">*</span></label>
+                      <textarea name="skills_set" id="skills_set" placeholder="Short describe your skills ex: php, laravel, react or what you good at" autocomplete="off"
+                             class="form-control @error('skills_set') is-invalid @enderror" value="{{ old('skills_set',auth()->user()->skills_set) }}">{{ old('skills_set',auth()->user()->skills_set) }}</textarea>
+                      <span class="spin"></span>
+                      @error('skills_set')
+                      <strong class="text-danger">{{ $errors->first('skills_set') }}</strong>
+                      @enderror
+                    </div>               
+                    </div>               
+                </div>
+
+                
+
+
+
+
+
                 <header class="sub-panel-heading" style="background-color: #e9eff1">
                   <h2 class="sub-panel-title">Personal Information</h2>
                 </header>
@@ -381,609 +430,7 @@
                     <button class="btn btn-danger btn-sm" type="submit">Update</button>
                   </div>
                 </div>
-              </form>
-{{--              <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-{{--                <h2 class="sub-panel-title">Training/Short Course Information</h2>--}}
-{{--              </header>--}}
-
-{{--                <div class="row">--}}
-{{--                  <table id="datatable-buttons" class="table table-striped dt-responsive nowrap"--}}
-{{--                         cellspacing="0" width="100%" style="font-size: 14px; margin: 0px 0px 10px 10px;">--}}
-{{--                    <thead>--}}
-{{--                    <tr>--}}
-{{--                      <th width="50">#</th>--}}
-{{--                      <th>Training title</th>--}}
-{{--                      <th>Provider</th>--}}
-{{--                      <th>Duration</th>--}}
-{{--                      <th>Location</th>--}}
-{{--                      <th>Option</th>--}}
-{{--                    </tr>--}}
-{{--                    </thead>--}}
-{{--                    <tbody>--}}
-{{--                    <tr>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                      <td></td>--}}
-{{--                    </tr>--}}
-{{--                    --}}{{--                @foreach($datas as $key => $val)--}}
-{{--                    --}}{{--                  <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">--}}
-{{--                    --}}{{--                    <td class="p-1">{{ ($key+1) }}</td>--}}
-{{--                    --}}{{--                    <td class="p-1 text-capitalize"><a href="{{ route('institute.trainings.details', $val->training_id) }}">{{ $val->training?->title }}</a></td>--}}
-{{--                    --}}{{--                    <td class="p-1 text-capitalize">{{ $val->training?->institute?->name }}</td>--}}
-{{--                    --}}{{--                    <td class="p-1">{{ $val->training?->start_date . ' to ' . $val->training?->end_date }}</td>--}}
-{{--                    --}}{{--                    <td class="p-1">{{ $val->created_at->format('h:i A F d, Y') }}</td>--}}
-{{--                    --}}{{--                    <td class="p-1 text-capitalize">{{ $val->status }}</td>--}}
-{{--                    --}}{{--                    <td class="p-0">--}}
-{{--                    --}}{{--                      @if($val->created_at == $val->updated_at && $val->status == \App\Models\TrainingMember::$statusArrays[0] )--}}
-{{--                    --}}{{--                        <a href="{{ route('admin.my.training.withdraw', $val->id) }}" class="btn btn-sm btn-warning" style="cursor: pointer">Withdraw</a>--}}
-{{--                    --}}{{--                      @endif--}}
-{{--                    --}}{{--                    </td>--}}
-{{--                    --}}{{--                  </tr>--}}
-{{--                    --}}{{--                @endforeach--}}
-{{--                    </tbody>--}}
-{{--                  </table>--}}
-{{--                </div>--}}
-{{--              <div class="row" style="width: 100%;">--}}
-{{--                <div class="col-sm-12" style="text-align: left; margin-bottom: 30px; padding-left: 10px;">--}}
-{{--                  <p>--}}
-{{--                    <a class="btn btn-success btn-md" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 100%;">--}}
-{{--                      <i class="mdi mdi-plus-circle-outline"></i> ADD--}}
-{{--                    </a>--}}
-{{--                  </p>--}}
-{{--                  <div class="collapse" id="collapseExample">--}}
-{{--                    <div class="card card-body">--}}
-{{--                      <div class="row">--}}
-
-{{--                        <div class="col-sm-12">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Training Provider<span class="text-danger">*</span></label>--}}
-{{--                            <select name="provider_id" class="form-control @error('provider_id') is-invalid @enderror">--}}
-{{--                              <option value=""></option>--}}
-{{--                            </select>--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Training Title<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="title" placeholder="Training Title" autocomplete="off"--}}
-{{--                                   value="{{ old('title') }}"--}}
-{{--                                   class="form-control @error('title') is-invalid @enderror">--}}
-{{--                            @error('title')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('title') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Start Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="start_date" placeholder="Title" autocomplete="off"--}}
-{{--                                   value="{{ old('start_date') }}"--}}
-{{--                                   class="form-control @error('start_date') is-invalid @enderror">--}}
-{{--                            @error('start_date')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('start_date') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">End Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="end_date" placeholder="Title" autocomplete="off"--}}
-{{--                                   value="{{ old('end_date') }}"--}}
-{{--                                   class="form-control @error('end_date') is-invalid @enderror">--}}
-{{--                            @error('end_date')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('end_date') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Training Location<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="training_location" placeholder="Training Location" autocomplete="off"--}}
-{{--                                   value="{{ old('training_location') }}"--}}
-{{--                                   class="form-control @error('training_location') is-invalid @enderror">--}}
-{{--                            @error('training_location')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('training_location') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Country<span class="text-danger">*</span></label>--}}
-{{--                            <select name="country_id" class="form-control @error('country_id') is-invalid @enderror">--}}
-{{--                              <option value="">Choose a country</option>--}}
-{{--                            </select>--}}
-{{--                            @error('country_id')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('country_id') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Duration<span class="text-danger">*</span></label>--}}
-{{--                            <div class="row">--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_year') }}"--}}
-{{--                                       class="form-control @error('duration_year') is-invalid @enderror"></div>--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_month') }}"--}}
-{{--                                       class="form-control @error('duration_month') is-invalid @enderror"></div>--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_day') }}"--}}
-{{--                                       class="form-control @error('duration_day') is-invalid @enderror"></div>--}}
-{{--                            </div>--}}
-{{--                            @error('duration')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('duration') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-12 text-right">--}}
-{{--                          <button class="btn btn-danger btn-sm" type="submit">Submit</button>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-
-{{--              <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-{{--                <h2 class="sub-panel-title">Educational Information</h2>--}}
-{{--              </header>--}}
-{{--              <div class="row" style="width: 100%;">--}}
-
-{{--                <div class="col-sm-12">--}}
-
-{{--                  <div class="row">--}}
-{{--                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap"--}}
-{{--                           cellspacing="0" width="100%" style="font-size: 14px; margin: 0px 0px 10px 10px;">--}}
-{{--                      <thead>--}}
-{{--                      <tr>--}}
-{{--                        <th width="50">#</th>--}}
-{{--                        <th>Degree</th>--}}
-{{--                        <th>Institution</th>--}}
-{{--                        <th>Department</th>--}}
-{{--                        <th>Board</th>--}}
-{{--                        <th>Result</th>--}}
-{{--                        <th>Option</th>--}}
-{{--                      </tr>--}}
-{{--                      </thead>--}}
-{{--                      <tbody>--}}
-{{--                      <tr>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                      </tr>--}}
-{{--                      </tbody>--}}
-{{--                    </table>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-12" style="text-align: center; margin-bottom: 30px;">--}}
-{{--                  <p>--}}
-{{--                    <a class="btn btn-success btn-md" data-toggle="collapse" href="#education_info" role="button" aria-expanded="false" aria-controls="education_info" style="width: 100%;">--}}
-{{--                      <i class="mdi mdi-plus-circle-outline"></i> ADD--}}
-{{--                    </a>--}}
-{{--                  </p>--}}
-{{--                  <div class="collapse" id="education_info">--}}
-{{--                    <div class="card card-body">--}}
-{{--                      <div class="row">--}}
-
-{{--                        <div class="col-sm-12">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Degree<span class="text-danger">*</span></label>--}}
-{{--                            <select name="degree" class="form-control @error('degree') is-invalid @enderror">--}}
-{{--                              <option value="">BA (Bachelor of Arts)</option>--}}
-{{--                              <option value="">BSc (Bachelor of Science)</option>--}}
-{{--                              <option value="">BBS (Bachelor of Business Studies)</option>--}}
-{{--                              <option value="">SSC (Secondary School Certificate)</option>--}}
-{{--                              <option value="">HSC (Higher Secondary School Certificate)</option>--}}
-{{--                            </select>--}}
-{{--                            @error('degree')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('degree') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Institution<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="institution" placeholder="Institution" autocomplete="off"--}}
-{{--                                   value="{{ old('institution') }}"--}}
-{{--                                   class="form-control @error('institution') is-invalid @enderror">--}}
-{{--                            @error('institution')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('institution') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Subject/Department<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="subject" placeholder="Subject/Department" autocomplete="off"--}}
-{{--                                   value="{{ old('subject') }}"--}}
-{{--                                   class="form-control @error('subject') is-invalid @enderror">--}}
-{{--                            @error('subject')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('subject') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Year<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="year" placeholder="Year" autocomplete="off"--}}
-{{--                                   value="{{ old('year') }}"--}}
-{{--                                   class="form-control @error('year') is-invalid @enderror">--}}
-{{--                            @error('year')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('year') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Board<span class="text-danger">*</span></label>--}}
-{{--                            <select name="board" class="form-control @error('board') is-invalid @enderror">--}}
-{{--                              <option value="">Dhaka</option>--}}
-{{--                              <option value="">Khulna</option>--}}
-{{--                            </select>--}}
-{{--                            @error('board')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('board') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Result<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="result" placeholder="Result" autocomplete="off"--}}
-{{--                                   value="{{ old('result') }}"--}}
-{{--                                   class="form-control @error('result') is-invalid @enderror">--}}
-{{--                            @error('result')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('result') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">GPA Scale<span class="text-danger">*</span></label>--}}
-{{--                            <select name="gpa_scale" class="form-control @error('gpa_scale') is-invalid @enderror">--}}
-{{--                              <option value="">GPA 5</option>--}}
-{{--                              <option value="">CGPA 4</option>--}}
-{{--                            </select>--}}
-{{--                            @error('gpa_scale')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('gpa_scale') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-12 text-right">--}}
-{{--                          <button class="btn btn-danger btn-sm" type="submit">Submit</button>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--              <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-{{--                <h2 class="sub-panel-title">Professional Experience</h2>--}}
-{{--              </header>--}}
-{{--              <div class="row" style="width: 100%;">--}}
-
-{{--                <div class="col-sm-12">--}}
-
-{{--                  <div class="row">--}}
-{{--                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap"--}}
-{{--                           cellspacing="0" width="100%" style="font-size: 14px; margin: 0px 0px 10px 10px;">--}}
-{{--                      <thead>--}}
-{{--                      <tr>--}}
-{{--                        <th width="50">#</th>--}}
-{{--                        <th>Organization</th>--}}
-{{--                        <th>Institution</th>--}}
-{{--                        <th>Department</th>--}}
-{{--                        <th>Board</th>--}}
-{{--                        <th>Result</th>--}}
-{{--                        <th>Option</th>--}}
-{{--                      </tr>--}}
-{{--                      </thead>--}}
-{{--                      <tbody>--}}
-{{--                      <tr>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                      </tr>--}}
-{{--                      </tbody>--}}
-{{--                    </table>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-12" style="text-align: center; margin-bottom: 30px;">--}}
-{{--                  <p>--}}
-{{--                    <a class="btn btn-success btn-md" data-toggle="collapse" href="#experience_info" role="button" aria-expanded="false" aria-controls="experience_info" style="width: 100%;">--}}
-{{--                      <i class="mdi mdi-plus-circle-outline"></i> ADD--}}
-{{--                    </a>--}}
-{{--                  </p>--}}
-{{--                  <div class="collapse" id="experience_info">--}}
-{{--                    <div class="card card-body">--}}
-{{--                      <div class="row">--}}
-
-{{--                        <div class="col-sm-12">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Organization Name<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="employer" placeholder="Organization Name" autocomplete="off"--}}
-{{--                                   value="{{ old('employer') }}"--}}
-{{--                                   class="form-control @error('employer') is-invalid @enderror">--}}
-{{--                            @error('employer')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('employer') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Designation<span class="text-danger">*</span></label>--}}
-{{--                            <input type="text" name="designation" placeholder="Designation" autocomplete="off"--}}
-{{--                                   value="{{ old('designation') }}"--}}
-{{--                                   class="form-control @error('designation') is-invalid @enderror">--}}
-{{--                            @error('designation')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('designation') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Start Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_start_date" placeholder="Start Date" autocomplete="off"--}}
-{{--                                   value="{{ old('job_start_date') }}"--}}
-{{--                                   class="form-control @error('job_start_date') is-invalid @enderror">--}}
-{{--                            @error('job_start_date')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('job_start_date') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">End Date<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_end_date" placeholder="End Date" autocomplete="off"--}}
-{{--                                   value="{{ old('job_end_date') }}"--}}
-{{--                                   class="form-control @error('job_end_date') is-invalid @enderror">--}}
-{{--                            @error('job_end_date')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('job_end_date') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Job Location<span class="text-danger">*</span></label>--}}
-{{--                            <input type="date" name="job_location" placeholder="Job Location" autocomplete="off"--}}
-{{--                                   value="{{ old('job_location') }}"--}}
-{{--                                   class="form-control @error('job_location') is-invalid @enderror">--}}
-{{--                            @error('job_location')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('job_location') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-4">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Duration<span class="text-danger">*</span></label>--}}
-{{--                            <div class="row">--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration_year" placeholder="Year" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_year') }}"--}}
-{{--                                       class="form-control @error('duration_year') is-invalid @enderror"></div>--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Month" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_month') }}"--}}
-{{--                                       class="form-control @error('duration_month') is-invalid @enderror"></div>--}}
-{{--                              <div class="col-md-4">--}}
-{{--                                <input type="text" name="duration" placeholder="Day" autocomplete="off"--}}
-{{--                                       value="{{ old('duration_day') }}"--}}
-{{--                                       class="form-control @error('duration_day') is-invalid @enderror"></div>--}}
-{{--                            </div>--}}
-{{--                            @error('duration')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('duration') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-12">--}}
-{{--                          <div class="form-group">--}}
-{{--                            <label class="control-label">Job Responsibility</label>--}}
-{{--                            <textarea type="text" id="job_responsibility" name="job_responsibility" autocomplete="off"--}}
-{{--                                      value="{{ old('job_responsibility') }}"--}}
-{{--                                      class="form-control @error('job_responsibility') is-invalid @enderror"></textarea>--}}
-{{--                            @error('job_responsibility')--}}
-{{--                            <strong class="text-danger">{{ $errors->first('job_responsibility') }}</strong>--}}
-{{--                            @enderror--}}
-{{--                          </div>--}}
-{{--                        </div>--}}
-
-{{--                      </div>--}}
-{{--                      <div class="row">--}}
-{{--                        <div class="col-sm-12 text-right">--}}
-{{--                          <button class="btn btn-danger btn-sm" type="submit">Submit</button>--}}
-{{--                        </div>--}}
-{{--                      </div>--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-              {{--                <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-              {{--                  <h2 class="sub-panel-title">References</h2>--}}
-              {{--                </header>--}}
-              {{--                <div class="row" style="width: 100%;">--}}
-              {{--                  <div class="col-sm-6">--}}
-              {{--                    <div class="form-group">--}}
-              {{--                      <label class="control-label">Name</label>--}}
-              {{--                      <input type="text" name="Name" placeholder="" autocomplete="off"--}}
-              {{--                             value="{{ old('Name') }}"--}}
-              {{--                             class="form-control @error('Name') is-invalid @enderror">--}}
-              {{--                      @error('Name')--}}
-              {{--                      <strong class="text-danger">{{ $errors->first('Name') }}</strong>--}}
-              {{--                      @enderror--}}
-              {{--                    </div>--}}
-              {{--                  </div>--}}
-              {{--                  <div class="col-sm-6">--}}
-              {{--                    <div class="form-group">--}}
-              {{--                      <label class="control-label">Designation</label>--}}
-              {{--                      <input type="text" name="designation" placeholder="Designation" autocomplete="off"--}}
-              {{--                             value="{{ old('designation') }}"--}}
-              {{--                             class="form-control @error('designation') is-invalid @enderror">--}}
-              {{--                      @error('designation')--}}
-              {{--                      <strong class="text-danger">{{ $errors->first('designation') }}</strong>--}}
-              {{--                      @enderror--}}
-              {{--                    </div>--}}
-              {{--                  </div>--}}
-              {{--                  <div class="col-sm-6">--}}
-              {{--                    <div class="form-group">--}}
-              {{--                      <label class="control-label">Contact Email</label>--}}
-              {{--                      <input type="text" name="contact_email" placeholder="Contact Email" autocomplete="off"--}}
-              {{--                             value="{{ old('contact_email') }}"--}}
-              {{--                             class="form-control @error('contact_email') is-invalid @enderror">--}}
-              {{--                      @error('contact_email')--}}
-              {{--                      <strong class="text-danger">{{ $errors->first('contact_email') }}</strong>--}}
-              {{--                      @enderror--}}
-              {{--                    </div>--}}
-              {{--                  </div>--}}
-              {{--                  <div class="col-sm-6">--}}
-              {{--                    <div class="form-group">--}}
-              {{--                      <label class="control-label">Mobile no</label>--}}
-              {{--                      <input type="text" name="mobile_no" placeholder="Mobile No" autocomplete="off"--}}
-              {{--                             value="{{ old('mobile_no') }}"--}}
-              {{--                             class="form-control @error('mobile_no') is-invalid @enderror">--}}
-              {{--                      @error('mobile_no')--}}
-              {{--                      <strong class="text-danger">{{ $errors->first('mobile_no') }}</strong>--}}
-              {{--                      @enderror--}}
-              {{--                    </div>--}}
-              {{--                  </div>--}}
-              {{--                </div>--}}
-{{--              <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-{{--                <h2 class="sub-panel-title">NFTVQF Informations</h2>--}}
-{{--              </header>--}}
-{{--              <div class="row" style="width: 100%;">--}}
-
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <label class="control-label">Title</label>--}}
-{{--                    <input type="text" name="title" placeholder="Title" autocomplete="off"--}}
-{{--                           value="{{ old('title') }}"--}}
-{{--                           class="form-control @error('title') is-invalid @enderror">--}}
-{{--                    @error('title')--}}
-{{--                    <strong class="text-danger">{{ $errors->first('title') }}</strong>--}}
-{{--                    @enderror--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <label class="control-label">Level</label>--}}
-{{--                    <select name="ntvqf_level" class="select2 form-control @error('ntvqf_level') is-invalid @enderror" style="width: 10px !important;">--}}
-{{--                      <option value="">Choose an option</option>--}}
-{{--                      <option value="">Level 1</option>--}}
-{{--                      <option value="">Level 2</option>--}}
-{{--                      <option value="">Level 3</option>--}}
-{{--                      <option value="">Level 4</option>--}}
-{{--                      <option value="">Level 5</option>--}}
-{{--                      <option value="">Level 4</option>--}}
-{{--                      <option value="">Level 7</option>--}}
-{{--                      <option value="">Level 8</option>--}}
-{{--                      <option value="">Level 9</option>--}}
-{{--                      <option value="">Level 10</option>--}}
-{{--                    </select>--}}
-{{--                    @error('ntvqf_level')--}}
-{{--                    <strong class="text-danger">{{ $errors->first('ntvqf_level') }}</strong>--}}
-{{--                    @enderror--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <label class="control-label">Certified By</label>--}}
-{{--                    <select name="ntvqf_level" class="select2 form-control @error('ntvqf_level') is-invalid @enderror" style="width: 10px !important;">--}}
-{{--                      <option value="">Choose an option</option>--}}
-{{--                      <option value="">BTEB</option>--}}
-{{--                      <option value="">NSDA</option>--}}
-{{--                    </select>--}}
-{{--                    @error('ntvqf_level')--}}
-{{--                    <strong class="text-danger">{{ $errors->first('ntvqf_level') }}</strong>--}}
-{{--                    @enderror--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <label class="control-label">Date</label>--}}
-{{--                    <input type="date" name="date" placeholder="Date" autocomplete="off"--}}
-{{--                           value="{{ old('date') }}"--}}
-{{--                           class="form-control @error('date') is-invalid @enderror">--}}
-{{--                    @error('date')--}}
-{{--                    <strong class="text-danger">{{ $errors->first('date') }}</strong>--}}
-{{--                    @enderror--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--              <header class="sub-panel-heading" style="background-color: #e9eff1">--}}
-{{--                <h2 class="sub-panel-title">Other Informations</h2>--}}
-{{--              </header>--}}
-{{--              <div class="row" style="width: 100%;">--}}
-
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <div class="well well-sm text-center">--}}
-{{--                      <div class="row">--}}
-{{--                        <label class="control-label">Freedom Fighter</label>--}}
-{{--                      </div>--}}
-{{--                      <div class="btn-group" data-toggle="buttons">--}}
-
-{{--                        <label class="btn btn-success active">--}}
-{{--                          <input type="radio" name="freedom_fighter" id="freedom_fighter" value="yes" autocomplete="off" chacked>--}}
-{{--                          <span class="glyphicon glyphicon-ok">Yes</span>--}}
-{{--                        </label>--}}
-{{--                        <label class="btn btn-danger">--}}
-{{--                          <input type="radio" name="freedom_fighter" id="freedom_fighter" value="yes" autocomplete="off">--}}
-{{--                          <span class="glyphicon glyphicon-ok">No</span>--}}
-{{--                        </label>--}}
-{{--                      </div>--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-6">--}}
-{{--                  <div class="form-group">--}}
-{{--                    <div class="well well-sm text-center">--}}
-{{--                      <div class="row">--}}
-{{--                        <label class="control-label">Special able People</label>--}}
-{{--                      </div>--}}
-{{--                      <div class="btn-group" data-toggle="buttons">--}}
-
-{{--                        <label class="btn btn-success active">--}}
-{{--                          <input type="radio" name="freedom_fighter" id="freedom_fighter" value="yes" autocomplete="off" chacked>--}}
-{{--                          <span class="glyphicon glyphicon-ok">Yes</span>--}}
-{{--                        </label>--}}
-{{--                        <label class="btn btn-danger">--}}
-{{--                          <input type="radio" name="freedom_fighter" id="freedom_fighter" value="yes" autocomplete="off">--}}
-{{--                          <span class="glyphicon glyphicon-ok">No</span>--}}
-{{--                        </label>--}}
-{{--                      </div>--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--              <div class="row">--}}
-{{--                <div class="col-sm-12 text-right">--}}
-{{--                  <button class="btn btn-danger btn-sm" type="submit">Submit</button>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-              {{--              </form>--}}
+              </form>          
             </div>
           </section>
         </div>
