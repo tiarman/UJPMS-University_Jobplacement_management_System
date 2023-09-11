@@ -58,7 +58,9 @@ use App\Http\Controllers\JobEventController;
 use App\Http\Controllers\GraduateController;
 use App\Http\Controllers\IndustryPostController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\ReviewAdminAll;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SiteReviewController;
 use App\Mail\AdminNotifyForUserEmail;
 use App\Mail\UserRegistraionData;
 use App\Models\AddPaymentInfo;
@@ -502,21 +504,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     });
   });
 
-  //  #Job Event
-  //  Route::prefix('fair')->name('fair.')->group(function () {
-  //    Route::prefix('/organizer')->name('organizer.')->group(function () {
-  //      Route::get('/create', function () { return view('admin.event.job.create'); })->name('create');
-  //      Route::get('/list', function () { return view('admin.event.job.list'); })->name('list');
-  //    });
-  //    Route::prefix('/industry')->name('industry.')->group(function () {
-  //      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-  //      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-  //    });
-  //    Route::prefix('/student')->name('st.')->group(function () {
-  //      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-  //      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-  //    });
-  //  });
 
   #District
   Route::prefix('district')->name('district.')->group(function () {
@@ -718,16 +705,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/head/list', [ProjectIdeaController::class, 'indexHead'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list.head');
   });
 
-  #Project Idea
-  //  Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
-  //    Route::get('/create', [ProjectIdeaController::class, 'create'])->name('create');
-  //    Route::post('/store', [ProjectIdeaController::class, 'store'])->name('store');
-  //    Route::get('/manage/{id}', [ProjectIdeaController::class, 'manage'])->name('manage');
-  //    Route::get('/{id}/view', [ProjectIdeaController::class, 'view'])->name('view');
-  //    Route::delete('/destroy', [ProjectIdeaController::class, 'destroy'])->name('destroy');
-  //    Route::get('/{project_idea_id}/file/destroy/{id}', [ProjectIdeaController::class, 'fileDestroy'])->name('file.delete');
-  //    Route::get('/list', [ProjectIdeaController::class, 'index'])->name('list');
-  //  });
+
 
 
   #Core Modules
@@ -773,7 +751,26 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::delete('/destroy', [SemesterController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Semester')->name('destroy');
   });
 
-
+    #SiteReview
+    Route::prefix('sitereview')->name('sitereview.')->group(function () {
+      Route::get('/create', [SiteReviewController::class, 'create'])->middleware('role_or_permission:Super Admin|Industry|Create SiteReview')->name('create');
+      Route::post('/store', [SiteReviewController::class, 'store'])->middleware('role_or_permission:Super Admin|Industry|Store SiteReview')->name('store');
+      Route::get('/manage/{id}', [SiteReviewController::class, 'manage'])->middleware('role_or_permission:Super Admin|Industry|Manage SiteReview')->name('manage');
+      Route::get('/view', [SiteReviewController::class, 'view'])->middleware('role_or_permission:Super Admin|View SiteReview')->name('view');
+      Route::delete('/destroy', [SiteReviewController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Industry|Delete SiteReview')->name('destroy');
+      Route::get('/list', [SiteReviewController::class, 'index'])->middleware('role_or_permission:Super Admin|Industry|List of SiteReview')->name('list');
+      Route::get('/list_admin', [SiteReviewController::class, 'list_admin'])->middleware('role_or_permission:Super Admin|Industry|List of SiteReview')->name('list_admin');
+  });
+      #SiteReviewListForAdmin
+      Route::prefix('sitereviewload')->name('sitereviewload.')->group(function () {
+        // Route::get('/create', [SiteReviewController::class, 'create'])->middleware('role_or_permission:Super Admin|Industry|Create SiteReview')->name('create');
+        // Route::post('/store', [SiteReviewController::class, 'store'])->middleware('role_or_permission:Super Admin|Industry|Store SiteReview')->name('store');
+        // Route::get('/manage/{id}', [SiteReviewController::class, 'manage'])->middleware('role_or_permission:Super Admin|Industry|Manage SiteReview')->name('manage');
+        // Route::get('/view', [SiteReviewController::class, 'view'])->middleware('role_or_permission:Super Admin|View SiteReview')->name('view');
+        Route::delete('/destroy', [ReviewAdminAll::class, 'destroy'])->middleware('role_or_permission:Super Admin|Industry|Delete SiteReview')->name('destroy');
+        Route::get('/list', [ReviewAdminAll::class, 'index'])->middleware('role_or_permission:Super Admin|Industry|List of SiteReview')->name('list');
+    });
+  
   #Job Event
   Route::prefix('job')->name('job.')->group(function () {
     Route::prefix('/post')->name('post.')->group(function () {

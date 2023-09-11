@@ -837,6 +837,25 @@
               </a></li>
           @endif
 
+          @if (
+            \App\Helper\CustomHelper::canView(
+                'Create SiteReview|Manage SiteReview|Delete SiteReview|View SiteReview|List Of SiteReview',
+                'Industry'))
+            <li><a href="{{ route('admin.sitereview.list') }}" class="waves-effect">
+                    <i class="mdi mdi-image-album"></i>
+                    <span>All Reviews</span>
+                </a></li>
+        @endif
+          @if (
+            \App\Helper\CustomHelper::canView(
+                'Create SiteReview|Manage SiteReview|Delete SiteReview|View SiteReview|List Of SiteReview',
+                'Super Admin'))
+            <li><a href="{{ route('admin.sitereview.list_admin') }}" class="waves-effect">
+                    <i class="mdi mdi-image-album"></i>
+                    <span> Review</span>
+                </a></li>
+        @endif
+
           @if(\App\Helper\CustomHelper::canView('', 'Institute Head'))
             <li class="menu-title">Events</li>
             <li class="has_sub">
