@@ -26,7 +26,7 @@ class JobEvent extends Model
 
   public function institute(): \Illuminate\Database\Eloquent\Relations\HasOne
   {
-    return $this->hasOne(Institute::class, 'id', 'organizer_id');
+    return $this->hasOne(User::class, 'id', 'organizer_id');
   }
   public function jobFairHasIndustryParticipant(){
     return $this->hasMany(jobFairHasParticipant::class,'job_event_id','id')->where('participant_role', 'Industry');
