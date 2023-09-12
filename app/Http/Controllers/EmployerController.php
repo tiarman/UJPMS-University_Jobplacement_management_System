@@ -12,7 +12,7 @@ class EmployerController extends Controller
 {
   public function applicationList($id = null)
   {
-    $data['graduate'] = PostHasStudent::with('graduate')->where('institue_acceptance','accept')->where('post_id',$id)->get();
+    $data['graduate'] = PostHasStudent::with('graduate')->where('post_id',$id)->get();
     // return $data;
     return view('admin.job.application.list', $data);
   }

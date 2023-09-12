@@ -248,12 +248,11 @@
                                               </div>
                                               <div class="col-lg-3 col-md-3">
                                                   <div class="job-list-button-sm text-right">
-                                                      <span class="badge badge-success">Full-Time</span>
+                                                      <span class="badge badge-success">{{ucfirst($val->employment_status)}}</span>
 
                                                       <div class="mt-3">
-{{--                                                          <a href="{{ route('post.details'),$val->id }}" class="btn btn-sm btn-primary">Apply</a>--}}
-                                                          <a href="{{ route('post.details',$val->id) }}" class="btn btn-sm btn-primary">Apply</a>
-{{--                                                          <a href="#" class="btn btn-sm btn-primary">Apply</a>--}}
+                                                          {{-- <a href="{{ route('post.details',$val->id) }}" class="btn btn-sm btn-primary">Apply</a> --}}
+                                                          <a href="{{ route('job_post_details', $val->id) }}" class="btn btn-sm btn-primary">Details</a>
                                                       </div>
                                                   </div>
                                               </div>

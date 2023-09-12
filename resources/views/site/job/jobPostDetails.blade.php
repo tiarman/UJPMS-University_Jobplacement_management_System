@@ -337,7 +337,7 @@
         </div>
 {{--        <button type="button" class="btn btn-secondary btn-sm"  data-bs-dismiss="modal" >close</button>--}}
         <div class="modal-body" style="text-align: center;">
-          <strong>Sorry!!! Only Students Can Apply.</strong>
+          <strong>Sorry!!! Only Students Can Apply</strong>
         </div>
 
         <div class="modal-footer mb-4">

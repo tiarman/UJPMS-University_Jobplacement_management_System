@@ -25,8 +25,8 @@
             <div class="panel">
               <div class="panel-heading">
                 <h2 class="panel-title">
-                  @if (isset(auth()->user()->institute->name))
-                    {{auth()->user()->institute->name}}
+                  @if (isset(auth()->user()->name_en))
+                    {{auth()->user()->name_en}}
                   @else
                     {{ auth()->user()->name_en }}
                   @endif
@@ -38,7 +38,7 @@
       </div>
       @endif
 
-      <div class="col-12">
+      {{-- <div class="col-12">
         @if(\App\Helper\CustomHelper::canView('', 'Institute Head') && \App\Helper\CustomHelper::isInstituteTrainingProvider())
         <div class="card">
           <div class="card-body">
@@ -111,7 +111,7 @@
           </div>
         </div>
         @endif
-      </div>
+      </div> --}}
 
     </div>
 {{--    <div class="row">--}}

@@ -61,7 +61,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($datas as $key => $val)
-                                        @if(!($val->post->job_event_id))
+                                    
+                                        @if(($val->post->job_event_id) == ($ids))
                                         <tr class="@if ($key % 2 == 0) gradeX @else gradeC @endif">
                                           <td class="p-1">{{ $key + 1 }}</td>
                                           {{--  <td class="p-1 text-capitalize"><a class="text-primary" href="{{route('job_post_details',$val->post_id)}}">{{ $val->post?->user?->name_en }}</a></td>  --}}
