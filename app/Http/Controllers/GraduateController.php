@@ -15,6 +15,14 @@ class GraduateController extends Controller
     return view('admin.graduate.job.list', $data);
   }
 
+  public function jobFairJobPostAppliedList($id=null)
+  {
+    $data['ids'] = $id;
+    $data['datas'] = PostHasStudent::with('post')->where('student_id',auth()->user()->id)->orderby('id', 'desc')->get();
+    // return $data;
+    return view('admin.graduate.job_fair_job_post_apply.list', $data);
+  }
+
   public function fairAttendedStudentList(Request $request)
   {
     $data['students'] = JobEvent::with('jobFairHasStudentParticipant.participant')->where('id', $request->id)->get();

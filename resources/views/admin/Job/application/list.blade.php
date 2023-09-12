@@ -45,8 +45,8 @@
                 <tr>
                   <th width="50">#</th>
                   <th>Name</th>
-                  <th>Employment status</th>
-                  <th>Work for</th>
+                  <th>Employment Status</th>
+                  <th>Work For</th>
                   <th>Resume</th>
                   {{--                  <th>Address</th>--}}
 {{--                  <th width="50">Status</th>--}}
@@ -62,8 +62,8 @@
                     <td class="p-1 text-capitalize"><span style="font-weight: bold; font-size: 16px">{{ $val->graduate?->name_en }}</span><br>
                       <span style="font-weight: lighter; font-size: 12px">Email: &nbsp;{{ $val->graduate?->email }}</span><br>
                       <span style="font-weight: lighter; font-size: 12px">Phone: &nbsp;{{ $val->graduate?->phone }}</span><br>
-                    <td class="p-1">{{ ucfirst($val->graduate?->employment_status) }}</td>
-                    <td class="p-1">{{ $val->graduate?->employing_company }}</td>
+                    <td class="p-1">{{ ucfirst($val->graduate?->employment_status ?? 'N/A')}}</td>
+                    <td class="p-1">{{ $val->graduate?->employing_company ?? 'N/A' }}</td>
                     <td class="p-1 text-center"><a href="{{ asset($val->graduate?->cv) }}" download><i class="fa fa-download"></i>&nbsp; Download</a></td>
                     <td>
                       <div class="row">

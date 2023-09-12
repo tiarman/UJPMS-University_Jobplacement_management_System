@@ -43,10 +43,10 @@
                                         <a href="{{ route('admin.event.job.participant.student.list', request('id')) }}"class="btn btn-lg btn-light mt-1"
                                             style="width: 100%">Student List</a>
                                     </div>
-                                    <div class="col-md-3">
+                                    {{-- <div class="col-md-3">
                                         <a href="{{ route('admin.organizer.guest.list') }}"class="btn  btn-lg btn-light mt-1"
                                             style="width: 100%">Guests</a>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-3">
                                       {{--                    <a href="{{route('admin.job.post.create'),$job_event->id}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post Job</a> --}}
                                       <a href="{{ route('admin.job.post.jobfair.job.list', $job_event->id) }}"class="btn btn-lg btn-light mt-1"
@@ -72,8 +72,8 @@
                                 @if (\App\Helper\CustomHelper::canView('', 'Student'))
                                     <div class="col-md-3">
                                         {{--                    <a href="{{route('admin.job.post.create'),$job_event->id}}"class="btn btn-lg btn-light mt-1" style="width: 100%">Post Job</a> --}}
-                                        <a href="{{ route('admin.job.post.create.event', $job_event->id) }}"class="btn btn-lg btn-light mt-1"
-                                            style="width: 100%">Post A Job</a>
+                                        <a href="{{ route('admin.event.job.jobfair.applied.post.list', $job_event->id) }}"class="btn btn-lg btn-light mt-1"
+                                            style="width: 100%">Applied Job Post</a>
                                     </div>
                                 @endif
                             </div>

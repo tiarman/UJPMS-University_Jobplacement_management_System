@@ -481,11 +481,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
       Route::get('/student-applied-fair-list', [GraduateController::class, 'fairList'])->middleware('role_or_permission:Student|List Of Student Post')->name('student.applied_fair_list');
       Route::get('/create', [JobEventController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Job Event')->name('create');
       Route::post('/store', [JobEventController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Job Event|Manage Job Event')->name('store');
-      Route::get('/manage/{id}', [JobEventController::class, 'manage'])->middleware('role_or_permission:Institute Head|Industry|Manage Job Event')->name('manage');
+      Route::get('/manage/{id}', [JobEventController::class, 'manage'])->middleware('role_or_permission:Institute Head|Industry|Student|Manage Job Event')->name('manage');
       Route::delete('/destroy', [JobEventController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Job Event')->name('destroy');
       Route::get('/list', [JobEventController::class, 'index'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
       Route::get('/{id}/participant/industry/', [IndustryPostController::class, 'fairAttendedIndustriesList'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('participant.industry.list');
       Route::get('/{id}/participant/student/', [GraduateController::class, 'fairAttendedStudentList'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('participant.student.list');
+      Route::get('/{id}/job-fair/applied/job-post-list', [GraduateController::class, 'jobFairJobPostAppliedList'])->middleware('role_or_permission:Student|List Of Job Event')->name('jobfair.applied.post.list');
     });
     Route::prefix('/stall')->name('stall.')->group(function () {
       Route::get('/create', function () {

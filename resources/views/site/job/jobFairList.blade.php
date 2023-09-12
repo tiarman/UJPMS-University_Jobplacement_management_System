@@ -218,8 +218,8 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="section-title text-center mb-4 pb-2">
-                    <h4 class="title title-line pb-5">Find Your Jobs</h4>
-                    <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
+                    <h4 class="title title-line pb-5">Attend a Job Fair</h4>
+                    <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your vacancy. Student can apply job fair's job post.</p>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
                                                 <img style="height: 84px; width: 84px" src="{{ asset($val->image ?? 'assets/placeholder.png') }}" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div>
                                                 <h5 class="f-18"><a href="#" class="text-dark">{{ $val->title }}</a></h5>
                                                 {{--  <p class="text-muted mb-0">{{$val->place}}</p>  --}}
@@ -261,11 +261,11 @@
                                                 {{--  <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{ $val->location }}</p>  --}}
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        {{-- <div class="col-md-2">
                                             <div>
                                                 <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">${{$val->salary}}</p>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-2">
                                             <div>
                                                 <p class="text-muted mb-0">{{$val->employment_status}}</p>
@@ -277,7 +277,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div>
-                                                <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Organize By :</span> {{ $val->institute->name ?? '' }}</p>
+                                                <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Organize By :</span> {{ $val->institute->name_en ?? '' }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
