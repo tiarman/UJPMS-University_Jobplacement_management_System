@@ -58,10 +58,10 @@
         <div>
           <h4 class="p-2 text-light form-sub-section">New User As Institute Head</h4>
         </div>
-        <div class="row mb-3">
+        <div class="row mt-4">
           <div class="col-sm-4">
             <div class="form-group">
-              <label class="control-label">Full name [English]<span class="text-danger">*</span></label>
+              <label class="control-label">Institute Full Name<span class="text-danger">*</span></label>
               <input type="text" name="name_en" placeholder="Full name in english" required value="{{ old('name_en') }}"
                      class="form-control @error('name_en') is-invalid @enderror">
               @error('name_en')
@@ -100,43 +100,7 @@
             </div>
           </div>
         </div>
-
-        <div class="row mb-3">
-         
-          <div class="col-md-4">
-            <div class="form-group">
-              <label class="control-label">Mobile No <span class="text-danger">*</span></label>
-              <input type="number" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
-                     class="form-control @error('phone') is-invalid @enderror" required>
-              @error('phone')
-              <strong class="text-danger">{{ $errors->first('phone') }}</strong>
-              @enderror
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label class="control-label">Date of birth </label>
-              <input type="date" name="dob" value="{{ old('dob') }}"
-                     class="form-control @error('dob') is-invalid @enderror" >
-              @error('dob')
-              <strong class="text-danger">{{ $errors->first('dob') }}</strong>
-              @enderror
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="form-group">
-                <label for="user_image" class="control-label">Photo</label>
-                <input type="file" name="user_image"
-                       class="form-control @error('user_image') is-invalid @enderror">
-                @error('user_image')
-                <strong class="text-danger">{{ $errors->first('user_image') }}</strong>
-                @enderror
-            </div>
-        </div>
-        </div>
-
-        <div class="row mb-3">
+        <div class="row">
           {{--  <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">NID </label>
@@ -178,16 +142,53 @@
               <small id="confirm-password-error" class="text-danger d-none">Enter the correct password</small>
             </div>
           </div>
-        
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label">Mobile No <span class="text-danger">*</span></label>
+              <input type="number" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
+                     class="form-control @error('phone') is-invalid @enderror" required>
+              @error('phone')
+              <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+              @enderror
+            </div>
+          </div>
 
         </div>
+
+        <div class="row mb-4">
+         
+          
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label">Date of birth </label>
+              <input type="date" name="dob" value="{{ old('dob') }}"
+                     class="form-control @error('dob') is-invalid @enderror" >
+              @error('dob')
+              <strong class="text-danger">{{ $errors->first('dob') }}</strong>
+              @enderror
+            </div>
+          </div>
+
+          {{--  <div class="col-sm-4">
+            <div class="form-group">
+                <label for="user_image" class="control-label">Photo</label>
+                <input type="file" name="user_image"
+                       class="form-control @error('user_image') is-invalid @enderror">
+                @error('user_image')
+                <strong class="text-danger">{{ $errors->first('user_image') }}</strong>
+                @enderror
+            </div>
+        </div>  --}}
+        </div>
+
+        
         {{-- <hr class="mt-3 mb-2"> --}}
         {{-- <h4 class="panel-sub-title institute-form-align mt-3 mb-3">Institute Registration Information</h4> --}}
         <div>
           <h4 class="mt-3 p-2 text-light form-sub-section">Institute Registration Information</h4>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mt-4">
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Name [English]<span class="text-danger">*</span></label>
@@ -223,9 +224,9 @@
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <label class="control-label">Image (Optional)</label>
+              <label class="control-label">Institute Profile Image</label>
               <input type="file" name="photo"
-                     class="form-control @error('photo') is-invalid @enderror">
+                     class="form-control @error('photo') required is-invalid @enderror">
               @error('photo')
               <strong class="text-danger">{{ $errors->first('photo') }}</strong>
               @enderror
@@ -233,7 +234,7 @@
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Mobile</label>
@@ -268,7 +269,7 @@
             </div>
           </div>
         </div>
-        <div class="row mb-3">
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label class="control-label">Division<span class="text-danger">*</span></label>
@@ -313,7 +314,7 @@
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Institute Type<span class="text-danger">*</span></label>
@@ -341,7 +342,7 @@
          
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-4">
           <div class="col-md-12">
             <div class="form-group">
               <label for="description" class="control-label">Description (Optional)</label>
