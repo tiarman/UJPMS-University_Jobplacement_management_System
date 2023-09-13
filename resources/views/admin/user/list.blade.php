@@ -47,43 +47,45 @@
                 </thead>
                 <tbody>
                 @foreach($users as $key => $val)
-                  <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
-                    <td class="p-1">{{ ($key+1) }}</td>
-                    <td class="p-1 text-capitalize">{{ $val->name_en }}</td>
-                    <td class="p-1">{{ $val->email }}</td>
-                    <td class="p-1">{{ $val->phone }}</td>
-                    <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>
-                    <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-                    @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
-                      <td class="text-capitalize p-1" width="100">
-                        <div class="onoffswitch">
-                          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                                 @checked($val->status == \App\Models\User::$statusArrays[1])
-                                 data-id="{{ $val->id }}"
-                                 id="myonoffswitch{{ ($key+1) }}">
-                          <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
-                          </label>
-                        </div>
-                      </td>
-                    @else
-                      <td class="p-1 text-capitalize">{{ $val->status }}</td>
+                 @if ($val->id != 1)
+                 <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
+                  <td class="p-1">{{ ($key+1) }}</td>
+                  <td class="p-1 text-capitalize">{{ $val->name_en }}</td>
+                  <td class="p-1">{{ $val->email }}</td>
+                  <td class="p-1">{{ $val->phone }}</td>
+                  <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>
+                  <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
+                  @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
+                    <td class="text-capitalize p-1" width="100">
+                      <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                               @checked($val->status == \App\Models\User::$statusArrays[1])
+                               data-id="{{ $val->id }}"
+                               id="myonoffswitch{{ ($key+1) }}">
+                        <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                        </label>
+                      </div>
+                    </td>
+                  @else
+                    <td class="p-1 text-capitalize">{{ $val->status }}</td>
+                    @endif
+                  @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                    <td class="text-center p-1" width="100">
+                      @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
+                        <a href="{{ route('admin.user.manage', $val->id) }}" class="btn btn-sm btn-success"> <i
+                            class="fa fa-edit"></i> </a>
                       @endif
-                    @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
-                      <td class="text-center p-1" width="100">
-                        @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
-                          <a href="{{ route('admin.user.manage', $val->id) }}" class="btn btn-sm btn-success"> <i
-                              class="fa fa-edit"></i> </a>
-                        @endif
-                        @if(\App\Helper\CustomHelper::canView('Delete User', 'Super Admin'))
-                            <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
-                                data-id="{{ $val->id }}"><i
-                              class="fa fa-trash-o"></i></span>
-                        @endif
-                      </td>
+                      @if(\App\Helper\CustomHelper::canView('Delete User', 'Super Admin'))
+                          <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
+                              data-id="{{ $val->id }}"><i
+                            class="fa fa-trash-o"></i></span>
                       @endif
-                  </tr>
+                    </td>
+                    @endif
+                </tr>
+                 @endif
                 @endforeach
                 </tbody>
               </table>
