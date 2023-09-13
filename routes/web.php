@@ -755,9 +755,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
 
   // tag
   Route::prefix('/tag')->name('tag.')->group(function () {
-    Route::get('/create', [TagController::class, 'create'])->middleware('role_or_permission:Super Admin|Industry|Create Industry|')->name('create');
-    Route::post('/store', [TagController::class, 'store'])->middleware('role_or_permission:Super Admin|Industry|Create Industry||Manage Industry|')->name('store');
-    Route::delete('/destroy', [TagController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Industry|Delete Industry|')->name('destroy');
+    Route::get('/create', [TagController::class, 'create'])->middleware('role_or_permission:Super Admin|Industry|Create Industry|Institute Head')->name('create');
+    Route::post('/store', [TagController::class, 'store'])->middleware('role_or_permission:Super Admin|Industry|Create Industry||Manage Industry|Institute Head')->name('store');
+    Route::delete('/destroy', [TagController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Industry|Delete Industry|Institute Head')->name('destroy');
   });
   // shift
   Route::prefix('/shift')->name('shift.')->group(function () {

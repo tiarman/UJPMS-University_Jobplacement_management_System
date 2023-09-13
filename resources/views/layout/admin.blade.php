@@ -726,7 +726,7 @@
                 <span>Semester/ Year</span>
               </a></li>
           @endif
-          @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', 'Institute Head|Industry'))
+          @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', 'Institute Head'))
             <li class="menu-title">Institute Members</li>
 
             <li class="has_sub">
@@ -744,7 +744,7 @@
             </li>
           @endif
           {{-- institute dash board employee --}}
-          @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', ''))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', ''))
             <li class="has_sub">
               <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Emloyer<span
                     class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
@@ -758,10 +758,10 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
           {{-- end institute dash board member employee--}}
           {{-- institute dash board member --}}
-          @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', ''))
+          {{--  @if(\App\Helper\CustomHelper::canView('Create Institute User|Manage Institute User|Delete Institute User|View Institute User|List Of Institute User', ''))
             <li class="has_sub">
               <a class="waves-effect"><i class="mdi mdi-wallet-membership"></i><span> JPMS User<span
                     class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
@@ -776,7 +776,7 @@
                 @endif
               </ul>
             </li>
-          @endif
+          @endif  --}}
           @if(\App\Helper\CustomHelper::canView('', 'Industry|Institute Head'))
             <li><a href="{{ route('admin.tag.create') }}" class="waves-effect">
                 <i class="mdi mdi-memory"></i>
@@ -843,7 +843,7 @@
                 'Industry'))
             <li><a href="{{ route('admin.sitereview.list') }}" class="waves-effect">
                     <i class="mdi mdi-image-album"></i>
-                    <span>All Reviews</span>
+                    <span>Testimonial</span>
                 </a></li>
         @endif
           @if (
@@ -852,7 +852,7 @@
                 'Super Admin'))
             <li><a href="{{ route('admin.sitereview.list_admin') }}" class="waves-effect">
                     <i class="mdi mdi-image-album"></i>
-                    <span> Review</span>
+                    <span> Manage Testimonials</span>
                 </a></li>
         @endif
 

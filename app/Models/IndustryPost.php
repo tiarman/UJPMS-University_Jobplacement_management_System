@@ -14,6 +14,8 @@ class IndustryPost extends Model
     'industry_id',
     'job_title',
     'position',
+    'contact_phone',
+    'contact_mail',
     'vacancy',
     'location',
     'job_context',

@@ -22,6 +22,9 @@ return new class extends Migration
           $table->string('position');
           $table->string('vacancy');
           $table->string('location')->nullable();
+          $table->string('contact_mail')->nullable();
+          $table->string('contact_phone')->nullable();
+          $table->string('location')->nullable();
           $table->longText('job_context')->nullable();
           $table->longText('educational_requirement')->nullable();
           $table->longText('additional_requirement')->nullable();

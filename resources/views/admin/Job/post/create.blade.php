@@ -241,6 +241,29 @@
                             <strong class="text-danger" id="tag_error"></strong>
                         </div>
                     </div>
+
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label" for="contact_mail">Contact Email</label>
+                        <input type="number" name="contact_mail" placeholder="contact mail" autocomplete="off"
+                               value="{{ old('contact_mail') }}"
+                               class="form-control @error('contact_mail') is-invalid @enderror">
+                        @error('contact_mail')
+                        <strong class="text-danger">{{ $errors->first('contact_mail') }}</strong>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label" for="contact_phone">Contact Phone</label>
+                        <input type="number" name="contact_phone" placeholder="contact phone" autocomplete="off"
+                               value="{{ old('contact_phone') }}"
+                               class="form-control @error('contact_phone') is-invalid @enderror">
+                        @error('contact_phone')
+                        <strong class="text-danger">{{ $errors->first('contact_phone') }}</strong>
+                        @enderror
+                      </div>
+                    </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-12 text-right">

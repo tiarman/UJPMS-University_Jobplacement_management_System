@@ -39,8 +39,8 @@
                   <thead>
                   <tr>
                     <th @class("text-center")  width="50">#</th>
-                    <th @class("text-center") >Name</th>
                     <th @class("text-center") >Head of Institute / Email</th>
+                    <th @class("text-center") >Institute Name / Email</th>
                     <th @class("text-center") >Phone</th>
                     {{--  <th @class("text-center")  width="50">Type</th>  --}}
                     {{--  <th @class("text-center")  width="130">Data</th>  --}}

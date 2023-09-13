@@ -93,6 +93,8 @@ class IndustryPostController extends Controller
       'ntvqf_level' => 'nullable|string',
       'employment_status' => 'nullable|string',
       'experience_requirement' => 'nullable|string',
+      'contact_mail' => 'nullable|string',
+      'contact_phone' => 'nullable|string',
       'salary' => 'nullable|string',
       'compensation' => 'nullable|string',
       'job_responsibility' => 'nullable|string',
@@ -126,6 +128,8 @@ class IndustryPostController extends Controller
       }
       $job_event->job_title = $request->job_title;
       $job_event->position = $request->position;
+      $job_event->contact_mail = $request->contact_mail;
+      $job_event->contact_phone = $request->contact_phone;
       $job_event->vacancy = $request->vacancy;
       $job_event->location = $request->job_location;
       $job_event->job_context = $request->job_context;
