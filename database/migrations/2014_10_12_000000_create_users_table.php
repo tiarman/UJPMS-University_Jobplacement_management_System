@@ -43,7 +43,7 @@ return new class extends Migration
             $table->unsignedBigInteger('trade_technology_id')->nullable();
             $table->string('address')->nullable();
             $table->string('board_roll')->nullable();
-            $table->string('employment_status')->nullable();
+            // $table->string('employment_status')->nullable();
             $table->string('running_board_roll')->nullable();
             $table->string('expected_salary')->nullable();
             $table->string('skills_set')->nullable();
@@ -52,7 +52,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->string('cv', 2048)->nullable();
+            // $table->string('cv', 2048)->nullable();
             $table->string('status')->default(User::$statusArrays[0]);
             $table->timestamps();
         });
