@@ -21,7 +21,7 @@ return new class extends Migration
           $table->string('job_title');
           $table->string('position');
           $table->string('vacancy');
-          $table->string('location')->nullable();
+        //   $table->string('location')->nullable();
           $table->string('contact_mail')->nullable();
           $table->string('contact_phone')->nullable();
           $table->string('location')->nullable();
