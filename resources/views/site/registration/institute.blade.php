@@ -123,7 +123,7 @@
                              <span toggle="#password-field" class="mt-2"><i style="margin-left: -23px" class="fa fa-fw fa-eye field_icon toggle-password"></i></span>
         
                     </div>
-                     <small id="realtime-password-error" class="text-danger d-none">Password must be at least one uppercase letter, one lowercase letter, one number and one special character </small>
+                     {{--  <small id="realtime-password-error" class="text-danger d-none">Password must be at least one uppercase letter, one lowercase letter, one number and one special character </small>  --}}
               @error('password')
               <strong class="text-danger">{{ $errors->first('password') }}</strong>
               @enderror

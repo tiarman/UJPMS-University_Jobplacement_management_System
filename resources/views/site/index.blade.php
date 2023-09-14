@@ -860,8 +860,8 @@
                     </div>
                     <div>
                         <h5>Register an account</h5>
-                        <p class="text-muted">Donec pede justo fringilla vel aliquet nec vulputate eget arcu. In enim justo rhoncus ut a, justo.</p>
-                        <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        <p class="text-muted">For finding a job You need to register in this site. So register now and apply your desire jobs</p>
+                        <a href="{{route('register')}}" class="text-primary">Register Now <i class="mdi mdi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -872,8 +872,8 @@
                     </div>
                     <div>
                         <h5>Search your job</h5>
-                        <p class="text-muted">Aliquam lorem ante dapibus in, viverra feugiatquis a tellus. Phasellus viverra nulla ut Quisque rutrum.</p>
-                        <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        <p class="text-muted">After registration you can applying your desire jobs. Serach for your job now in our site</p>
+                        <a href="{{route('jobpost')}}" class="text-primary">Job Search <i class="mdi mdi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -884,8 +884,8 @@
                     </div>
                     <div>
                         <h5>Apply for job</h5>
-                        <p class="text-muted">Nullam dictum felis eu pede mollis pretiumetus Integer tincidunt. Cras dapibus. semper nisi.</p>
-                        <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        <p class="text-muted">Apply your desire job and get a job very easily. Build a profile also aipdate your profile.</p>
+                        <a href="{{route('jobpost')}}" class="text-primary">Apply Now <i class="mdi mdi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -940,30 +940,25 @@
             <div class="col-12">
                 <div class="section-title text-center mb-4 pb-2">
                     <h4 class="title title-line pb-5">Our Client's</h4>
-                    <p class="text-muted para-desc mx-auto mb-1">Find your desire job and apply now</p>
+                    <p class="text-muted para-desc mx-auto mb-1">Our valuable clients</p>
                 </div>
             </div>
         </div>
 
         <div class="row align-items-center">
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
+            <div class="col-lg-3 col-md-4 col-6 mt-4 pt-2 text-center">
                 <img src="{{asset('assets/frontend/images/clients/1.png')}}" height="50" alt="">
             </div><!--end col-->
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
+            <div class="col-lg-3 col-md-4 col-6 mt-4 pt-2 text-center">
                 <img src="{{asset('assets/frontend/images/clients/2.png')}}" height="50" alt="">
             </div><!--end col-->
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
+            <div class="col-lg-3 col-md-4 col-6 mt-4 pt-2 text-center">
                 <img src="{{asset('assets/frontend/images/clients/3.png')}}" height="50" alt="">
             </div><!--end col-->
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
+            <div class="col-lg-3 col-md-4 col-6 mt-4 pt-2 text-center">
                 <img src="{{asset('assets/frontend/images/clients/4.png')}}" height="50" alt="">
             </div><!--end col-->
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
-                <img src="{{asset('assets/frontend/images/clients/1.png')}}" height="50" alt="">
-            </div><!--end col-->
-            <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2 text-center">
-                <img src="{{asset('assets/frontend/images/clients/2.png')}}" height="50" alt="">
-            </div><!--end col-->
+          
         </div>
     </div>
 </section>

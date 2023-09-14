@@ -359,8 +359,8 @@
                           <input type="password" name="password" placeholder="Password" required
                               value="{{ old('password') }}"
                               class="form-control @error('password') is-invalid @enderror">
-                          <small id="realtime-password-error" class="text-danger d-none">Password must be at least one
-                              uppercase letter, one lowercase letter, one number and one special character </small>
+                          {{--  <small id="realtime-password-error" class="text-danger d-none">Password must be at least one
+                              uppercase letter, one lowercase letter, one number and one special character </small>  --}}
                           @error('password')
                               <strong class="text-danger">{{ $errors->first('password') }}</strong>
                           @enderror
