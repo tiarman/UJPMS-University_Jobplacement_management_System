@@ -219,7 +219,7 @@
             <div class="col-12">
                 <div class="section-title text-center mb-4 pb-2">
                     <h4 class="title title-line pb-5">Attend a Job Fair</h4>
-                    <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your vacancy. Student can apply job fair's job post.</p>
+                    <p class="text-muted para-desc mx-auto mb-1">Find your desire job and apply now</p>
                 </div>
             </div>
         </div>

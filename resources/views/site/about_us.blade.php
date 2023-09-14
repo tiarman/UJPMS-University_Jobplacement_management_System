@@ -163,7 +163,7 @@
             <div class="col-12">
                 <div class="section-title text-center mb-4 pb-2">
                     <h4 class="title title-line pb-5">Our Client's</h4>
-                    <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
+                    <p class="text-muted para-desc mx-auto mb-1">Chose your job and apply now</p>
                 </div>
             </div>
         </div>

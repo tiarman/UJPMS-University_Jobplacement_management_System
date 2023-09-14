@@ -26,6 +26,17 @@
                 {!! session()->get('status') !!}
               @endif
 
+              @foreach($errors->all() as $message)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{!! $message !!}</strong>
+            </div>
+        </div>
+    </div>
+@endforeach
+
               <form action="{{ route('admin.job.post.store') }}" method="post">
                 @csrf
                 <div class="row">
@@ -63,6 +74,8 @@
                       @enderror
                     </div>
                   </div>
+                  </div>
+                  <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label">Job Location</label>
@@ -89,17 +102,18 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="form-group">
-                      <label class="control-label">NTVQF/BQF Level</label>
-                      <select name="ntvqf_level" class="form-control @error('ntvqf_level') is-invalid @enderror">
-                        <option value="">Choose an option</option>
-                        <option value="level1">level1</option>
-                        <option value="level2">level2</option>
-                      </select>
-                      @error('ntvqf_level')
-                      <strong class="text-danger">{{ $errors->first('ntvqf_level') }}</strong>
+                      <label class="control-label">Company Name</label>
+                      <input type="text" name="company_name" placeholder="Job Location" autocomplete="off"
+                             value="{{ old('company_name',$industry_post->company_name) }}"
+                             class="form-control @error('company_name') is-invalid @enderror">
+                      @error('company_name')
+                      <strong class="text-danger">{{ $errors->first('company_name') }}</strong>
                       @enderror
                     </div>
                   </div>
+                </div>
+                  <div class="row">
+                  
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Job Description</label>
@@ -111,6 +125,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                  <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Educational Requirement</label>
@@ -122,6 +138,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Job Responsibility</label>
@@ -133,6 +151,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                {{--  <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Additional Requirements</label>
@@ -144,6 +164,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>  --}}
+                <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Compensation & Other Benefits</label>
@@ -155,6 +177,8 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label" for="salary">Salary</label>
@@ -195,6 +219,31 @@
                       @enderror
                     </div>
                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label class="control-label" for="salary">Contact Email</label>
+                      <input type="email" name="contact_mail" placeholder="contact_mail" autocomplete="off"
+                             value="{{ old('contact_mail',$industry_post->contact_mail) }}"
+                             class="form-control @error('contact_mail') is-invalid @enderror">
+                      @error('contact_mail')
+                      <strong class="text-danger">{{ $errors->first('contact_mail') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label class="control-label" for="salary">Contact Phone</label>
+                      <input type="number" name="contact_phone" placeholder="contact_phone" autocomplete="off"
+                             value="{{ old('contact_phone',$industry_post->contact_phone) }}"
+                             class="form-control @error('contact_phone') is-invalid @enderror">
+                      @error('contact_phone')
+                      <strong class="text-danger">{{ $errors->first('contact_phone') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+                  
                 </div>
                 <div class="row">
                   <div class="col-sm-12 text-right">

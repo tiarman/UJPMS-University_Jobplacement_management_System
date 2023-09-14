@@ -96,7 +96,7 @@
           </div>
           <div class="col-sm-4">
             <div class="form-group">
-              <label class="control-label">Website</label>
+              <label class="control-label">Website <span class="text-primary">Ex. (www.unijobs.com)</span></label>
               <input type="text" name="website" id="website" placeholder="Enter Your Website" autocomplete="off"
                      class="form-control @error('website') is-invalid @enderror" value="{{ old('website') }}">
               <span class="spin"></span>

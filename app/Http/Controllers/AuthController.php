@@ -1304,7 +1304,7 @@ class AuthController extends Controller
         'username' => 'required|string|unique:' . with(new User)->getTable() . ',username,',
         'email' => 'required|email|unique:' . with(new User)->getTable() . ',email,',
         'password' => 'required|string|min:6|confirmed',
-        'website' => 'string',
+        'website' => 'required|string|regex:' . CustomHelper::URLRegex,
         'phone' => 'required|regex:' . CustomHelper::PhoneNoRegex . '|unique:' . with(new User)->getTable() . ',phone,',
 
         // 'department' => 'nullable|string',

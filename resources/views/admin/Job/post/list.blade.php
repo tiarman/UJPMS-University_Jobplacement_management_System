@@ -134,15 +134,15 @@
 
   <script>
     $(document).ready(function () {
-      // $('#datatable-buttons').DataTable();
+     // $('#datatable-buttons').DataTable();
 
-      // var table = $('#datatable-buttons').DataTable({
-      //   lengthChange: false,
-      //   buttons: ['copy', 'excel', 'pdf', 'colvis']
-      // });
-      //
-      // table.buttons().container()
-      //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+      var table = $('#datatable-buttons').DataTable({
+         lengthChange: false,
+         buttons: ['copy', 'excel', 'pdf', 'colvis']
+       });
+      
+       table.buttons().container()
+         .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
 
       $(document).on('change', 'input[name="onoffswitch"]', function () {

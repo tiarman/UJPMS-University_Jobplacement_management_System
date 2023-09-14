@@ -87,8 +87,7 @@
                 <div class="col-12">
                     <div class="section-title text-center mb-4 pb-2">
                         <h4 class="title title-line pb-5">Available job for you</h4>
-                        <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly
-                            match you with the right freelancers.</p>
+                        <p class="text-muted para-desc mx-auto mb-1">Find your desire job and apply now</p>
                     </div>
                 </div>
             </div>
@@ -276,23 +275,7 @@
                 </div>
 
                 <div class="col-lg-9 mt-4 pt-2">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12">
-                            <div class="show-results">
-                                <div class="float-left">
-                                    <h5 class="text-dark mb-0 pt-2 f-18">Showing results 0-20</h5>
-                                </div>
-                                <div class="sort-button float-right">
-                                    <select class="nice-select rounded">
-                                        <option data-display="Select">Nothing</option>
-                                        <option value="1">Web Developer</option>
-                                        <option value="2">PHP Developer</option>
-                                        <option value="3">Web Designer</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
 
 
 
@@ -316,8 +299,7 @@
                                                         <h6 class="mb-2"><a href="#"
                                                                 class="text-dark">{{ $val->job_title }}</a></h6>
                                                         <p class="text-muted mb-0"><i
-                                                                class="mdi mdi-bank mr-2"></i>Company
-                                                            Name </p>
+                                                                class="mdi mdi-bank mr-2"></i>{{ $val->company_name ?? "" }}</p>
                                                         <ul class="list-inline mb-0">
                                                             <li class="list-inline-item mr-3">
                                                                 <p class="text-muted mb-0"><i
@@ -365,8 +347,7 @@
                                                         <h6 class="mb-2"><a href="#"
                                                                 class="text-dark">{{ $val->job_title }}</a></h6>
                                                         <p class="text-muted mb-0"><i
-                                                                class="mdi mdi-bank mr-2"></i>Company
-                                                            Name </p>
+                                                                class="mdi mdi-bank mr-2"></i>{{ $val->company_name ?? ""}}</p>
                                                         <ul class="list-inline mb-0">
                                                             <li class="list-inline-item mr-3">
                                                                 <p class="text-muted mb-0"><i
@@ -413,8 +394,7 @@
                                                         <h6 class="mb-2"><a href="#"
                                                                 class="text-dark">{{ $val->job_title }}</a></h6>
                                                         <p class="text-muted mb-0"><i
-                                                                class="mdi mdi-bank mr-2"></i>Company
-                                                            Name </p>
+                                                                class="mdi mdi-bank mr-2"></i>{{ $val->company_name ?? ""}}</p>
                                                         <ul class="list-inline mb-0">
                                                             <li class="list-inline-item mr-3">
                                                                 <p class="text-muted mb-0"><i
@@ -447,49 +427,7 @@
                             @endforeach
                         @endif
 
-                        <div class="col-lg-12 mt-4 pt-2">
-                            <div class="job-list-box border rounded">
-                                <div class="p-3">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-2">
-                                            <div class="company-logo-img">
-                                                <img src="{{ asset('assets/frontend/images/featured-job/img-2.png') }}"
-                                                    alt="" class="img-fluid mx-auto d-block">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-7 col-md-9">
-                                            <div class="job-list-desc">
-                                                <h6 class="mb-2"><a href="#" class="text-dark">PHP Developer,
-                                                        Team of PHP & IT Co</a></h6>
-                                                <p class="text-muted mb-0"><i class="mdi mdi-bank mr-2"></i>Web
-                                                    Themescode.pvt.Ltd</p>
-                                                <ul class="list-inline mb-0">
-                                                    <li class="list-inline-item mr-3">
-                                                        <p class="text-muted mb-0"><i
-                                                                class="mdi mdi-map-marker mr-2"></i>Rogers Street
-                                                            Cincinnati, OH 45202</p>
-                                                    </li>
-
-                                                    <li class="list-inline-item">
-                                                        <p class="text-muted mb-0"><i
-                                                                class="mdi mdi-clock-outline mr-2"></i>3 Minute ago</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3">
-                                            <div class="job-list-button-sm text-right">
-                                                <span class="badge badge-success">Part-Time</span>
-
-                                                <div class="mt-3">
-                                                    <a href="#" class="btn btn-sm btn-primary">Apply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
 
                     </div>
@@ -499,34 +437,7 @@
     </section>
     <!-- JOB LIST START -->
 
-    <!-- subscribe start -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5">
-                    <div class="float-left position-relative notification-icon mr-2">
-                        <i class="mdi mdi-bell-outline text-primary"></i>
-                        <span class="badge badge-pill badge-danger">1</span>
-                    </div>
-                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
-                </div>
-                <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
-                    <form>
-                        <div class="form-group mb-0">
-                            <div class="input-group mb-0">
-                                <input name="email" id="email" type="email" class="form-control"
-                                    placeholder="Your email :" required="" aria-describedby="newssubscribebtn">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary submitBnt" type="submit"
-                                        id="newssubscribebtn">Subscribe</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+
 @endsection
 
 @section('script')

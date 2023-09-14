@@ -152,7 +152,7 @@ class SiteController extends Controller
     $data['numberofjobs'] = IndustryPost::get()->count();
     $data['jobpost'] = IndustryPost::where('status', '=', IndustryPost::$statusArrays[1])->orderby('id', 'desc')->get();
     $data['reviews'] = SiteReview::get();
-    //  return $auth;
+    //  return $data;
     return view('site.index', $data);
   }
 

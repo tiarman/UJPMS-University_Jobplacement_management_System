@@ -184,7 +184,7 @@
 
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">
-                                <i class="mdi mdi-currency-usd text-muted"></i>
+                                <i class="mdi mdi-currency-bdt text-muted"></i>
                             </div>
                             <p class="text-muted mb-2">: {{ $job_post_details->salary ?? ''}}</p>
                         </div>
@@ -193,24 +193,24 @@
                             <div class="float-left mr-2">
                                 <i class="mdi mdi-security text-muted"></i>
                             </div>
-                            <p class="text-muted mb-2">: {{ $job_post_details->experience_requirement ?? ''}}</p>
+                            <p class="text-muted mb-2">: {{ $job_post_details->experience_requirement ?? ''}}Years Experience</p>
                         </div>
 
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">
                                 <i class="mdi mdi-clock-outline text-muted"></i>
                             </div>
-                            <p class="text-muted mb-2">: {{ $job_post_details->application_deadline ?? ''}}</p>
+                            <p class="text-muted mb-2">: {{ $job_post_details->application_deadline ?? ''}} Application Deadline</p>
                         </div>
 
-                        <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
+                        {{--  <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
                         <ul class="social-icon list-inline mt-3 mb-0">
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google-plus"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-whatsapp"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
-                        </ul>
+                        </ul>  --}}
                     </div>
                 </div>
 
@@ -257,7 +257,7 @@
                             <li class="clearfix text-muted border-bottom pb-3">
                                 <div class="float-left">Saturday</div>
                                 <div class="float-right">
-                                    <h5 class="f-13 mb-0">6:30AM - 1PM</h5>
+                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
                                 </div>
                             </li>
 

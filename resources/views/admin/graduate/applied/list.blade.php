@@ -54,7 +54,7 @@
                   <th>Company</th>
                   <th width="200">Position</th>
                   <th>Resume</th>
-                  <th>Status</th>
+                  {{--  <th>Status</th>  --}}
                   {{--                  <th class="hidden-phone" width="40">Option</th>--}}
                 </tr>
                 </thead>
@@ -90,7 +90,7 @@
                       </td>
 
                     @else
-                      <td class="text-capitalize p-1">
+                      {{--  <td class="text-capitalize p-1">
                         <div class="onoffswitch">
                           <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
                                  @checked($val->status == \App\Models\User::$statusArrays[1])
@@ -101,7 +101,7 @@
                             <span class="onoffswitch-switch"></span>
                           </label>
                         </div>
-                      </td>
+                      </td>  --}}
                     @endif
                     {{--                    <td class="p-1">{{ $val->status }}</td>--}}
                     {{-- <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>--}}
@@ -159,6 +159,25 @@
   {{-- institute acceptance --}}
   <script>
     $(document).ready(function () {
+
+      //$('#datatable-buttons').DataTable();
+
+       var table = $('#datatable-buttons').DataTable({
+         lengthChange: false,
+         buttons: ['copy', 'excel', 'pdf', 'colvis']
+       });
+      
+       table.buttons().container()
+         .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+
+
+
+
+
+
+
+
+
       $('#member-dropdown').select2()
       const Toast = Swal.mixin({
         toast: true,

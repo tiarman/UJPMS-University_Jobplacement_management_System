@@ -147,7 +147,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-sm-12">
+                  {{--  <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Additional Requirements</label>
                       <textarea type="text" id="additional_requirements" name="additional_requirements" placeholder="Additional Requirements" autocomplete="off"
@@ -157,7 +157,7 @@
                       <strong class="text-danger">{{ $errors->first('additional_requirements') }}</strong>
                       @enderror
                     </div>
-                  </div>
+                  </div>  --}}
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label class="control-label">Compensation & Other Benefits</label>
@@ -245,7 +245,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label class="control-label" for="contact_mail">Contact Email</label>
-                        <input type="number" name="contact_mail" placeholder="contact mail" autocomplete="off"
+                        <input type="email" name="contact_mail" placeholder="contact mail" autocomplete="off"
                                value="{{ old('contact_mail') }}"
                                class="form-control @error('contact_mail') is-invalid @enderror">
                         @error('contact_mail')

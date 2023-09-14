@@ -145,4 +145,19 @@
     <!-- Responsive examples -->
     <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            // $('#datatable-buttons').DataTable();
+      
+             var table = $('#datatable-buttons').DataTable({
+               lengthChange: false,
+               buttons: ['copy', 'excel', 'pdf', 'colvis']
+             });
+            
+             table.buttons().container()
+               .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+        })
+    </script>
 @endsection
